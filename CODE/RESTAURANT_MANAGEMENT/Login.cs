@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RESTAURANT_MANAGEMENT
@@ -65,6 +59,7 @@ namespace RESTAURANT_MANAGEMENT
                     {
                         this.Hide();
                         MainPage mainForm = new MainPage();
+                        mainForm.Closed += (s, args) => this.Close();
                         mainForm.Show();
                     }
                     else
