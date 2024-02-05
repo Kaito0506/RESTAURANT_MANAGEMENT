@@ -6,3 +6,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# DO NOT PUSH
+CODE/RESTAURANT_MANAGEMENT/.vs
