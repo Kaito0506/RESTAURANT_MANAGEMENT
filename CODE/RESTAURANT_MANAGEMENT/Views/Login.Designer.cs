@@ -1,4 +1,4 @@
-﻿namespace RESTAURANT_MANAGEMENT
+﻿namespace RESTAURANT_MANAGEMENT.Views
 {
     partial class Login
     {
@@ -154,4 +154,3 @@
         private System.Windows.Forms.Button btnLogin;
     }
 }
-

@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RESTAURANT_MANAGEMENT
+namespace RESTAURANT_MANAGEMENT.Views
 {
-    public partial class MainPage : Form
+    public partial class UserHomePage : Form
     {
-        public MainPage()
+        LoginController lg = new LoginController();
+        UserModel.User user;
+        public UserHomePage()
         {
             InitializeComponent();
+            user = lg.GetUser();
+            lbName.Text = user.u_name;
         }
     }
 }
