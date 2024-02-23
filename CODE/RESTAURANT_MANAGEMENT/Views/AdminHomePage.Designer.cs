@@ -1,6 +1,6 @@
-﻿namespace RESTAURANT_MANAGEMENT
+﻿namespace RESTAURANT_MANAGEMENT.Views
 {
-    partial class MainPage
+    partial class AdminHomePage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // MainPage
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(623, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(701, 9);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(0, 13);
+            this.lbName.TabIndex = 1;
+            // 
+            // AdminHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainPage";
-            this.Text = "MainPage";
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.label1);
+            this.Name = "AdminHomePage";
+            this.Text = "AdminHomePage";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
     }
 }

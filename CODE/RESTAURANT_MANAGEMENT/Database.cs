@@ -19,7 +19,7 @@ class Database
             return true;
         }catch (Exception ex)
         {
-            MessageBox.Show("Failed to connect database server");
+            MessageBox.Show("Failed to connect database server:\n" + ex.ToString());
             Console.WriteLine("ERROR DATABASE: " + ex.ToString());
             return false;
 
