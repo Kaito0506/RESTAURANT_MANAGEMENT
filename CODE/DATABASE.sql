@@ -124,6 +124,14 @@ CREATE TABLE BILL_DETAIL(
 	foreign key (mi_id) references MENU_ITEM(mi_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE TABLES(
+	ta_id int,
+	rb_id int,
+	primary key(ta_id, rb_id),
+	foreign key (rb_id) references RESTAURANT_BRANCH (rb_id)  ON UPDATE CASCADE ON DELETE CASCADE)
+
+
+
 INSERT INTO ADMIN (ad_id, ad_name, ad_gender, ad_phone, ad_password)
 VALUES
   (1, N'Hồ Minh Nhựt', 0, N'0783939975', N'admin123'),
