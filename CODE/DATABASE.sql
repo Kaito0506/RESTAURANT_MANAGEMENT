@@ -1,8 +1,11 @@
-﻿Create Login root with password='root', CHECK_POLICY = OFF;
+﻿DROP  LOGIN testLogin;
+Create login admin with password='admin', CHECK_POLICY = OFF;
+Create login testLogin with password='password', CHECK_POLICY = OFF;
+-- DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
-sp_changedbowner root; 
+sp_changedbowner admin; 
 
 DROP TABLE BILL_DETAIL;
 DROP TABLE MENU_ITEM;
@@ -57,23 +60,23 @@ CREATE TABLE USERS (
     u_address NVARCHAR(255),
     u_phone NVARCHAR(15) not null,
     u_password nvarchar(20) not null check (len(u_password) between 6 and 16)
-	FOREIGN KEY (ro_id) REFERENCES ROLE(ro_id),
-	FOREIGN KEY (rb_id) REFERENCES RESTAURANT_BRANCH(rb_id)
+	FOREIGN KEY (ro_id) REFERENCES ROLE(ro_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (rb_id) REFERENCES RESTAURANT_BRANCH(rb_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
 CREATE TABLE MANAGES_EMPLOYER (
 	ad_id INT, 
 	u_id INT, 
-	FOREIGN KEY (ad_id) REFERENCES ADMIN(ad_id), 
-	FOREIGN KEY (u_id) REFERENCES USERS(u_Id)
+	FOREIGN KEY (ad_id) REFERENCES ADMIN(ad_id) ON UPDATE CASCADE ON DELETE CASCADE, 
+	FOREIGN KEY (u_id) REFERENCES USERS(u_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE MANAGES_BRANCH (
 	ad_id INT, 
 	rb_id INT, 
-	FOREIGN KEY (ad_id) REFERENCES ADMIN(ad_id), 
-	FOREIGN KEY (rb_id) REFERENCES RESTAURANT_BRANCH(rb_id)
+	FOREIGN KEY (ad_id) REFERENCES ADMIN(ad_id) ON UPDATE CASCADE ON DELETE CASCADE, 
+	FOREIGN KEY (rb_id) REFERENCES RESTAURANT_BRANCH(rb_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE CUSTOMER (
@@ -108,7 +111,7 @@ CREATE table MENU_ITEM(
 	 mi_name nvarchar (50) ,
 	 mi_desc text,
 	 dc_id int,
-	 constraint fk1 foreign key (dc_id) references DETAIL_CATEGORY(dc_id),
+	 constraint fk1 foreign key (dc_id) references DETAIL_CATEGORY(dc_id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
 
 
@@ -117,8 +120,8 @@ CREATE TABLE BILL_DETAIL(
 	mi_id int,
 	quantity int not null,
 	primary key(bi_id, mi_id),
-	foreign key (bi_id) references BILL(bi_id),
-	foreign key (mi_id) references MENU_ITEM(mi_id)
+	foreign key (bi_id) references BILL(bi_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	foreign key (mi_id) references MENU_ITEM(mi_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO ADMIN (ad_id, ad_name, ad_gender, ad_phone, ad_password)
