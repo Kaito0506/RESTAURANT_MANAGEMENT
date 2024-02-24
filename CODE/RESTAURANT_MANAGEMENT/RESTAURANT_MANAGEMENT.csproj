@@ -198,11 +198,29 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AdminBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminBranch.Designer.cs">
+      <DependentUpon>AdminBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminCustomer.Designer.cs">
+      <DependentUpon>AdminCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AdminHomePage.Designer.cs">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminUser.Designer.cs">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -210,6 +228,7 @@
     <Compile Include="Views\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\mdiProperties.cs" />
     <Compile Include="Views\UserHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,8 +245,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\AdminBranch.resx">
+      <DependentUpon>AdminBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminCustomer.resx">
+      <DependentUpon>AdminCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminUser.resx">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
