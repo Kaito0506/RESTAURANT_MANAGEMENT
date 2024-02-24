@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RESTAURANT_MANAGEMENT.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +12,18 @@ using System.Windows.Forms;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
-    public partial class Login : Form
+    public partial class login : Form
     {
-        public Login()
+        private bool usePassword = true;
+        public login()
         {
-
             InitializeComponent();
+            labels1.SendToBack();
+            labels2.SendToBack();
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
+            Region rg = new Region(gp);
+            pictureBox1.Region = rg;
             cbRole.SelectedIndex = 0;
             txtUsername.Focus();
 
@@ -73,6 +80,12 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 Login_function();
             }
+        }
+
+        private void btnShowPassword(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !usePassword;
+            usePassword = !usePassword;
         }
     }
 }

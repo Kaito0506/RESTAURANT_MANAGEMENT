@@ -229,6 +229,9 @@
     <EmbeddedResource Include="Views\AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserHomePage.resx">
       <DependentUpon>UserHomePage.cs</DependentUpon>
     </EmbeddedResource>
