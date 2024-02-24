@@ -13,9 +13,9 @@ Simplify Restaurant Management App Using Winform.
 Create .env file in CODE/RESTAURANT_MANAGEMENT
 ```bash
 HOST=<Server name>
-DATABASE=<Database name>
-USER=root
-PASSWORD=root
+DATABASE=RESTAURANT_MANAGEMENT
+USER=admin
+PASSWORD=admin
 ```
 
 # Having trouble with Database Connection
