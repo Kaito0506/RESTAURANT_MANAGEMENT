@@ -18,6 +18,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         public login()
         {
             InitializeComponent();
+            txtUsername.Focus();
             labels1.SendToBack();
             labels2.SendToBack();
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
@@ -25,8 +26,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             Region rg = new Region(gp);
             pictureBox1.Region = rg;
             cbRole.SelectedIndex = 0;
-            txtUsername.Focus();
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
