@@ -127,5 +127,10 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             acustomer = null;
         }
+
+        private void AdminHomePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

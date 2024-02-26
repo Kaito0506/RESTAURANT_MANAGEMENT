@@ -18,7 +18,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         public login()
         {
             
-            InitializeComponent();
+            InitializeComponent()
             labels1.SendToBack();
             labels2.SendToBack();
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();

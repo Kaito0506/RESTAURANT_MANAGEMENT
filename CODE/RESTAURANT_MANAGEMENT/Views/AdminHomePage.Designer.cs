@@ -53,9 +53,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(3, 19);
+            this.label1.Location = new System.Drawing.Point(4, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.Size = new System.Drawing.Size(94, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome,";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -65,9 +66,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbName.Location = new System.Drawing.Point(73, 19);
+            this.lbName.Location = new System.Drawing.Point(97, 23);
+            this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(53, 20);
+            this.lbName.Size = new System.Drawing.Size(68, 25);
             this.lbName.TabIndex = 1;
             this.lbName.Text = "admin";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -81,25 +83,28 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(236, 554);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.lbName);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(171, 56);
+            this.panel4.Size = new System.Drawing.Size(228, 69);
             this.panel4.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.branch);
-            this.panel1.Location = new System.Drawing.Point(3, 65);
+            this.panel1.Location = new System.Drawing.Point(4, 81);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(174, 62);
+            this.panel1.Size = new System.Drawing.Size(232, 76);
             this.panel1.TabIndex = 4;
             // 
             // branch
@@ -112,9 +117,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.branch.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.branch.Image = ((System.Drawing.Image)(resources.GetObject("branch.Image")));
             this.branch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.branch.Location = new System.Drawing.Point(3, 3);
+            this.branch.Location = new System.Drawing.Point(4, 4);
+            this.branch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.branch.Name = "branch";
-            this.branch.Size = new System.Drawing.Size(168, 56);
+            this.branch.Size = new System.Drawing.Size(224, 69);
             this.branch.TabIndex = 5;
             this.branch.Text = "Branches";
             this.branch.UseVisualStyleBackColor = false;
@@ -123,9 +129,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel2
             // 
             this.panel2.Controls.Add(this.user);
-            this.panel2.Location = new System.Drawing.Point(3, 133);
+            this.panel2.Location = new System.Drawing.Point(4, 165);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 62);
+            this.panel2.Size = new System.Drawing.Size(232, 76);
             this.panel2.TabIndex = 6;
             // 
             // user
@@ -138,9 +145,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.user.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.user.Image = ((System.Drawing.Image)(resources.GetObject("user.Image")));
             this.user.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.user.Location = new System.Drawing.Point(3, 3);
+            this.user.Location = new System.Drawing.Point(4, 4);
+            this.user.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(168, 56);
+            this.user.Size = new System.Drawing.Size(224, 69);
             this.user.TabIndex = 5;
             this.user.Text = "Users";
             this.user.UseVisualStyleBackColor = false;
@@ -149,9 +157,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel3
             // 
             this.panel3.Controls.Add(this.customer);
-            this.panel3.Location = new System.Drawing.Point(3, 201);
+            this.panel3.Location = new System.Drawing.Point(4, 249);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(174, 62);
+            this.panel3.Size = new System.Drawing.Size(232, 76);
             this.panel3.TabIndex = 6;
             // 
             // customer
@@ -164,9 +173,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.customer.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.customer.Image = ((System.Drawing.Image)(resources.GetObject("customer.Image")));
             this.customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.customer.Location = new System.Drawing.Point(3, 3);
+            this.customer.Location = new System.Drawing.Point(4, 4);
+            this.customer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.customer.Name = "customer";
-            this.customer.Size = new System.Drawing.Size(168, 56);
+            this.customer.Size = new System.Drawing.Size(224, 69);
             this.customer.TabIndex = 5;
             this.customer.Text = "Customers";
             this.customer.UseVisualStyleBackColor = false;
@@ -174,13 +184,15 @@ namespace RESTAURANT_MANAGEMENT.Views
             // 
             // AdminHomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.flowLayoutPanel1);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AdminHomePage";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.AdminHomePage_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
