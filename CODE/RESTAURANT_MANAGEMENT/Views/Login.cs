@@ -17,14 +17,15 @@ namespace RESTAURANT_MANAGEMENT.Views
         private bool usePassword = true;
         public login()
         {
+            
             InitializeComponent();
-            txtUsername.Focus();
             labels1.SendToBack();
             labels2.SendToBack();
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
             gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
             Region rg = new Region(gp);
             pictureBox1.Region = rg;
+
             cbRole.SelectedIndex = 0;
         }
 
@@ -85,6 +86,12 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             txtPassword.UseSystemPasswordChar = !usePassword;
             usePassword = !usePassword;
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+            txtUsername.Focus();
+            Console.WriteLine("Focus user name works");
         }
     }
 }

@@ -18,12 +18,12 @@ class LoginController
                 //preresent Admin role
                 case 0:
                     {
-                        cmd = new SqlCommand("select * from ADMIN where ad_phone = @username and ad_password=@password ", Database.Connection);
+                        cmd = new SqlCommand("select * from ADMIN where phone = @username and password=@password ", Database.Connection);
                         break;
                     }
                 case 1:
                     {
-                        cmd = new SqlCommand("select * from USERS where u_phone = @username and u_password=@password ", Database.Connection);
+                        cmd = new SqlCommand("select * from USERS where phone = @username and password=@password ", Database.Connection);
                         break;
                     }
                 default:
@@ -39,25 +39,25 @@ class LoginController
                 {
                     case 0:
                         {
-                            admin.ad_id = reader.GetInt32(reader.GetOrdinal("ad_id"));
-                            admin.ad_name = reader["ad_name"].ToString();
-                            admin.ad_gender = reader.GetInt32(reader.GetOrdinal("ad_gender"));
-                            admin.ad_phone = reader["ad_phone"].ToString();
-                            admin.ad_password = reader["ad_password"].ToString();
+                            admin.ad_id = reader.GetInt32(reader.GetOrdinal("id"));
+                            admin.ad_name = reader["name"].ToString();
+                            admin.ad_gender = reader.GetInt32(reader.GetOrdinal("gender"));
+                            admin.ad_phone = reader["phone"].ToString();
+                            admin.ad_password = reader["password"].ToString();
                             break;
                         }
                     case 1:
                         {
-                            user.u_id = reader.GetInt32(reader.GetOrdinal("u_id"));
-                            user.ro_id = reader.GetInt32(reader.GetOrdinal("ro_id"));
-                            user.rb_id = reader.GetInt32(reader.GetOrdinal("rb_id"));
-                            user.u_cccd = reader["u_cccd"].ToString();
-                            user.u_name = reader["u_name"].ToString();
-                            user.u_dob = reader.GetDateTime(reader.GetOrdinal("u_dob"));
-                            user.u_gender = Convert.ToChar(reader["u_gender"].ToString());
-                            user.u_address = reader["u_address"].ToString();
-                            user.u_phone = reader["u_phone"].ToString();
-                            user.u_password = reader["u_password"].ToString();
+                            user.u_id = reader.GetInt32(reader.GetOrdinal("id"));
+                            user.ro_id = reader.GetInt32(reader.GetOrdinal("id"));
+                            user.rb_id = reader.GetInt32(reader.GetOrdinal("id"));
+                            user.u_cccd = reader["cccd"].ToString();
+                            user.u_name = reader["name"].ToString();
+                            user.u_dob = reader.GetDateTime(reader.GetOrdinal("dob"));
+                            user.u_gender = Convert.ToChar(reader["gender"].ToString());
+                            user.u_address = reader["address"].ToString();
+                            user.u_phone = reader["phone"].ToString();
+                            user.u_password = reader["password"].ToString();
                             break;
                         }
                     default:
