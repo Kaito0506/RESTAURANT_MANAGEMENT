@@ -22,12 +22,12 @@ namespace RESTAURANT_MANAGEMENT.Views
         private Form[] adminForms;
 
         LoginController lg = new LoginController();
-        AdminModel.Admin admin;
+        UserModel.User admin;
         public AdminHomePage()
         {
             InitializeComponent();
-            admin = lg.GetAdmin();
-            lbName.Text = admin.ad_name.Split(' ').Last();
+            admin = lg.GetUser();
+            lbName.Text = admin.u_name.Split(' ').Last();
             mdiProp();
             adminForms = new Form[] { abranch, auser, acustomer, adashboard, aitem, acategory };
         }
