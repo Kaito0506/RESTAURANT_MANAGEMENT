@@ -235,6 +235,9 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\mdiProperties.cs" />
+    <Compile Include="Views\RoundPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\UserHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
