@@ -193,8 +193,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -321,9 +325,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\btnAdd.png" />
+    <Content Include="images\categ.png" />
     <Content Include="images\customer.png" />
+    <Content Include="images\dashboard.png" />
     <Content Include="images\drink.jpg" />
+    <Content Include="images\drinks\drink.jpg" />
+    <Content Include="images\fd.png" />
     <Content Include="images\food.jpg" />
+    <Content Include="images\foods\food.png" />
+    <Content Include="images\foods\food1.png" />
     <Content Include="images\pass.png" />
     <Content Include="images\pw.png" />
     <Content Include="images\rb.png" />
