@@ -118,6 +118,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             acustomer = null;
         }
 
+
         private void dashboard_Click(object sender, EventArgs e)
         {
             close_Forms(adashboard);
@@ -182,6 +183,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void acategory_FormClosed(object sender, FormClosedEventArgs e)
         {
             acategory = null;
+
         }
     }
 }
