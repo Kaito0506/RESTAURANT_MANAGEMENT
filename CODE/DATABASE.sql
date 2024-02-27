@@ -25,14 +25,6 @@ create table ROLE(
 	role_name nvarchar(30) not null,
 	salary Money not null
 );
--- admin table
-create table ADMIN(
-	id int primary key,
-	name nvarchar(30) not null,
-	gender int not null,	
-	phone char(10) check (LEN(phone) = 10),
-	password nvarchar(20) not null check (len(password) between 6 and 16)
-);
 
 -- branch table
 CREATE TABLE RESTAURANT_BRANCH (
@@ -46,7 +38,6 @@ CREATE TABLE RESTAURANT_BRANCH (
 CREATE TABLE USERS (
     id INT PRIMARY KEY,
     role_id INT,
-	branch_id int,
 	cccd char(12) not null unique,
     name NVARCHAR(50) not null,
     dob DATE,
@@ -55,7 +46,15 @@ CREATE TABLE USERS (
     phone NVARCHAR(15) not null,
     password nvarchar(20) not null check (len(password) between 6 and 16)
 	FOREIGN KEY (role_id) REFERENCES ROLE(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (branch_id) REFERENCES RESTAURANT_BRANCH(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE ASSIGN (
+    u_id INT,
+    branch_id INT,
+    PRIMARY KEY (u_id, branch_id),
+    UNIQUE (u_id), -- Ensures that a user can be assigned to only one branch
+    FOREIGN KEY (u_id) REFERENCES USERS(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (branch_id) REFERENCES RESTAURANT_BRANCH(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- category table
@@ -126,16 +125,8 @@ CREATE TABLE BILL_DETAIL(
 
 );
 
-
-
-
-INSERT INTO ADMIN (id, name, gender, phone, password)
-VALUES
-  (1, N'Hồ Minh Nhựt', 0, N'0783939975', N'admin123'),
-  (2, N'La Thanh Trọng', 0, N'9876543210', N'admin456'); 
-
-
 INSERT INTO ROLE (id, role_name, salary) VALUES
+(0, N'Admin', 30000000),
 (1, N'Quản lý', 20000000),
 (2, N'Nhân viên', 10000000),
 (3, N'Bếp trưởng', 15000000),
@@ -158,13 +149,21 @@ INSERT INTO RESTAURANT_BRANCH (id, name, address, phone) VALUES
 (5, N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789');
 
 
-INSERT INTO USERS (id, role_id, branch_id, cccd,name, dob, gender, address, phone, password) VALUES
-(1, 1, 1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
-(2, 2, 1, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
-(3, 3, 1, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
-(4, 4, 1, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
-(5, 5, 1, N'567890123456', N'Đỗ Quang E', '1994-05-05', N'M', N'258 Nguyễn Văn Cừ, Quận 10, TP. Hồ Chí Minh', N'0978123456', N'userpass123');
+INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
+(1, 1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
+(2, 2, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
+(3, 3, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
+(4, 4, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
+(5, 5, N'567890123456', N'Đỗ Quang E', '1994-05-05', N'M', N'258 Nguyễn Văn Cừ, Quận 10, TP. Hồ Chí Minh', N'0978123456', N'userpass123'),
+(6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
+(7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
 
+INSERT INTO ASSIGN (u_id, branch_id) VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
 
 INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (1, N'Hoàng Thị F', N'0987-123-456', 10, 100000),
@@ -253,10 +252,7 @@ DELETE FROM MENU_ITEM;
 DELETE FROM DETAIL_CATEGORY;
 DELETE FROM BILL;
 DELETE FROM CUSTOMER;
-DELETE FROM MANAGES_BRANCH;
-DELETE FROM MANAGES_EMPLOYER;
 DELETE FROM USERS;
 DELETE FROM RESTAURANT_BRANCH;
 DELETE FROM CATEGORY;
 DELETE FROM ROLE;
-DELETE FROM ADMIN;

@@ -25,8 +25,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
             Region rg = new Region(gp);
             pictureBox1.Region = rg;
-
-            cbRole.SelectedIndex = 0;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,7 +42,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             else
             {
                 LoginController loginController = new LoginController();
-                SqlDataReader reader = loginController.Login(cbRole.SelectedIndex, txtUsername.Text, txtPassword.Text);
+                SqlDataReader reader = loginController.Login(txtUsername.Text, txtPassword.Text);
                 if(reader == null)
                 {
                     Console.WriteLine("Error when retriving data login: ");
@@ -52,7 +50,8 @@ namespace RESTAURANT_MANAGEMENT.Views
                 else if (reader.HasRows)
                 {
                     this.Hide();
-                    if(cbRole.SelectedIndex == 0)
+                    int roleId = Convert.ToInt32(reader["role_id"]);
+                    if (roleId == 0)
                     {
                         AdminHomePage mainForm = new AdminHomePage();
                         mainForm.Closed += (s, args) => this.Close();
