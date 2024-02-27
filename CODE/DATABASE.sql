@@ -12,12 +12,12 @@ DROP TABLE MENU_ITEM;
 DROP TABLE DETAIL_CATEGORY;
 DROP TABLE BILL;
 DROP TABLE CUSTOMER;
+DROP TABLE ASSIGN;
 DROP TABLE USERS;
 DROP TABLE TABLES;
 DROP TABLE RESTAURANT_BRANCH;
 DROP TABLE CATEGORY;
 DROP TABLE ROLE;
-DROP TABLE ADMIN;
 
 -- role table
 create table ROLE(
@@ -95,7 +95,9 @@ CREATE table MENU_ITEM(
 	 id int primary key ,
 	 price money not null,
 	 name nvarchar (50) ,
-	 describe text,
+	 describe nvarchar (255),
+	 img nvarchar (255),
+	 UNIQUE (img),
 	 category_id int,
 	 constraint fk1 foreign key (category_id) references DETAIL_CATEGORY(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -204,27 +206,27 @@ INSERT INTO DETAIL_CATEGORY (id, describe, name, category_id) VALUES
 (10, N'Nước cam ép, ....', N'Nước trái cây', 4);
 
 
-INSERT INTO MENU_ITEM (id, price, name, describe, category_id) VALUES
-(1, 50000, N'Bánh mì pate', N'Bánh mì ăn kèm pate và rau sống', 1),
-(2, 35000, N'Bún riêu', N'Bún nước dùng riêu cay nồng', 2),
-(3, 60000, N'Cơm gà xối mỡ', N'Cơm gà ăn kèm xối mỡ thơm ngon', 3),
-(4, 80000, N'Sò điệp nướng mỡ hành', N'Sò điệp nướng mỡ hành ngon tuyệt', 4),
-(5, 50000, N'Lẩu canh chua cá', N'Lẩu canh chua cá hấp dẫn', 5),
-(6, 15000, N'Sữa chua đào', N'Sữa chua ăn kèm đào tươi', 6),
-(7, 25000, N'Trái cây hỗn hợp', N'Hỗn hợp trái cây tươi ngon', 7),
-(8, 10000, N'Pepsi', N'Đồ uống có gas - Pepsi', 8),
-(9, 20000, N'Trà sữa matcha', N'Trà sữa thơm ngon vị matcha', 9),
-(10, 30000, N'Nước cam ép', N'Nước trái cây tươi ngon', 10),
-(11, 45000, N'Bánh tráng trộn', N'Bánh tráng trộn ăn kèm gia vị', 1),
-(12, 28000, N'Phở bò', N'Phở bò nấu chín với nước dùng đậm đà', 2),
-(13, 55000, N'Cơm chiên hải sản', N'Cơm chiên hải sản hấp dẫn', 3),
-(14, 75000, N'Mực nước dừa xanh', N'Mực nước dừa xanh nướng mỡ hành', 4),
-(15, 48000, N'Lẩu thái', N'Lẩu thái nồng ấm', 5),
-(16, 18000, N'Sữa chua dâu', N'Sữa chua ăn kèm dâu tươi', 6),
-(17, 22000, N'Trái cây tươi', N'Hỗn hợp trái cây tươi ngon', 7),
-(18, 12000, N'Coca Cola', N'Đồ uống có gas - Coca Cola', 8),
-(19, 21000, N'Trà sữa hòa quyện', N'Trà sữa hòa quyện vị thơm', 9),
-(20, 32000, N'Nước lựu tươi', N'Nước trái cây lựu tươi ngon', 10);
+INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
+(1, 50000, N'Bánh mì pate', N'Bánh mì ăn kèm pate và rau sống', 1, 'food.png'),
+(2, 35000, N'Bún riêu', N'Bún nước dùng riêu cay nồng', 2, 'food1.png'),
+(3, 60000, N'Cơm gà xối mỡ', N'Cơm gà ăn kèm xối mỡ thơm ngon', 3, 'food2.png'),
+(4, 80000, N'Sò điệp nướng mỡ hành', N'Sò điệp nướng mỡ hành ngon tuyệt', 4, 'food3.png'),
+(5, 50000, N'Lẩu canh chua cá', N'Lẩu canh chua cá hấp dẫn', 5, 'food4.png'),
+(6, 15000, N'Sữa chua đào', N'Sữa chua ăn kèm đào tươi', 6, 'food5.png'),
+(7, 25000, N'Trái cây hỗn hợp', N'Hỗn hợp trái cây tươi ngon', 7, 'food6.png'),
+(8, 10000, N'Pepsi', N'Đồ uống có gas - Pepsi', 8, 'food7.png'),
+(9, 20000, N'Trà sữa matcha', N'Trà sữa thơm ngon vị matcha', 9, 'food8.png'),
+(10, 30000, N'Nước cam ép', N'Nước trái cây tươi ngon', 10, 'food9.png'),
+(11, 45000, N'Bánh tráng trộn', N'Bánh tráng trộn ăn kèm gia vị', 1, 'food10.png'),
+(12, 28000, N'Phở bò', N'Phở bò nấu chín với nước dùng đậm đà', 2, 'food11.png'),
+(13, 55000, N'Cơm chiên hải sản', N'Cơm chiên hải sản hấp dẫn', 3, 'food12.png'),
+(14, 75000, N'Mực nước dừa xanh', N'Mực nước dừa xanh nướng mỡ hành', 4, 'food13.png'),
+(15, 48000, N'Lẩu thái', N'Lẩu thái nồng ấm', 5, 'food14.png'),
+(16, 18000, N'Sữa chua dâu', N'Sữa chua ăn kèm dâu tươi', 6, 'food15.png'),
+(17, 22000, N'Trái cây tươi', N'Hỗn hợp trái cây tươi ngon', 7, 'food16.png'),
+(18, 12000, N'Coca Cola', N'Đồ uống có gas - Coca Cola', 8, 'food17.png'),
+(19, 21000, N'Trà sữa hòa quyện', N'Trà sữa hòa quyện vị thơm', 9, 'food18.png'),
+(20, 32000, N'Nước lựu tươi', N'Nước trái cây lựu tươi ngon', 10, 'food19.png');
 
 
 -- Insert sample data into BILL_DETAIL table
@@ -235,7 +237,6 @@ VALUES
 (3, 2, 2, 3),  -- Bill 2 contains 3 Bún riêu
 (4, 2, 5, 2);  -- Bill 2 contains 2 Lẩu canh chua cá
  
-
 
 DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
