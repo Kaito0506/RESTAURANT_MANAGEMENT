@@ -18,7 +18,17 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             InitializeComponent();
             user = lg.GetUser();
-            lbName.Text = user.u_name;
+
+        }
+
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

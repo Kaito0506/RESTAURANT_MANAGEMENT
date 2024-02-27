@@ -187,6 +187,16 @@ INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (9,'A9', 1),
 (10,'A10', 1);
 
+declare @i int =1
+while @i<=10
+begin 
+	insert into TABLES(id, display_name, branch_id) values (@i+10, 'B'+CAST( @i as char), 2);
+	set @i = @i+1
+end
+
+select * from TABLES;
+
+
 
 INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
 (1, '2024-02-01', 1, 0, 500000, 1),
