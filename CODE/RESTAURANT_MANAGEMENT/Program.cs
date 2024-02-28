@@ -18,7 +18,7 @@ namespace RESTAURANT_MANAGEMENT
             Application.SetCompatibleTextRenderingDefault(false);
             
             // Run Login from Views folder
-            Application.Run(new Views.login());
+            Application.Run(new Views.AdminItem());
         }
     }
 }
