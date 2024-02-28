@@ -106,6 +106,47 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.panel4.Size = new System.Drawing.Size(171, 56);
             this.panel4.TabIndex = 3;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.branch);
+            this.panel1.Location = new System.Drawing.Point(4, 81);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(232, 76);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.user);
+            this.panel2.Location = new System.Drawing.Point(3, 201);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(174, 62);
+            this.panel2.TabIndex = 6;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.customer);
+            this.panel3.Location = new System.Drawing.Point(3, 269);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(174, 62);
+            this.panel3.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.item);
+            this.panel5.Location = new System.Drawing.Point(3, 337);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(174, 62);
+            this.panel5.TabIndex = 7;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.categ);
+            this.panel6.Location = new System.Drawing.Point(3, 405);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(174, 62);
+            this.panel6.TabIndex = 8;
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.dashboard);
