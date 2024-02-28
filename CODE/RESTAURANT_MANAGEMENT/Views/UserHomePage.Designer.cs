@@ -29,48 +29,48 @@
         private void InitializeComponent()
         {
             this.panelBranch = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelMethod = new System.Windows.Forms.Panel();
+            this.btnInside = new System.Windows.Forms.Button();
+            this.btnAway = new System.Windows.Forms.Button();
             this.panelTables = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBillItems = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panelSelectedTbale = new System.Windows.Forms.Panel();
-            this.panelOperations = new System.Windows.Forms.Panel();
-            this.panelBillIfor = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAway = new System.Windows.Forms.Button();
-            this.btnInside = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSum = new System.Windows.Forms.TextBox();
-            this.txtDiscount = new System.Windows.Forms.NumericUpDown();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.btnPay = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.viewItems = new System.Windows.Forms.DataGridView();
+            this.panelSelectedTbale = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelOperations = new System.Windows.Forms.Panel();
+            this.cbTables = new System.Windows.Forms.ComboBox();
             this.btnMerge = new System.Windows.Forms.Button();
+            this.panelBillIfor = new System.Windows.Forms.Panel();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.NumericUpDown();
+            this.txtSum = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtFindName = new System.Windows.Forms.TextBox();
+            this.btnPay = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cbTables = new System.Windows.Forms.ComboBox();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.txtFindName = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
-            this.viewItems = new System.Windows.Forms.DataGridView();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelBillItems.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewItems)).BeginInit();
             this.panelSelectedTbale.SuspendLayout();
             this.panelOperations.SuspendLayout();
             this.panelBillIfor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viewItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBranch
@@ -81,6 +81,17 @@
             this.panelBranch.Size = new System.Drawing.Size(340, 56);
             this.panelBranch.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Branch_name";
+            // 
             // panelMethod
             // 
             this.panelMethod.Controls.Add(this.btnInside);
@@ -90,8 +101,29 @@
             this.panelMethod.Size = new System.Drawing.Size(340, 47);
             this.panelMethod.TabIndex = 1;
             // 
+            // btnInside
+            // 
+            this.btnInside.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInside.Location = new System.Drawing.Point(156, 3);
+            this.btnInside.Name = "btnInside";
+            this.btnInside.Size = new System.Drawing.Size(169, 41);
+            this.btnInside.TabIndex = 1;
+            this.btnInside.Text = "Inside";
+            this.btnInside.UseVisualStyleBackColor = true;
+            // 
+            // btnAway
+            // 
+            this.btnAway.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAway.Location = new System.Drawing.Point(3, 3);
+            this.btnAway.Name = "btnAway";
+            this.btnAway.Size = new System.Drawing.Size(147, 41);
+            this.btnAway.TabIndex = 0;
+            this.btnAway.Text = "Take away";
+            this.btnAway.UseVisualStyleBackColor = true;
+            // 
             // panelTables
             // 
+            this.panelTables.AutoScroll = true;
             this.panelTables.Location = new System.Drawing.Point(12, 127);
             this.panelTables.Name = "panelTables";
             this.panelTables.Size = new System.Drawing.Size(343, 628);
@@ -105,6 +137,15 @@
             this.panelBillItems.Size = new System.Drawing.Size(529, 408);
             this.panelBillItems.TabIndex = 3;
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(0, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(526, 402);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.viewItems);
@@ -112,6 +153,16 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(435, 628);
             this.panel4.TabIndex = 4;
+            // 
+            // viewItems
+            // 
+            this.viewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.viewItems.Location = new System.Drawing.Point(3, 3);
+            this.viewItems.Name = "viewItems";
+            this.viewItems.RowHeadersWidth = 51;
+            this.viewItems.RowTemplate.Height = 24;
+            this.viewItems.Size = new System.Drawing.Size(363, 622);
+            this.viewItems.TabIndex = 0;
             // 
             // panelSelectedTbale
             // 
@@ -122,6 +173,25 @@
             this.panelSelectedTbale.Size = new System.Drawing.Size(529, 41);
             this.panelSelectedTbale.TabIndex = 2;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(191, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(323, 32);
+            this.textBox1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(164, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Selected table";
+            // 
             // panelOperations
             // 
             this.panelOperations.Controls.Add(this.cbTables);
@@ -130,6 +200,26 @@
             this.panelOperations.Name = "panelOperations";
             this.panelOperations.Size = new System.Drawing.Size(529, 90);
             this.panelOperations.TabIndex = 1;
+            // 
+            // cbTables
+            // 
+            this.cbTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTables.FormattingEnabled = true;
+            this.cbTables.Location = new System.Drawing.Point(191, 18);
+            this.cbTables.Name = "cbTables";
+            this.cbTables.Size = new System.Drawing.Size(303, 37);
+            this.cbTables.TabIndex = 2;
+            // 
+            // btnMerge
+            // 
+            this.btnMerge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMerge.Location = new System.Drawing.Point(32, 18);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(128, 37);
+            this.btnMerge.TabIndex = 1;
+            this.btnMerge.Text = "Merge";
+            this.btnMerge.UseVisualStyleBackColor = true;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // panelBillIfor
             // 
@@ -144,121 +234,14 @@
             this.panelBillIfor.Size = new System.Drawing.Size(529, 185);
             this.panelBillIfor.TabIndex = 2;
             // 
-            // label1
+            // txtTotal
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(48, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Branch_name";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.cbCategory);
-            this.panel1.Location = new System.Drawing.Point(896, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(435, 52);
-            this.panel1.TabIndex = 5;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnFind);
-            this.panel2.Controls.Add(this.txtFindName);
-            this.panel2.Location = new System.Drawing.Point(896, 74);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(435, 47);
-            this.panel2.TabIndex = 6;
-            // 
-            // btnAway
-            // 
-            this.btnAway.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAway.Location = new System.Drawing.Point(3, 3);
-            this.btnAway.Name = "btnAway";
-            this.btnAway.Size = new System.Drawing.Size(147, 41);
-            this.btnAway.TabIndex = 0;
-            this.btnAway.Text = "Take away";
-            this.btnAway.UseVisualStyleBackColor = true;
-            // 
-            // btnInside
-            // 
-            this.btnInside.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInside.Location = new System.Drawing.Point(156, 3);
-            this.btnInside.Name = "btnInside";
-            this.btnInside.Size = new System.Drawing.Size(169, 41);
-            this.btnInside.TabIndex = 1;
-            this.btnInside.Text = "Inside";
-            this.btnInside.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Selected table";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(191, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(323, 32);
-            this.textBox1.TabIndex = 2;
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(526, 402);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 29);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Sub Total";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(27, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 29);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Discount";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(27, 122);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 29);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Total";
-            // 
-            // txtSum
-            // 
-            this.txtSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSum.Location = new System.Drawing.Point(194, 16);
-            this.txtSum.Name = "txtSum";
-            this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(168, 32);
-            this.txtSum.TabIndex = 7;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(194, 130);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(168, 32);
+            this.txtTotal.TabIndex = 9;
             // 
             // txtDiscount
             // 
@@ -273,14 +256,80 @@
             this.txtDiscount.Size = new System.Drawing.Size(168, 32);
             this.txtDiscount.TabIndex = 8;
             // 
-            // txtTotal
+            // txtSum
             // 
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(194, 130);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(168, 32);
-            this.txtTotal.TabIndex = 9;
+            this.txtSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSum.Location = new System.Drawing.Point(194, 16);
+            this.txtSum.Name = "txtSum";
+            this.txtSum.ReadOnly = true;
+            this.txtSum.Size = new System.Drawing.Size(168, 32);
+            this.txtSum.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(27, 122);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 26);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Total";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(27, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 26);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Discount";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 26);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Sub Total";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbCategory);
+            this.panel1.Location = new System.Drawing.Point(896, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(435, 52);
+            this.panel1.TabIndex = 5;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(3, 14);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(363, 34);
+            this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnFind);
+            this.panel2.Controls.Add(this.txtFindName);
+            this.panel2.Location = new System.Drawing.Point(896, 74);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(435, 47);
+            this.panel2.TabIndex = 6;
+            // 
+            // txtFindName
+            // 
+            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindName.Location = new System.Drawing.Point(3, 3);
+            this.txtFindName.Name = "txtFindName";
+            this.txtFindName.Size = new System.Drawing.Size(313, 32);
+            this.txtFindName.TabIndex = 3;
             // 
             // btnPay
             // 
@@ -291,17 +340,6 @@
             this.btnPay.TabIndex = 0;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
-            // 
-            // btnMerge
-            // 
-            this.btnMerge.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMerge.Location = new System.Drawing.Point(32, 18);
-            this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(128, 37);
-            this.btnMerge.TabIndex = 1;
-            this.btnMerge.Text = "Merge";
-            this.btnMerge.UseVisualStyleBackColor = true;
-            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // btnPrint
             // 
@@ -322,33 +360,6 @@
             this.panel3.Size = new System.Drawing.Size(147, 182);
             this.panel3.TabIndex = 6;
             // 
-            // cbTables
-            // 
-            this.cbTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTables.FormattingEnabled = true;
-            this.cbTables.Location = new System.Drawing.Point(191, 18);
-            this.cbTables.Name = "cbTables";
-            this.cbTables.Size = new System.Drawing.Size(303, 37);
-            this.cbTables.TabIndex = 2;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(3, 14);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(363, 34);
-            this.cbCategory.TabIndex = 0;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
-            // 
-            // txtFindName
-            // 
-            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindName.Location = new System.Drawing.Point(3, 3);
-            this.txtFindName.Name = "txtFindName";
-            this.txtFindName.Size = new System.Drawing.Size(313, 32);
-            this.txtFindName.TabIndex = 3;
-            // 
             // btnFind
             // 
             this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
@@ -358,16 +369,6 @@
             this.btnFind.Size = new System.Drawing.Size(44, 35);
             this.btnFind.TabIndex = 0;
             this.btnFind.UseVisualStyleBackColor = true;
-            // 
-            // viewItems
-            // 
-            this.viewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.viewItems.Location = new System.Drawing.Point(3, 3);
-            this.viewItems.Name = "viewItems";
-            this.viewItems.RowHeadersWidth = 51;
-            this.viewItems.RowTemplate.Height = 24;
-            this.viewItems.Size = new System.Drawing.Size(363, 622);
-            this.viewItems.TabIndex = 0;
             // 
             // UserHomePage
             // 
@@ -385,7 +386,7 @@
             this.Controls.Add(this.panelTables);
             this.Controls.Add(this.panelMethod);
             this.Controls.Add(this.panelBranch);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserHomePage";
             this.Text = "UserHomePage";
             this.panelBranch.ResumeLayout(false);
@@ -393,17 +394,17 @@
             this.panelMethod.ResumeLayout(false);
             this.panelBillItems.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.viewItems)).EndInit();
             this.panelSelectedTbale.ResumeLayout(false);
             this.panelSelectedTbale.PerformLayout();
             this.panelOperations.ResumeLayout(false);
             this.panelBillIfor.ResumeLayout(false);
             this.panelBillIfor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.viewItems)).EndInit();
             this.ResumeLayout(false);
 
         }
