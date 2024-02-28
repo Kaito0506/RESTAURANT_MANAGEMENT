@@ -118,11 +118,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             acustomer = null;
         }
 
-
-        private void AdminHomePage_Load(object sender, EventArgs e)
-        {
-
-=========
         private void dashboard_Click(object sender, EventArgs e)
         {
             close_Forms(adashboard);
@@ -187,7 +182,6 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void acategory_FormClosed(object sender, FormClosedEventArgs e)
         {
             acategory = null;
->>>>>>>>> Temporary merge branch 2
         }
     }
 }
