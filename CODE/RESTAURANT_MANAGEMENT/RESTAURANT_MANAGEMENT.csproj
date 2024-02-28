@@ -2670,5 +2670,8 @@
     <Content Include="packages\System.Xml.XDocument.4.3.0\ref\netstandard1.3\zh-hant\System.Xml.XDocument.xml" />
     <Content Include="packages\System.Xml.XDocument.4.3.0\ThirdPartyNotices.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

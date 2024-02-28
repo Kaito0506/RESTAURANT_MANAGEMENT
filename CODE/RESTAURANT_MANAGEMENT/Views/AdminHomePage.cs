@@ -120,74 +120,76 @@ namespace RESTAURANT_MANAGEMENT.Views
 
 
         private void AdminHomePage_Load(object sender, EventArgs e)
-        {
+        { }
 
-=========
-        private void dashboard_Click(object sender, EventArgs e)
-        {
-            close_Forms(adashboard);
-            if (adashboard == null)
+
+            private void dashboard_Click(object sender, EventArgs e)
             {
-                adashboard = new AdminDashboard();
-                adashboard.FormClosed += adashboard_FormClosed;
-                adashboard.MdiParent = this;
-                adashboard.Dock = DockStyle.Fill;
-                adashboard.Show();
+                close_Forms(adashboard);
+                if (adashboard == null)
+                {
+                    adashboard = new AdminDashboard();
+                    adashboard.FormClosed += adashboard_FormClosed;
+                    adashboard.MdiParent = this;
+                    adashboard.Dock = DockStyle.Fill;
+                    adashboard.Show();
+                }
+                else
+                {
+                    adashboard.Activate();
+                }
             }
-            else
+      
+
+            private void adashboard_FormClosed(object sender, FormClosedEventArgs e)
             {
-                adashboard.Activate();
+                adashboard = null;
+            }
+
+            private void item_Click(object sender, EventArgs e)
+            {
+                close_Forms(aitem);
+                if (aitem == null)
+                {
+                    aitem = new AdminItem();
+                    aitem.FormClosed += aitem_FormClosed;
+                    aitem.MdiParent = this;
+                    aitem.Dock = DockStyle.Fill;
+                    aitem.Show();
+                }
+                else
+                {
+                    aitem.Activate();
+                }
+            }
+
+            private void aitem_FormClosed(object sender, FormClosedEventArgs e)
+            {
+                aitem = null;
+            }
+
+            private void categ_Click(object sender, EventArgs e)
+            {
+                close_Forms(acategory);
+                if (acategory == null)
+                {
+                    acategory = new AdminCategory();
+                    acategory.FormClosed += acategory_FormClosed;
+                    acategory.MdiParent = this;
+                    acategory.Dock = DockStyle.Fill;
+                    acategory.Show();
+                }
+                else
+                {
+                    acategory.Activate();
+                }
+            }
+
+            private void acategory_FormClosed(object sender, FormClosedEventArgs e)
+            {
+                acategory = null;
+
             }
         }
+ } 
 
-        private void adashboard_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            adashboard = null;
-        }
-
-        private void item_Click(object sender, EventArgs e)
-        {
-            close_Forms(aitem);
-            if (aitem == null)
-            {
-                aitem = new AdminItem();
-                aitem.FormClosed += aitem_FormClosed;
-                aitem.MdiParent = this;
-                aitem.Dock = DockStyle.Fill;
-                aitem.Show();
-            }
-            else
-            {
-                aitem.Activate();
-            }
-        }
-
-        private void aitem_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            aitem = null;
-        }
-
-        private void categ_Click(object sender, EventArgs e)
-        {
-            close_Forms(acategory);
-            if (acategory == null)
-            {
-                acategory = new AdminCategory();
-                acategory.FormClosed += acategory_FormClosed;
-                acategory.MdiParent = this;
-                acategory.Dock = DockStyle.Fill;
-                acategory.Show();
-            }
-            else
-            {
-                acategory.Activate();
-            }
-        }
-
-        private void acategory_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            acategory = null;
->>>>>>>>> Temporary merge branch 2
-        }
-    }
-}
