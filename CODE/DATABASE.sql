@@ -12,26 +12,18 @@ DROP TABLE MENU_ITEM;
 DROP TABLE DETAIL_CATEGORY;
 DROP TABLE BILL;
 DROP TABLE CUSTOMER;
+DROP TABLE ASSIGN;
 DROP TABLE USERS;
 DROP TABLE TABLES;
 DROP TABLE RESTAURANT_BRANCH;
 DROP TABLE CATEGORY;
 DROP TABLE ROLE;
-DROP TABLE ADMIN;
 
 -- role table
 create table ROLE(
 	id int primary key,
 	role_name nvarchar(30) not null,
 	salary Money not null
-);
--- admin table
-create table ADMIN(
-	id int primary key,
-	name nvarchar(30) not null,
-	gender int not null,	
-	phone char(10) check (LEN(phone) = 10),
-	password nvarchar(20) not null check (len(password) between 6 and 16)
 );
 
 -- branch table
@@ -46,7 +38,6 @@ CREATE TABLE RESTAURANT_BRANCH (
 CREATE TABLE USERS (
     id INT PRIMARY KEY,
     role_id INT,
-	branch_id int,
 	cccd char(12) not null unique,
     name NVARCHAR(50) not null,
     dob DATE,
@@ -55,7 +46,15 @@ CREATE TABLE USERS (
     phone NVARCHAR(15) not null,
     password nvarchar(20) not null check (len(password) between 6 and 16)
 	FOREIGN KEY (role_id) REFERENCES ROLE(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (branch_id) REFERENCES RESTAURANT_BRANCH(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE ASSIGN (
+    u_id INT,
+    branch_id INT,
+    PRIMARY KEY (u_id, branch_id),
+    UNIQUE (u_id), -- Ensures that a user can be assigned to only one branch
+    FOREIGN KEY (u_id) REFERENCES USERS(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (branch_id) REFERENCES RESTAURANT_BRANCH(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- category table
@@ -96,7 +95,9 @@ CREATE table MENU_ITEM(
 	 id int primary key ,
 	 price money not null,
 	 name nvarchar (50) ,
-	 describe text,
+	 describe nvarchar (255),
+	 img nvarchar (255),
+	 UNIQUE (img),
 	 category_id int,
 	 constraint fk1 foreign key (category_id) references DETAIL_CATEGORY(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -126,16 +127,8 @@ CREATE TABLE BILL_DETAIL(
 
 );
 
-
-
-
-INSERT INTO ADMIN (id, name, gender, phone, password)
-VALUES
-  (1, N'Hồ Minh Nhựt', 0, N'0783939975', N'admin123'),
-  (2, N'La Thanh Trọng', 0, N'9876543210', N'admin456'); 
-
-
 INSERT INTO ROLE (id, role_name, salary) VALUES
+(0, N'Admin', 30000000),
 (1, N'Quản lý', 20000000),
 (2, N'Nhân viên', 10000000),
 (3, N'Bếp trưởng', 15000000),
@@ -158,13 +151,21 @@ INSERT INTO RESTAURANT_BRANCH (id, name, address, phone) VALUES
 (5, N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789');
 
 
-INSERT INTO USERS (id, role_id, branch_id, cccd,name, dob, gender, address, phone, password) VALUES
-(1, 1, 1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
-(2, 2, 1, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
-(3, 3, 1, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
-(4, 4, 1, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
-(5, 5, 1, N'567890123456', N'Đỗ Quang E', '1994-05-05', N'M', N'258 Nguyễn Văn Cừ, Quận 10, TP. Hồ Chí Minh', N'0978123456', N'userpass123');
+INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
+(1, 1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
+(2, 2, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
+(3, 3, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
+(4, 4, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
+(5, 5, N'567890123456', N'Đỗ Quang E', '1994-05-05', N'M', N'258 Nguyễn Văn Cừ, Quận 10, TP. Hồ Chí Minh', N'0978123456', N'userpass123'),
+(6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
+(7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
 
+INSERT INTO ASSIGN (u_id, branch_id) VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
 
 INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (1, N'Hoàng Thị F', N'0987-123-456', 10, 100000),
@@ -186,6 +187,16 @@ INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (9,'A9', 1),
 (10,'A10', 1);
 
+declare @i int =1
+while @i<=10
+begin 
+	insert into TABLES(id, display_name, branch_id) values (@i+10, 'B'+CAST( @i as char), 2);
+	set @i = @i+1
+end
+
+select * from TABLES;
+
+
 
 INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
 (1, '2024-02-01', 1, 0, 500000, 1),
@@ -205,27 +216,27 @@ INSERT INTO DETAIL_CATEGORY (id, describe, name, category_id) VALUES
 (10, N'Nước cam ép, ....', N'Nước trái cây', 4);
 
 
-INSERT INTO MENU_ITEM (id, price, name, describe, category_id) VALUES
-(1, 50000, N'Bánh mì pate', N'Bánh mì ăn kèm pate và rau sống', 1),
-(2, 35000, N'Bún riêu', N'Bún nước dùng riêu cay nồng', 2),
-(3, 60000, N'Cơm gà xối mỡ', N'Cơm gà ăn kèm xối mỡ thơm ngon', 3),
-(4, 80000, N'Sò điệp nướng mỡ hành', N'Sò điệp nướng mỡ hành ngon tuyệt', 4),
-(5, 50000, N'Lẩu canh chua cá', N'Lẩu canh chua cá hấp dẫn', 5),
-(6, 15000, N'Sữa chua đào', N'Sữa chua ăn kèm đào tươi', 6),
-(7, 25000, N'Trái cây hỗn hợp', N'Hỗn hợp trái cây tươi ngon', 7),
-(8, 10000, N'Pepsi', N'Đồ uống có gas - Pepsi', 8),
-(9, 20000, N'Trà sữa matcha', N'Trà sữa thơm ngon vị matcha', 9),
-(10, 30000, N'Nước cam ép', N'Nước trái cây tươi ngon', 10),
-(11, 45000, N'Bánh tráng trộn', N'Bánh tráng trộn ăn kèm gia vị', 1),
-(12, 28000, N'Phở bò', N'Phở bò nấu chín với nước dùng đậm đà', 2),
-(13, 55000, N'Cơm chiên hải sản', N'Cơm chiên hải sản hấp dẫn', 3),
-(14, 75000, N'Mực nước dừa xanh', N'Mực nước dừa xanh nướng mỡ hành', 4),
-(15, 48000, N'Lẩu thái', N'Lẩu thái nồng ấm', 5),
-(16, 18000, N'Sữa chua dâu', N'Sữa chua ăn kèm dâu tươi', 6),
-(17, 22000, N'Trái cây tươi', N'Hỗn hợp trái cây tươi ngon', 7),
-(18, 12000, N'Coca Cola', N'Đồ uống có gas - Coca Cola', 8),
-(19, 21000, N'Trà sữa hòa quyện', N'Trà sữa hòa quyện vị thơm', 9),
-(20, 32000, N'Nước lựu tươi', N'Nước trái cây lựu tươi ngon', 10);
+INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
+(1, 50000, N'Bánh mì pate', N'Bánh mì ăn kèm pate và rau sống', 1, 'food.png'),
+(2, 35000, N'Bún riêu', N'Bún nước dùng riêu cay nồng', 2, 'food1.png'),
+(3, 60000, N'Cơm gà xối mỡ', N'Cơm gà ăn kèm xối mỡ thơm ngon', 3, 'food2.png'),
+(4, 80000, N'Sò điệp nướng mỡ hành', N'Sò điệp nướng mỡ hành ngon tuyệt', 4, 'food3.png'),
+(5, 50000, N'Lẩu canh chua cá', N'Lẩu canh chua cá hấp dẫn', 5, 'food4.png'),
+(6, 15000, N'Sữa chua đào', N'Sữa chua ăn kèm đào tươi', 6, 'food5.png'),
+(7, 25000, N'Trái cây hỗn hợp', N'Hỗn hợp trái cây tươi ngon', 7, 'food6.png'),
+(8, 10000, N'Pepsi', N'Đồ uống có gas - Pepsi', 8, 'food7.png'),
+(9, 20000, N'Trà sữa matcha', N'Trà sữa thơm ngon vị matcha', 9, 'food8.png'),
+(10, 30000, N'Nước cam ép', N'Nước trái cây tươi ngon', 10, 'food9.png'),
+(11, 45000, N'Bánh tráng trộn', N'Bánh tráng trộn ăn kèm gia vị', 1, 'food10.png'),
+(12, 28000, N'Phở bò', N'Phở bò nấu chín với nước dùng đậm đà', 2, 'food11.png'),
+(13, 55000, N'Cơm chiên hải sản', N'Cơm chiên hải sản hấp dẫn', 3, 'food12.png'),
+(14, 75000, N'Mực nước dừa xanh', N'Mực nước dừa xanh nướng mỡ hành', 4, 'food13.png'),
+(15, 48000, N'Lẩu thái', N'Lẩu thái nồng ấm', 5, 'food14.png'),
+(16, 18000, N'Sữa chua dâu', N'Sữa chua ăn kèm dâu tươi', 6, 'food15.png'),
+(17, 22000, N'Trái cây tươi', N'Hỗn hợp trái cây tươi ngon', 7, 'food16.png'),
+(18, 12000, N'Coca Cola', N'Đồ uống có gas - Coca Cola', 8, 'food17.png'),
+(19, 21000, N'Trà sữa hòa quyện', N'Trà sữa hòa quyện vị thơm', 9, 'food18.png'),
+(20, 32000, N'Nước lựu tươi', N'Nước trái cây lựu tươi ngon', 10, 'food19.png');
 
 
 -- Insert sample data into BILL_DETAIL table
@@ -237,16 +248,12 @@ VALUES
 (4, 2, 5, 2);  -- Bill 2 contains 2 Lẩu canh chua cá
  
 
-
 DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
 DELETE FROM DETAIL_CATEGORY;
 DELETE FROM BILL;
 DELETE FROM CUSTOMER;
-DELETE FROM MANAGES_BRANCH;
-DELETE FROM MANAGES_EMPLOYER;
 DELETE FROM USERS;
 DELETE FROM RESTAURANT_BRANCH;
 DELETE FROM CATEGORY;
 DELETE FROM ROLE;
-DELETE FROM ADMIN;

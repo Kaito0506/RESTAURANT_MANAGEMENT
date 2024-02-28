@@ -35,17 +35,26 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.lbName = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dashboard = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.branch = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.user = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.customer = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.item = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.categ = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,13 +85,16 @@ namespace RESTAURANT_MANAGEMENT.Views
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.flowLayoutPanel1.Controls.Add(this.panel4);
+            this.flowLayoutPanel1.Controls.Add(this.panel7);
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 434);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel4
@@ -94,10 +106,38 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.panel4.Size = new System.Drawing.Size(171, 56);
             this.panel4.TabIndex = 3;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.dashboard);
+            this.panel7.Location = new System.Drawing.Point(2, 64);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(175, 50);
+            this.panel7.TabIndex = 9;
+            // 
+            // dashboard
+            // 
+            this.dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dashboard.FlatAppearance.BorderSize = 0;
+            this.dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboard.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.dashboard.Image = ((System.Drawing.Image)(resources.GetObject("dashboard.Image")));
+            this.dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dashboard.Location = new System.Drawing.Point(2, 2);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dashboard.Name = "dashboard";
+            this.dashboard.Size = new System.Drawing.Size(171, 46);
+            this.dashboard.TabIndex = 5;
+            this.dashboard.Text = "Dashboard";
+            this.dashboard.UseVisualStyleBackColor = false;
+            this.dashboard.Click += new System.EventHandler(this.dashboard_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.branch);
-            this.panel1.Location = new System.Drawing.Point(3, 65);
+            this.panel1.Location = new System.Drawing.Point(3, 119);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(174, 62);
             this.panel1.TabIndex = 4;
@@ -123,7 +163,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel2
             // 
             this.panel2.Controls.Add(this.user);
-            this.panel2.Location = new System.Drawing.Point(3, 133);
+            this.panel2.Location = new System.Drawing.Point(3, 187);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(174, 62);
             this.panel2.TabIndex = 6;
@@ -149,7 +189,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel3
             // 
             this.panel3.Controls.Add(this.customer);
-            this.panel3.Location = new System.Drawing.Point(3, 201);
+            this.panel3.Location = new System.Drawing.Point(3, 255);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(174, 62);
             this.panel3.TabIndex = 6;
@@ -166,17 +206,73 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.customer.Location = new System.Drawing.Point(3, 3);
             this.customer.Name = "customer";
-            this.customer.Size = new System.Drawing.Size(168, 56);
+            this.customer.Size = new System.Drawing.Size(169, 56);
             this.customer.TabIndex = 5;
             this.customer.Text = "Customers";
             this.customer.UseVisualStyleBackColor = false;
             this.customer.Click += new System.EventHandler(this.customer_Click);
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.item);
+            this.panel5.Location = new System.Drawing.Point(2, 322);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(175, 50);
+            this.panel5.TabIndex = 7;
+            // 
+            // item
+            // 
+            this.item.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.item.FlatAppearance.BorderSize = 0;
+            this.item.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.item.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.item.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.item.Image = ((System.Drawing.Image)(resources.GetObject("item.Image")));
+            this.item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.item.Location = new System.Drawing.Point(2, 2);
+            this.item.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.item.Name = "item";
+            this.item.Size = new System.Drawing.Size(173, 46);
+            this.item.TabIndex = 5;
+            this.item.Text = "Items";
+            this.item.UseVisualStyleBackColor = false;
+            this.item.Click += new System.EventHandler(this.item_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.categ);
+            this.panel6.Location = new System.Drawing.Point(2, 376);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(175, 50);
+            this.panel6.TabIndex = 8;
+            // 
+            // categ
+            // 
+            this.categ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.categ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.categ.FlatAppearance.BorderSize = 0;
+            this.categ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categ.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categ.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.categ.Image = ((System.Drawing.Image)(resources.GetObject("categ.Image")));
+            this.categ.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.categ.Location = new System.Drawing.Point(2, 2);
+            this.categ.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.categ.Name = "categ";
+            this.categ.Size = new System.Drawing.Size(173, 46);
+            this.categ.TabIndex = 5;
+            this.categ.Text = "Categories";
+            this.categ.UseVisualStyleBackColor = false;
+            this.categ.Click += new System.EventHandler(this.categ_Click);
+            // 
             // AdminHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 434);
             this.Controls.Add(this.flowLayoutPanel1);
             this.IsMdiContainer = true;
             this.Name = "AdminHomePage";
@@ -184,9 +280,12 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -203,5 +302,11 @@ namespace RESTAURANT_MANAGEMENT.Views
         private Panel panel3;
         private Button customer;
         private Panel panel4;
+        private Panel panel5;
+        private Button item;
+        private Panel panel6;
+        private Button categ;
+        private Panel panel7;
+        private Button dashboard;
     }
 }
