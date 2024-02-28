@@ -278,11 +278,13 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\mdiProperties.cs" />
+
     <Compile Include="Views\OrderPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\OrderPage.Designer.cs">
       <DependentUpon>OrderPage.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Views\UserHomePage.cs">
       <SubType>Form</SubType>
