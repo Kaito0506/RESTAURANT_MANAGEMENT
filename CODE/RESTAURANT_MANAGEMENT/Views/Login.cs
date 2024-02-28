@@ -17,7 +17,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private bool usePassword = true;
         public login()
         {
-            
+
             InitializeComponent();
             labels1.SendToBack();
             labels2.SendToBack();
