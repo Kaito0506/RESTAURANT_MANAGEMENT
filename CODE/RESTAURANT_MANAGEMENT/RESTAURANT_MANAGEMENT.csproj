@@ -192,6 +192,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -207,10 +208,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,11 +219,23 @@
     <Compile Include="Views\AdminBranch.Designer.cs">
       <DependentUpon>AdminBranch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminCategory.Designer.cs">
+      <DependentUpon>AdminCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AdminCustomer.Designer.cs">
       <DependentUpon>AdminCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminHomePage.cs">
       <SubType>Form</SubType>
@@ -232,11 +243,23 @@
     <Compile Include="Views\AdminHomePage.Designer.cs">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminItem.Designer.cs">
+      <DependentUpon>AdminItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -270,14 +293,26 @@
     <EmbeddedResource Include="Views\AdminBranch.resx">
       <DependentUpon>AdminBranch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminCategory.resx">
+      <DependentUpon>AdminCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminCustomer.resx">
       <DependentUpon>AdminCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminItem.resx">
+      <DependentUpon>AdminItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminUser.resx">
       <DependentUpon>AdminUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -310,19 +345,17 @@
     <None Include="images\lo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="images\find.jpg" />
+    <Content Include="images\btnAdd.png" />
+    <Content Include="images\customer.png" />
+    <Content Include="images\drink.jpg" />
+    <Content Include="images\food.jpg" />
+    <Content Include="images\pass.png" />
+    <Content Include="images\pw.png" />
+    <Content Include="images\rb.png" />
+    <Content Include="images\res.jpg" />
+    <Content Include="images\role.png" />
+    <Content Include="images\user.png" />
+    <Content Include="images\user2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

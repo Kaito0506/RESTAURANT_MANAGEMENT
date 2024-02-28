@@ -15,15 +15,34 @@ namespace RESTAURANT_MANAGEMENT.Views
         AdminBranch abranch;
         AdminUser auser;
         AdminCustomer acustomer;
+        AdminDashboard adashboard;
+        AdminItem aitem;
+        AdminCategory acategory;
+
+        private Form[] adminForms;
 
         LoginController lg = new LoginController();
-        AdminModel.Admin admin;
+        UserModel.User admin;
         public AdminHomePage()
         {
             InitializeComponent();
-            admin = lg.GetAdmin();
-            lbName.Text = admin.ad_name.Split(' ').Last();
+            admin = lg.GetUser();
+            lbName.Text = admin.u_name.Split(' ').Last();
             mdiProp();
+            adminForms = new Form[] { abranch, auser, acustomer, adashboard, aitem, acategory };
+        }
+
+        private void close_Forms(Form form)
+        {
+            foreach (Form f in adminForms)
+            {
+                if (f != form && f != null)
+                {
+                    form.Close();
+                    form.Dispose();
+                    form = null;
+                }
+            }
         }
 
         private void mdiProp()
@@ -34,16 +53,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void branch_Click(object sender, EventArgs e)
         {
-            if (auser != null)
-            {
-                auser.Close();
-                auser = null;
-            }
-            if (acustomer != null)
-            {
-                acustomer.Close();
-                acustomer = null;
-            }
+            close_Forms(abranch);
 
             if (abranch == null)
             {
@@ -66,17 +76,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void user_Click(object sender, EventArgs e)
         {
-            if (abranch != null)
-            {
-                abranch.Close();
-                abranch = null;
-            }
-            if (acustomer != null)
-            {
-                acustomer.Close();
-                acustomer = null;
-            }
-
+            close_Forms(auser);
             if (auser == null)
             {
                 auser = new AdminUser();
@@ -98,17 +98,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void customer_Click(object sender, EventArgs e)
         {
-            if (abranch != null)
-            {
-                abranch.Close();
-                abranch = null;
-            }
-            if (auser != null)
-            {
-                auser.Close();
-                auser = null;
-            }
-
+            close_Forms(acustomer);
             if (acustomer == null)
             {
                 acustomer = new AdminCustomer();
@@ -128,9 +118,70 @@ namespace RESTAURANT_MANAGEMENT.Views
             acustomer = null;
         }
 
-        private void AdminHomePage_Load(object sender, EventArgs e)
+        private void dashboard_Click(object sender, EventArgs e)
         {
+            close_Forms(adashboard);
+            if (adashboard == null)
+            {
+                adashboard = new AdminDashboard();
+                adashboard.FormClosed += adashboard_FormClosed;
+                adashboard.MdiParent = this;
+                adashboard.Dock = DockStyle.Fill;
+                adashboard.Show();
+            }
+            else
+            {
+                adashboard.Activate();
+            }
+        }
 
+        private void adashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            adashboard = null;
+        }
+
+        private void item_Click(object sender, EventArgs e)
+        {
+            close_Forms(aitem);
+            if (aitem == null)
+            {
+                aitem = new AdminItem();
+                aitem.FormClosed += aitem_FormClosed;
+                aitem.MdiParent = this;
+                aitem.Dock = DockStyle.Fill;
+                aitem.Show();
+            }
+            else
+            {
+                aitem.Activate();
+            }
+        }
+
+        private void aitem_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            aitem = null;
+        }
+
+        private void categ_Click(object sender, EventArgs e)
+        {
+            close_Forms(acategory);
+            if (acategory == null)
+            {
+                acategory = new AdminCategory();
+                acategory.FormClosed += acategory_FormClosed;
+                acategory.MdiParent = this;
+                acategory.Dock = DockStyle.Fill;
+                acategory.Show();
+            }
+            else
+            {
+                acategory.Activate();
+            }
+        }
+
+        private void acategory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            acategory = null;
         }
     }
 }
