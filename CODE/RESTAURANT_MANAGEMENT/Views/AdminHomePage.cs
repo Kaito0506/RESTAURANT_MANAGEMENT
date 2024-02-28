@@ -26,7 +26,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         public AdminHomePage()
         {
             InitializeComponent();
-            admin = lg.GetUser();
+            admin = LoginController.GetUser();
             lbName.Text = admin.u_name.Split(' ').Last();
             mdiProp();
             adminForms = new Form[] { abranch, auser, acustomer, adashboard, aitem, acategory };

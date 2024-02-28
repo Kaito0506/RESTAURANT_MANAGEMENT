@@ -1,11 +1,12 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System;
+using Sprache;
+using System.Windows.Forms;
 
 class LoginController
 {
     private static UserModel.User user = new UserModel.User();
-
     public SqlDataReader Login(String username, String password)
     {
         try
@@ -37,9 +38,22 @@ class LoginController
         }
     }
 
-    public UserModel.User GetUser()
+
+    public static UserModel.User GetUser()
     {
         return user;
+    }
+
+
+
+
+    public static int GetUserBranchId(int user_id)
+    {
+        int bi = 0;
+        object obj = Database.ExecuteScalar("EXEC getBranchID @user_id", new object[] { user_id });
+        bi = Convert.ToInt32(obj);
+            
+        return bi;
     }
 }
 

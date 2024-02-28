@@ -211,9 +211,11 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
+    <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
+    <Compile Include="Models\TableModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
