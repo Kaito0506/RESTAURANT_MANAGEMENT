@@ -118,33 +118,27 @@ namespace RESTAURANT_MANAGEMENT.Views
             acustomer = null;
         }
 
-
-        private void AdminHomePage_Load(object sender, EventArgs e)
-        { }
-
-
-            private void dashboard_Click(object sender, EventArgs e)
+        private void dashboard_Click(object sender, EventArgs e)
+        {
+            close_Forms(adashboard);
+            if (adashboard == null)
             {
-                close_Forms(adashboard);
-                if (adashboard == null)
-                {
-                    adashboard = new AdminDashboard();
-                    adashboard.FormClosed += adashboard_FormClosed;
-                    adashboard.MdiParent = this;
-                    adashboard.Dock = DockStyle.Fill;
-                    adashboard.Show();
-                }
-                else
-                {
-                    adashboard.Activate();
-                }
+                adashboard = new AdminDashboard();
+                adashboard.FormClosed += adashboard_FormClosed;
+                adashboard.MdiParent = this;
+                adashboard.Dock = DockStyle.Fill;
+                adashboard.Show();
             }
-      
-
-            private void adashboard_FormClosed(object sender, FormClosedEventArgs e)
+            else
             {
-                adashboard = null;
+                adashboard.Activate();
             }
+        }
+
+        private void adashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            adashboard = null;
+        }
 
             private void item_Click(object sender, EventArgs e)
             {
@@ -185,11 +179,9 @@ namespace RESTAURANT_MANAGEMENT.Views
                 }
             }
 
-            private void acategory_FormClosed(object sender, FormClosedEventArgs e)
-            {
-                acategory = null;
-
-            }
+        private void acategory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            acategory = null;
         }
- } 
-
+    }
+}
