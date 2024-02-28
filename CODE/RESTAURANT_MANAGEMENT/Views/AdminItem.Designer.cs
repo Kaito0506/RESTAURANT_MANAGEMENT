@@ -30,13 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.cbbCateg = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -47,38 +46,27 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(766, 523);
+            this.tabControl1.Size = new System.Drawing.Size(951, 523);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridView);
+            this.tabPage1.Controls.Add(this.flowLayoutPanel);
             this.tabPage1.Controls.Add(this.cbbCateg);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(758, 497);
+            this.tabPage1.Size = new System.Drawing.Size(943, 497);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Menu";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(8, 51);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(742, 434);
-            this.dataGridView.TabIndex = 5;
             // 
             // cbbCateg
             // 
             this.cbbCateg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbCateg.FormattingEnabled = true;
-            this.cbbCateg.Location = new System.Drawing.Point(620, 24);
+            this.cbbCateg.Location = new System.Drawing.Point(805, 24);
             this.cbbCateg.Name = "cbbCateg";
             this.cbbCateg.Size = new System.Drawing.Size(130, 21);
             this.cbbCateg.TabIndex = 3;
@@ -87,7 +75,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(560, 28);
+            this.label2.Location = new System.Drawing.Point(745, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 2;
@@ -103,19 +91,29 @@
             this.tabPage2.Text = "Configure";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(8, 51);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(927, 438);
+            this.flowLayoutPanel.TabIndex = 6;
+            // 
             // AdminItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 523);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(951, 523);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminItem";
             this.Text = "AdminItem";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,6 +124,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbbCateg;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }
