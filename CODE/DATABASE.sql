@@ -213,14 +213,16 @@ INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (8,'A8', 1),
 (9,'A9', 1),
 (10,'A10', 1);
-Update TABLES set status=1 where id =8;
+Update TABLES set status=1 where id =17;
 declare @i int =1
 while @i<=10
 begin 
-	insert into TABLES(id, display_name, branch_id) values (@i+10, 'B'+CAST( @i as char), 2);
+	insert into TABLES(id, display_name, branch_id) values (@i+20, 'C'+CAST( @i as char), 3);
 	set @i = @i+1
 end
-
+INSERT INTO TABLES(id, display_name, branch_id) VALUES
+(31,'D1', 3),
+(32,'D2', 3);
 select * from TABLES;
 
 
