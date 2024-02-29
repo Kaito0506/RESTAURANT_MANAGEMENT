@@ -13,6 +13,8 @@ namespace RESTAURANT_MANAGEMENT
 {
     public partial class ListItem : UserControl
     {
+        public event EventHandler<int> ItemDeleted;
+
         public ListItem()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace RESTAURANT_MANAGEMENT
         private decimal _price;
         private string _category;
         private Image _image;
+        private int _id;
 
         [Category("Custom Props")]
         public string Title
@@ -61,6 +64,32 @@ namespace RESTAURANT_MANAGEMENT
             set { _image = value; pictureBox.Image = value; }
         }
 
-        #endregion 
+        [Category("Custom Props")]
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        #endregion
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Do you want to delete item {_title}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MenuItemController menuItemController = new MenuItemController();
+                if (menuItemController.DeleteMenuItem(_id))
+                {
+                    MessageBox.Show("Delete item successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ItemDeleted?.Invoke(this, _id);
+                    Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Delete item failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
