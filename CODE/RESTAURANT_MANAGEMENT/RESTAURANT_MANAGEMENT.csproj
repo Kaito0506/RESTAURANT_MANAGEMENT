@@ -213,10 +213,17 @@
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="ListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListItem.Designer.cs">
+      <DependentUpon>ListItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\TableModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundPictureBox.cs">
@@ -295,6 +302,9 @@
     <Compile Include="Views\UserHomePage.Designer.cs">
       <DependentUpon>UserHomePage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ListItem.resx">
+      <DependentUpon>ListItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -342,6 +352,7 @@
       <DependentUpon>UserHomePage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".env" />
+    <None Include="bin\Debug\RESTAURANT_MANAGEMENT.exe.config" />
     <None Include="images\cancel.webp" />
     <None Include="packages.config" />
     <None Include="packages\DotNetEnv.3.0.0\.signature.p7s" />
@@ -1280,6 +1291,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\addButton.png" />
+    <Content Include="bin\Debug\RESTAURANT_MANAGEMENT.exe" />
+    <Content Include="bin\Debug\RESTAURANT_MANAGEMENT.pdb" />
     <Content Include="images\btnAdd.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\categ.png" />
@@ -2672,8 +2685,6 @@
     <Content Include="packages\System.Xml.XDocument.4.3.0\ref\netstandard1.3\zh-hant\System.Xml.XDocument.xml" />
     <Content Include="packages\System.Xml.XDocument.4.3.0\ThirdPartyNotices.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
