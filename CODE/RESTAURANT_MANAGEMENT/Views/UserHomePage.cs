@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RESTAURANT_MANAGEMENT.Models;
+using RESTAURANT_MANAGEMENT.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +15,43 @@ namespace RESTAURANT_MANAGEMENT.Views
     public partial class UserHomePage : Form
     {
         LoginController lg = new LoginController();
-        UserModel.User user;
+        UserModel.User user ;
+        TableModel.Table table;
+
+
         public UserHomePage()
         {
             InitializeComponent();
-            user = lg.GetUser();
+            Load_tables();
+            btnInside.BackColor = Color.Orange;
+            panelTables.Enabled = true;
 
         }
 
+
+        private void Load_tables()
+        {
+            List<TableModel.Table> listTable = TableController.GetTableList();
+
+            foreach (TableModel.Table table in listTable)
+            {
+                Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
+                btn.Text = table.display_name;
+                
+                if (table.status == 0)
+                {
+                    btn.BackColor = Color.LightBlue;
+                }
+                else
+                {
+                    btn.BackColor = Color.Gray;
+                }
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+
+                flpTables.Controls.Add(btn);
+
+            }
+        }
         private void btnMerge_Click(object sender, EventArgs e)
         {
 
@@ -30,5 +61,21 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
 
         }
+
+        private void btnInside_Click(object sender, EventArgs e)
+        {
+            btnInside.BackColor = Color.Orange;
+            panelTables.Enabled = true;
+            btnAway.BackColor = Color.White;
+        }
+
+        private void btnAway_Click(object sender, EventArgs e)
+        {
+            btnInside.BackColor = Color.White;
+            panelTables.Enabled = false;
+            btnAway.BackColor = Color.Orange;
+        }
+
+
     }
 }

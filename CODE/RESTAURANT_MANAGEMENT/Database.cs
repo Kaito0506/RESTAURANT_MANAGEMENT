@@ -42,15 +42,15 @@ class Database
     }
 
 
-    public DataTable ExecuteQuery(String cmd, object[] paras = null)
+    public static DataTable ExecuteQuery(String cmd, object[] paras = null)
     {
-        DataTable data = null;
+        DataTable data = new DataTable();
         try
         {
-            if(paras != null)
+            SqlCommand command = new SqlCommand(cmd, Connection);
+            if (paras != null)
             {
                 Connect();
-                SqlCommand command = new SqlCommand(cmd, Connection);
                 String[] listPara = cmd.Split(' ');
                 int i = 0;
                 foreach (String s in listPara)
@@ -62,30 +62,31 @@ class Database
                         i++;
                     }
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-                Close();
-
             }
-        }catch (Exception ex)
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(data);
+            Close();
+        }
+        catch (Exception ex)
         {
             Console.WriteLine($"Error: {ex.ToString()}");
         }
 
-
         return data;
+
     }
 
 
-    public int ExecuteNonQuery(String cmd, object[] paras = null)
+    public static int ExecuteNonQuery(String cmd, object[] paras = null)
     {
         int data = 0;
         try
         {
+            Connect();
+            SqlCommand command = new SqlCommand(cmd, Connection);
             if (paras != null)
             {
-                Connect();
-                SqlCommand command = new SqlCommand(cmd, Connection);
+               
                 String[] listPara = cmd.Split(' ');
                 int i = 0;
                 foreach (String s in listPara)
@@ -97,10 +98,9 @@ class Database
                         i++;
                     }
                 }
-                data = command.ExecuteNonQuery();
-                Close();
-
             }
+            data = command.ExecuteNonQuery();
+            Close();
         }
         catch (Exception ex)
         {
@@ -112,15 +112,15 @@ class Database
     }
 
 
-    public object ExecuteScalar(String cmd, object[] paras = null)
+    public static object ExecuteScalar(String cmd, object[] paras = null)
     {
-        object data = 0;
+        object data = null;
         try
         {
+            Connect();
+            SqlCommand command = new SqlCommand(cmd, Connection);
             if (paras != null)
-            {
-                Connect();
-                SqlCommand command = new SqlCommand(cmd, Connection);
+            {    
                 String[] listPara = cmd.Split(' ');
                 int i = 0;
                 foreach (String s in listPara)
@@ -131,11 +131,11 @@ class Database
                         command.Parameters.AddWithValue(s, paras[i]);
                         i++;
                     }
-                }
-                data = command.ExecuteScalar();
-                Close();
+                }            
 
             }
+            data = command.ExecuteScalar();
+            Close();
         }
         catch (Exception ex)
         {
