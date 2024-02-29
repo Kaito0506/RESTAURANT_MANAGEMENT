@@ -1,13 +1,14 @@
 ﻿
 Create login admin with password='admin', CHECK_POLICY = OFF;
 
--- DROP DATABASE RESTAURANT_MANAGEMENT;
+
+--DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
 sp_changedbowner admin; 
 
-DROP TABLE BILL_DETAIL;
+/*DROP TABLE BILL_DETAIL;
 DROP TABLE MENU_ITEM;
 DROP TABLE DETAIL_CATEGORY;
 DROP TABLE BILL;
@@ -17,7 +18,7 @@ DROP TABLE USERS;
 DROP TABLE TABLES;
 DROP TABLE RESTAURANT_BRANCH;
 DROP TABLE CATEGORY;
-DROP TABLE ROLE;
+DROP TABLE ROLE; */
 
 -- role table
 create table ROLE(
@@ -160,12 +161,38 @@ INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, passwor
 (6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
 (7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
 
+
+
+
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (1,1),
 (2,2),
-(3,3),
-(4,4),
-(5,5);
+(3,2),
+(4,1),
+(5,3);
+select branch_id from assgin where u_id=@u_id
+select branch_id from ASSIGN where u_id=1;
+-- get branch id proc 
+drop proc getBranchID;
+create proc getBranchID 
+	@user_id int
+AS
+BEGIN
+	select branch_id from ASSIGN where u_id=@user_id;
+END
+
+EXEC getBranchID @user_id=1;
+
+
+-- procedure get table with branch id
+create proc getTableWithBranch
+	@branch_id int
+AS
+BEGIN
+	Select * from TABLES where branch_id=@branch_id;
+END
+GO
+EXEC getTableWithBranch @branch_id = 1;
 
 INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (1, N'Hoàng Thị F', N'0987-123-456', 10, 100000),
@@ -186,7 +213,7 @@ INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (8,'A8', 1),
 (9,'A9', 1),
 (10,'A10', 1);
-
+Update TABLES set status=1 where id =8;
 declare @i int =1
 while @i<=10
 begin 
