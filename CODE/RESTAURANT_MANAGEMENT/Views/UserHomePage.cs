@@ -14,6 +14,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class UserHomePage : Form
     {
+        int selected_table;
         LoginController lg = new LoginController();
         UserModel.User user ;
         TableModel.Table table;
@@ -39,8 +40,8 @@ namespace RESTAURANT_MANAGEMENT.Views
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
 
-                btn.Click += Btn_Click;
-                btn.Tag = table;
+                btn.Click += Btn_Click;        
+                btn.Tag = table;       
 
                 if (table.status == 0)
                 {
@@ -67,8 +68,9 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void showBill(int table_id)
         {
             lstItems.Items.Clear();
-            int id = BillController.GetBill(table_id);
-            
+            int id = BillController.GetBillid(table_id);
+            int discount = (int)txtDiscount.Value;
+            UpdateBill(id, discount);
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -82,6 +84,27 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
 
 
+        }
+
+        private void UpdateBill(int billId, int discount)
+        {
+            if (billId != -1)
+            {
+                BillController.UpdateBillTotal(billId);
+                BillModel.Bill bill = BillController.GetBill(billId);
+                if (bill != null)
+                {
+                    float total = bill.total;
+                    txtSum.Text = total.ToString();
+                    total *= (1 - (discount / 100.0f)); // Apply discount
+                    txtTotal.Text = total.ToString();
+                }
+            }
+            else
+            {
+                txtTotal.Text = "0";
+                txtSum.Text = "0";
+            }
         }
 
         private String loadBranchName()
@@ -125,14 +148,28 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 String table_name =  table.display_name;
                 showSelectedTable(table_name);
+
+                selected_table = table.id;
             }
 
             showBill(table.id);
         }
 
-        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        private void UserHomePage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            int discount = (int)txtDiscount.Value;
+
+
+            int billId = BillController.GetBillid(selected_table);
+            UpdateBill(billId, discount);
+            
         }
     }
 }
