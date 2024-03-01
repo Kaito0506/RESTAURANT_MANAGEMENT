@@ -19,12 +19,15 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
 
             InitializeComponent();
+            txtUsername.Text = "0123456789";
+            txtPassword.Text = "user123";
             labels1.SendToBack();
             labels2.SendToBack();
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
             gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
             Region rg = new Region(gp);
             pictureBox1.Region = rg;
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -91,6 +94,11 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             txtUsername.Focus();
             Console.WriteLine("Focus user name works");
+        }
+
+        private void labels2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

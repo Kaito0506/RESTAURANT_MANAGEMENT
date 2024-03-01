@@ -64,6 +64,25 @@ namespace RESTAURANT_MANAGEMENT.Views
             txtSelectedTable.Text = tablename;
             txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
+        private void showBill(int table_id)
+        {
+            lstItems.Items.Clear();
+            int id = BillController.GetBill(table_id);
+            
+            List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
+            int i = 1;
+            foreach (ShowBillModel.ShowBill item in listDetail)
+            {
+                ListViewItem lstItem = new ListViewItem(i.ToString());
+                lstItem.SubItems.Add(item.name.ToString());
+                lstItem.SubItems.Add(item.quantity.ToString());
+                lstItem.SubItems.Add(item.price.ToString());
+                i++;
+                lstItems.Items.Add(lstItem);
+            }
+
+
+        }
 
         private String loadBranchName()
         {
@@ -92,6 +111,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.White;
             panelTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
+            txtSelectedTable.Text = "Take away";
         }
 
 
@@ -99,17 +119,20 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void Btn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (btn != null)
+     
+            TableModel.Table table = btn.Tag as TableModel.Table;
+            if (table != null)
             {
-                TableModel.Table table = btn.Tag as TableModel.Table;
-                if (table != null)
-                {
-                    String table_name =  table.display_name;
-                    showSelectedTable(table_name);
-                }
+                String table_name =  table.display_name;
+                showSelectedTable(table_name);
             }
+
+            showBill(table.id);
         }
 
+        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
