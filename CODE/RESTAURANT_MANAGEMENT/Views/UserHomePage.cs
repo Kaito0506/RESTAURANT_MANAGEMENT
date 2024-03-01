@@ -38,9 +38,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
-                btn.Click += btn_click;
+
+                btn.Click += Btn_Click;
                 btn.Tag = table;
-                
+
                 if (table.status == 0)
                 {
                     btn.BackColor = Color.LightBlue;
@@ -56,14 +57,12 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
         }
 
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void showBill(int table_id)
+
+        private void showSelectedTable (String tablename)
         {
-            txtSelectedTable.Text = table_id.ToString();
+            txtSelectedTable.Text = tablename;
+            txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
 
         private String loadBranchName()
@@ -96,11 +95,19 @@ namespace RESTAURANT_MANAGEMENT.Views
         }
 
 
-        void btn_click( object sender, EventArgs e)
-        {
-            int tab_id = (sender as TableModel.Table).id;
 
-            showBill(tab_id);
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                TableModel.Table table = btn.Tag as TableModel.Table;
+                if (table != null)
+                {
+                    String table_name =  table.display_name;
+                    showSelectedTable(table_name);
+                }
+            }
         }
 
 

@@ -248,12 +248,14 @@ INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (9,'A9', 1),
 (10,'A10', 1);
 Update TABLES set status=1 where id =17;
-declare @i int =1
-while @i<=10
-begin 
-	insert into TABLES(id, display_name, branch_id) values (@i+20, 'C'+CAST( @i as char), 3);
-	set @i = @i+1
-end
+DECLARE @i INT = 1
+WHILE @i <= 10
+BEGIN 
+    INSERT INTO TABLES (id, display_name, branch_id) 
+    VALUES (@i + 40, 'C' + CONVERT(VARCHAR(10), @i), 3);
+    SET @i = @i + 1
+END
+
 INSERT INTO TABLES(id, display_name, branch_id) VALUES
 (31,'D1', 3),
 (32,'D2', 3);
