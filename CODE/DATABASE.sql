@@ -161,8 +161,10 @@ INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, passwor
 (6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
 (7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
 
-
-
+INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
+(8, 1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123');
+INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
+(9, 1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123');
 
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (1,1),
@@ -170,6 +172,10 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (3,2),
 (4,1),
 (5,3);
+INSERT INTO ASSIGN (u_id, branch_id) VALUES
+(9,3),
+(8,1);
+
 select branch_id from assgin where u_id=@u_id
 select branch_id from ASSIGN where u_id=1;
 -- get branch id proc 
@@ -193,6 +199,25 @@ BEGIN
 END
 GO
 EXEC getTableWithBranch @branch_id = 1;
+
+-- get branch name
+CREATE PROCEDURE getBranchName
+    @user_id INT
+AS
+BEGIN
+    SELECT RESTAURANT_BRANCH.name  
+    FROM ASSIGN
+    JOIN RESTAURANT_BRANCH ON ASSIGN.branch_id = RESTAURANT_BRANCH.id
+    WHERE ASSIGN.u_id = @user_id;
+END
+GO
+
+EXEC getBranchName @user_id=8;
+
+
+
+
+
 
 INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (1, N'Hoàng Thị F', N'0987-123-456', 10, 100000),
@@ -230,6 +255,8 @@ select * from TABLES;
 INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
 (1, '2024-02-01', 1, 0, 500000, 1),
 (2, '2024-02-01',  2, 1, 800000, 2);
+
+	
 
 
 INSERT INTO DETAIL_CATEGORY (id, describe, name, category_id) VALUES
@@ -276,6 +303,28 @@ VALUES
 (3, 2, 2, 3),  -- Bill 2 contains 3 Bún riêu
 (4, 2, 5, 2);  -- Bill 2 contains 2 Lẩu canh chua cá
  
+
+ select * from BILL;
+select * from BILL_DETAIL;
+
+CREATE FUNCTION CalculateTotalBill(@input_bill_id_ INT) RETURNS MONEY
+AS
+BEGIN
+    DECLARE @total MONEY;
+
+    SELECT @total = SUM(bd.quantity * mi.price)
+    FROM BILL_DETAIL AS bd
+    JOIN MENU_ITEM AS mi ON bd.item_id = mi.id
+    WHERE bd.bill_id = @input_bill_id_;
+
+    RETURN @total;
+END;
+
+select CalculateTotalBill(1) as a;
+
+
+
+
 
 DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
