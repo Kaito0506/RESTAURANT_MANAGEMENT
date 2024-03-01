@@ -110,8 +110,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.labels2.Margin = new System.Windows.Forms.Padding(0);
             this.labels2.Name = "labels2";
             this.labels2.Size = new System.Drawing.Size(249, 25);
-            this.labels2.TabIndex = 11;
+            this.labels2.TabIndex = 2;
             this.labels2.Text = "______________________________________________________";
+            this.labels2.Click += new System.EventHandler(this.labels2_Click);
             // 
             // labels1
             // 
@@ -137,7 +138,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(246, 43);
-            this.btnLogin.TabIndex = 8;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -151,7 +152,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.txtPassword.Location = new System.Drawing.Point(23, 137);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(211, 19);
+            this.txtPassword.Size = new System.Drawing.Size(211, 23);
             this.txtPassword.TabIndex = 6;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -165,7 +166,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.txtUsername.Location = new System.Drawing.Point(22, 42);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(244, 19);
+            this.txtUsername.Size = new System.Drawing.Size(244, 23);
             this.txtUsername.TabIndex = 10;
             // 
             // label4
@@ -176,7 +177,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.label4.Location = new System.Drawing.Point(52, 104);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 19);
+            this.label4.Size = new System.Drawing.Size(116, 26);
             this.label4.TabIndex = 4;
             this.label4.Text = "Password";
             // 
@@ -188,7 +189,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.label3.Location = new System.Drawing.Point(53, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 19);
+            this.label3.Size = new System.Drawing.Size(116, 26);
             this.label3.TabIndex = 3;
             this.label3.Text = "Username";
             // 
@@ -211,16 +212,14 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.label1.Location = new System.Drawing.Point(149, 195);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 24);
+            this.label1.Size = new System.Drawing.Size(121, 32);
             this.label1.TabIndex = 12;
             this.label1.Text = "Bite Joy";
             // 
             // login
             // 
-
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
