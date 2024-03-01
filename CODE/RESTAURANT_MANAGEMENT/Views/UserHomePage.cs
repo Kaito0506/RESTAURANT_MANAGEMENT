@@ -38,9 +38,10 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
-                btn.Click += btn_click;
+
+                btn.Click += Btn_Click;
                 btn.Tag = table;
-                
+
                 if (table.status == 0)
                 {
                     btn.BackColor = Color.LightBlue;
@@ -56,14 +57,31 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
         }
 
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
+
+        private void showSelectedTable (String tablename)
+        {
+            txtSelectedTable.Text = tablename;
+            txtSelectedTable.TextAlign = HorizontalAlignment.Center;
+        }
         private void showBill(int table_id)
         {
-            txtSelectedTable.Text = table_id.ToString();
+            lstItems.Items.Clear();
+            int id = BillController.GetBill(table_id);
+            
+            List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
+            int i = 1;
+            foreach (ShowBillModel.ShowBill item in listDetail)
+            {
+                ListViewItem lstItem = new ListViewItem(i.ToString());
+                lstItem.SubItems.Add(item.name.ToString());
+                lstItem.SubItems.Add(item.quantity.ToString());
+                lstItem.SubItems.Add(item.price.ToString());
+                i++;
+                lstItems.Items.Add(lstItem);
+            }
+
+
         }
 
         private String loadBranchName()
@@ -93,16 +111,28 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.White;
             panelTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
+            txtSelectedTable.Text = "Take away";
         }
 
 
-        void btn_click( object sender, EventArgs e)
+
+        private void Btn_Click(object sender, EventArgs e)
         {
-            int tab_id = (sender as TableModel.Table).id;
+            Button btn = sender as Button;
+     
+            TableModel.Table table = btn.Tag as TableModel.Table;
+            if (table != null)
+            {
+                String table_name =  table.display_name;
+                showSelectedTable(table_name);
+            }
 
-            showBill(tab_id);
+            showBill(table.id);
         }
 
+        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
