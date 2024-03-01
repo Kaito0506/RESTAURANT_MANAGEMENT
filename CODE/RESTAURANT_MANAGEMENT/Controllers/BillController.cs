@@ -11,7 +11,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 {
     class BillController
     {
-        public static int GetBill(int table_id)
+        public static int GetBillid(int table_id)
         {
             DataTable data = Database.ExecuteQuery("select * from BILL where status=0 and table_id=" + table_id);
             if(data.Rows.Count>0)
@@ -20,6 +20,17 @@ namespace RESTAURANT_MANAGEMENT.Controllers
                 return b.bill_id;
             }
             return -1; //no bill unpaid
+        }
+
+        public static BillModel.Bill GetBill(int table_id)
+        {
+            DataTable data = Database.ExecuteQuery("select * from BILL where status=0 and table_id=" + table_id);
+            if (data.Rows.Count > 0)
+            {
+                BillModel.Bill b = new BillModel.Bill(data.Rows[0]);
+                return b;
+            }
+            return null; //no bill unpaid
         }
 
 
@@ -53,6 +64,17 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             }
 
             return lstItem;
+        }
+
+        public static void UpdateBillTotal(int bill_id) {
+            try
+            {
+                Database.ExecuteNonQuery("EXEC CalculateBillTotal @b_id=" + bill_id);
+                Console.WriteLine("Update bill successfully");
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Update error "+ ex.Message);
+            }
         }
 
     }
