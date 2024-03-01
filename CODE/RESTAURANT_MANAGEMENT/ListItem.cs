@@ -29,6 +29,7 @@ namespace RESTAURANT_MANAGEMENT
         private decimal _price;
         private string _category;
         private Image _image;
+        private string _filename;
 
         [Category("Custom Props")]
         public int Id
@@ -72,6 +73,13 @@ namespace RESTAURANT_MANAGEMENT
             set { _image = value; pictureBox.Image = value; }
         }
 
+        [Category("Custom Props")]
+        public string Filename
+        {
+            get { return _filename; }
+            set { _filename = value; }
+        }
+
         #endregion
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -97,7 +105,13 @@ namespace RESTAURANT_MANAGEMENT
         {
             AdminEditItem adminEditItem = new AdminEditItem();
             adminEditItem.SetTbIdText(_id.ToString());
-
+            adminEditItem.SetCbbCategIndex(_category);
+            adminEditItem.SetTbNameText(_title);
+            adminEditItem.SetTbDescText(_description);
+            adminEditItem.SetTbPriceText(_price.ToString("0"));
+            adminEditItem.SetBackgroundImage(_image);
+            adminEditItem.SetFilenameText(_filename);
+            adminEditItem.SetMode(1);
             adminEditItem.ShowDialog();
         }
     }

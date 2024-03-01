@@ -2,13 +2,13 @@
 Create login admin with password='admin', CHECK_POLICY = OFF;
 
 
-DROP DATABASE RESTAURANT_MANAGEMENT;
+--DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
 sp_changedbowner admin; 
 
-/*DROP TABLE BILL_DETAIL;
+DROP TABLE BILL_DETAIL;
 DROP TABLE MENU_ITEM;
 DROP TABLE DETAIL_CATEGORY;
 DROP TABLE BILL;
@@ -18,7 +18,7 @@ DROP TABLE USERS;
 DROP TABLE TABLES;
 DROP TABLE RESTAURANT_BRANCH;
 DROP TABLE CATEGORY;
-DROP TABLE ROLE; */
+DROP TABLE ROLE; 
 
 -- role table
 create table ROLE(
@@ -98,7 +98,6 @@ CREATE table MENU_ITEM(
 	 name nvarchar (50) ,
 	 describe nvarchar (255),
 	 img nvarchar (255),
-	 UNIQUE (img),
 	 category_id int,
 	 constraint fk1 foreign key (category_id) references DETAIL_CATEGORY(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -112,8 +111,8 @@ CREATE TABLE BILL(
 	table_id int not null,
 	status int not null, --o:not paid, 1: paid
 	customer_id int ,
-	foreign key(customer_id ) references CUSTOMER(id),
-	foreign key (table_id) references TABLES(id)
+	foreign key(customer_id ) references CUSTOMER(id) on delete cascade on update cascade,
+	foreign key (table_id) references TABLES(id) on delete cascade on update cascade
 );
 
 
@@ -125,7 +124,6 @@ CREATE TABLE BILL_DETAIL(
 	quantity int not null,
 	foreign key (bill_id) references BILL(id) ON UPDATE CASCADE ON DELETE CASCADE,
 	foreign key (item_id) references MENU_ITEM(id) ON UPDATE CASCADE ON DELETE CASCADE
-
 );
 
 INSERT INTO ROLE (id, role_name, salary) VALUES
@@ -160,16 +158,12 @@ INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, passwor
 (5, 5, N'567890123456', N'Đỗ Quang E', '1994-05-05', N'M', N'258 Nguyễn Văn Cừ, Quận 10, TP. Hồ Chí Minh', N'0978123456', N'userpass123'),
 (6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
 (7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
-
-(10, 0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
-
-
-
-
 INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
 (8, 1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123');
 INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
-(9, 1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123');
+(9, 1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123'),
+(10, 0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
+
 
 
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
@@ -177,13 +171,14 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (2,2),
 (3,2),
 (4,1),
-(5,3);
+(5,3),
+(6,2),
+(7,2),
+(8,3),
+(9,1),
+(10,2);
 
-INSERT INTO ASSIGN (u_id, branch_id) VALUES
-(9,3),
-(8,1);
 
-select branch_id from assgin where u_id=@u_id
 
 select branch_id from ASSIGN where u_id=1;
 -- get branch id proc 
@@ -225,9 +220,6 @@ EXEC getBranchName @user_id=8;
 
 
 
-
-
-
 INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (1, N'Hoàng Thị F', N'0987-123-456', 10, 100000),
 (2, N'Nguyễn Văn G', N'0912-654-321', 20, 200000),
@@ -236,34 +228,30 @@ INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 (5, N'Phạm Thị K', N'0978-567-890', 50, 500000);
 
 
-INSERT INTO TABLES(id, display_name, branch_id) VALUES
-(1,'A1', 1),
-(2,'A2', 1),
-(3,'A3', 1),
-(4,'A4', 1),
-(5,'A5', 1),
-(6,'A6', 1),
-(7,'A7', 1),
-(8,'A8', 1),
-(9,'A9', 1),
-(10,'A10', 1);
+
 Update TABLES set status=1 where id =17;
-declare @i int =1
-while @i<=10
-begin 
-	insert into TABLES(id, display_name, branch_id) values (@i+20, 'C'+CAST( @i as char), 3);
-	set @i = @i+1
-end
-INSERT INTO TABLES(id, display_name, branch_id) VALUES
-(31,'D1', 3),
-(32,'D2', 3);
+DECLARE @i INT = 1
+WHILE @i <= 15
+BEGIN 
+    INSERT INTO TABLES (id, display_name, branch_id) 
+    VALUES (@i, 'A' + CONVERT(VARCHAR(10), @i), 1);
+
+	INSERT INTO TABLES (id, display_name, branch_id) 
+    VALUES (@i+15, 'B' + CONVERT(VARCHAR(10), @i), 2);
+
+	INSERT INTO TABLES (id, display_name, branch_id) 
+    VALUES (@i+30, 'C' + CONVERT(VARCHAR(10), @i), 3);
+
+    SET @i = @i + 1
+END
+
 select * from TABLES;
 
 
 
 INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
-(1, '2024-02-01', 1, 0, 500000, 1),
-(2, '2024-02-01',  2, 1, 800000, 2);
+(1, '2024-02-01', 1, 0, 0, 1),
+(2, '2024-02-01',  2, 1, 0, 2);
 
 	
 
@@ -312,29 +300,81 @@ VALUES
 (3, 2, 2, 3),  -- Bill 2 contains 3 Bún riêu
 (4, 2, 5, 2);  -- Bill 2 contains 2 Lẩu canh chua cá
  
+ -- Inserting sample data into BILL table
+INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
+(3, '2024-02-02', 3, 0, 0, 3),
+(4, '2024-02-03', 4, 1, 0, 4);
 
- select * from BILL;
+-- Inserting sample data into BILL_DETAIL table
+INSERT INTO BILL_DETAIL (id, bill_id, item_id, quantity)
+VALUES
+(5, 3, 7, 1),  -- Bill 3 contains 1 Trái cây hỗn hợp
+(6, 3, 9, 2),  -- Bill 3 contains 2 Trà sữa matcha
+(7, 4, 14, 3), -- Bill 4 contains 3 Mực nước dừa xanh
+(8, 4, 17, 2); -- Bill 4 contains 2 Trái cây tươi
+
+-- Inserting more sample data into BILL table
+INSERT INTO BILL (id, checkin_date, table_id, status, total, customer_id) VALUES
+(5, '2024-02-04', 5, 0, 0, 5),
+(6, '2024-02-05', 6, 1, 0, 1),
+(7, '2024-02-06', 7, 0, 0, 2);
+
+-- Inserting more sample data into BILL_DETAIL table
+INSERT INTO BILL_DETAIL (id, bill_id, item_id, quantity)
+VALUES
+(9, 5, 3, 2),   -- Bill 5 contains 2 Cơm gà xối mỡ
+(10, 5, 6, 1),  -- Bill 5 contains 1 Sữa chua đào
+(11, 6, 11, 2), -- Bill 6 contains 2 Phở bò
+(12, 6, 14, 1), -- Bill 6 contains 1 Mực nước dừa xanh
+(13, 7, 19, 3), -- Bill 7 contains 3 Trà sữa hòa quyện
+(14, 7, 20, 2); -- Bill 7 contains 2 Nước lựu tươi
+
+
+
+
+
+
+
+
+select * from BILL where status=0;
 select * from BILL_DETAIL;
 
-CREATE FUNCTION CalculateTotalBill(@input_bill_id_ INT) RETURNS MONEY
+
+
+CREATE PROC CalculateBillTotal 
+	@b_id int
 AS
 BEGIN
-    DECLARE @total MONEY;
+	DECLARE @total int;
 
-    SELECT @total = SUM(bd.quantity * mi.price)
+	SELECT @total = SUM(bd.quantity * mi.price)
     FROM BILL_DETAIL AS bd
     JOIN MENU_ITEM AS mi ON bd.item_id = mi.id
-    WHERE bd.bill_id = @input_bill_id_;
+    WHERE bd.bill_id = @b_id;
+	
+	Update BILL Set total=@total where id=@b_id;
+END
 
-    RETURN @total;
-END;
+---------------------------------------
+declare @c int = 1;
+while @c<=7
+begin 
+	EXEC CalculateBillTotal @b_id=@c;
+	set @c = @c +1;
+end
+---------------------------------------
 
-select CalculateTotalBill(1) as a;
+EXEC CalculateBillTotal @b_id=1;
+---------------------------------------
 
+select id 
+from BILL 
+where status=0 and table_id=1;
+select * from BILL_DETAIL where bill_id=1;
 
+select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
 
-
-
+select * from BILL where status=0 and table_id=1;
 DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
 DELETE FROM DETAIL_CATEGORY;
@@ -347,3 +387,4 @@ DELETE FROM ROLE;
 
 SELECT * FROM MENU_ITEM;
 SELECT * FROM CATEGORY;
+SELECT MAX(id)+1 FROM MENU_ITEM;
