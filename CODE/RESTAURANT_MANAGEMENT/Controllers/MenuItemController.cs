@@ -8,7 +8,7 @@ class MenuItemController {
         try
         {
             Database.Connect();
-            SqlCommand cmd = new SqlCommand("SELECT mi.id, mi.price, mi.name, mi.describe, mi.img, mi.category_id, ca.name as category_name FROM MENU_ITEM mi JOIN CATEGORY ca ON mi.category_id = ca.id;", Database.Connection);
+            SqlCommand cmd = new SqlCommand("SELECT mi.id, mi.price, mi.name, mi.describe, mi.img, mi.category_id, ca.name as category_name FROM MENU_ITEM mi JOIN DETAIL_CATEGORY ca ON mi.category_id = ca.id;", Database.Connection);
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<MenuItemModel.MenuItem> resultMenuItems = new List<MenuItemModel.MenuItem>();

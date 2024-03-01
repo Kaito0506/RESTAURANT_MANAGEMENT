@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RESTAURANT_MANAGEMENT.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,19 @@ namespace RESTAURANT_MANAGEMENT
 
         #region Properties
 
+        private int _id;
         private string _title;
         private string _description;
         private decimal _price;
         private string _category;
         private Image _image;
-        private int _id;
+
+        [Category("Custom Props")]
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         [Category("Custom Props")]
         public string Title
@@ -64,13 +72,6 @@ namespace RESTAURANT_MANAGEMENT
             set { _image = value; pictureBox.Image = value; }
         }
 
-        [Category("Custom Props")]
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
         #endregion
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -90,6 +91,14 @@ namespace RESTAURANT_MANAGEMENT
                     MessageBox.Show("Delete item failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            AdminEditItem adminEditItem = new AdminEditItem();
+            adminEditItem.SetTbIdText(_id.ToString());
+
+            adminEditItem.ShowDialog();
         }
     }
 }
