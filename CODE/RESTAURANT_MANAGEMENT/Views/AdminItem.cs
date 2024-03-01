@@ -24,8 +24,8 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             InitializeComponent();
             LoadCategoryData();
+            filteredItems = new List<MenuItemModel.MenuItem>();
             LoadItemData();
-            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
         }
 
         public void LoadCategoryData()
@@ -44,6 +44,12 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         public void LoadItemData()
         {
+            // Clear existing controls before adding new ones
+            flowLayoutPanel.Controls.Clear();
+
+            // Initialize filteredItems here
+            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+
             ListItem[] listItems = new ListItem[menuItems.Count];
             for (int i = 0; i < listItems.Length; i++)
             {
