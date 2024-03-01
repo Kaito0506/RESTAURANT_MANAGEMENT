@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.listView4 = new System.Windows.Forms.ListView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.listView5 = new System.Windows.Forms.ListView();
             this.button2 = new System.Windows.Forms.Button();
+            this.lstManager = new System.Windows.Forms.ListBox();
+            this.lstChef = new System.Windows.Forms.ListBox();
+            this.lstWaiter = new System.Windows.Forms.ListBox();
+            this.lstJanitor = new System.Windows.Forms.ListBox();
+            this.lstSecurity = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,16 +53,6 @@
             this.label1.Size = new System.Drawing.Size(251, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to Users";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 287);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(343, 108);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label2
             // 
@@ -75,16 +64,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Chef";
             // 
-            // listView2
-            // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(12, 432);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(343, 108);
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -94,7 +73,6 @@
             this.label3.Size = new System.Drawing.Size(121, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Waiter/Waitress";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -116,45 +94,18 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Security";
             // 
-            // listView3
-            // 
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(12, 579);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(343, 108);
-            this.listView3.TabIndex = 7;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView4
-            // 
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(12, 728);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(343, 108);
-            this.listView4.TabIndex = 8;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(266, 79);
+            this.comboBox1.Location = new System.Drawing.Point(322, 79);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Branches";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(393, 79);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
-            this.comboBox2.Text = "Roles";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(185, 79);
+            this.button1.Location = new System.Drawing.Point(241, 79);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 21);
             this.button1.TabIndex = 11;
@@ -171,43 +122,76 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Manager";
             // 
-            // listView5
-            // 
-            this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(12, 143);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(343, 108);
-            this.listView5.TabIndex = 13;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(520, 79);
+            this.button2.Location = new System.Drawing.Point(449, 79);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 21);
             this.button2.TabIndex = 14;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // lstManager
+            // 
+            this.lstManager.FormattingEnabled = true;
+            this.lstManager.Items.AddRange(new object[] {
+            "Nguyen Duy A"});
+            this.lstManager.Location = new System.Drawing.Point(12, 143);
+            this.lstManager.Name = "lstManager";
+            this.lstManager.Size = new System.Drawing.Size(343, 108);
+            this.lstManager.TabIndex = 15;
+            this.lstManager.SelectedIndexChanged += new System.EventHandler(this.lstManager_SelectedIndexChanged);
+            // 
+            // lstChef
+            // 
+            this.lstChef.FormattingEnabled = true;
+            this.lstChef.Location = new System.Drawing.Point(12, 287);
+            this.lstChef.Name = "lstChef";
+            this.lstChef.Size = new System.Drawing.Size(343, 108);
+            this.lstChef.TabIndex = 16;
+            // 
+            // lstWaiter
+            // 
+            this.lstWaiter.FormattingEnabled = true;
+            this.lstWaiter.Location = new System.Drawing.Point(12, 445);
+            this.lstWaiter.Name = "lstWaiter";
+            this.lstWaiter.Size = new System.Drawing.Size(343, 108);
+            this.lstWaiter.TabIndex = 17;
+            // 
+            // lstJanitor
+            // 
+            this.lstJanitor.FormattingEnabled = true;
+            this.lstJanitor.Location = new System.Drawing.Point(12, 579);
+            this.lstJanitor.Name = "lstJanitor";
+            this.lstJanitor.Size = new System.Drawing.Size(343, 108);
+            this.lstJanitor.TabIndex = 18;
+            // 
+            // lstSecurity
+            // 
+            this.lstSecurity.FormattingEnabled = true;
+            this.lstSecurity.Location = new System.Drawing.Point(12, 728);
+            this.lstSecurity.Name = "lstSecurity";
+            this.lstSecurity.Size = new System.Drawing.Size(343, 108);
+            this.lstSecurity.TabIndex = 19;
+            // 
             // AdminUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 848);
+            this.Controls.Add(this.lstSecurity);
+            this.Controls.Add(this.lstJanitor);
+            this.Controls.Add(this.lstWaiter);
+            this.Controls.Add(this.lstChef);
+            this.Controls.Add(this.lstManager);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.listView5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listView4);
-            this.Controls.Add(this.listView3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listView2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminUser";
@@ -221,19 +205,18 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListView listView5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox lstManager;
+        private System.Windows.Forms.ListBox lstChef;
+        private System.Windows.Forms.ListBox lstWaiter;
+        private System.Windows.Forms.ListBox lstJanitor;
+        private System.Windows.Forms.ListBox lstSecurity;
     }
 }
