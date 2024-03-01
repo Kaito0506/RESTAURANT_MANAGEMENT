@@ -8,7 +8,7 @@ USE RESTAURANT_MANAGEMENT;
 
 sp_changedbowner admin; 
 
-/*DROP TABLE BILL_DETAIL;
+DROP TABLE BILL_DETAIL;
 DROP TABLE MENU_ITEM;
 DROP TABLE DETAIL_CATEGORY;
 DROP TABLE BILL;
@@ -18,7 +18,7 @@ DROP TABLE USERS;
 DROP TABLE TABLES;
 DROP TABLE RESTAURANT_BRANCH;
 DROP TABLE CATEGORY;
-DROP TABLE ROLE; */
+DROP TABLE ROLE; 
 
 -- role table
 create table ROLE(
@@ -98,7 +98,6 @@ CREATE table MENU_ITEM(
 	 name nvarchar (50) ,
 	 describe nvarchar (255),
 	 img nvarchar (255),
-	 UNIQUE (img),
 	 category_id int,
 	 constraint fk1 foreign key (category_id) references DETAIL_CATEGORY(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -388,3 +387,4 @@ DELETE FROM ROLE;
 
 SELECT * FROM MENU_ITEM;
 SELECT * FROM CATEGORY;
+SELECT MAX(id)+1 FROM MENU_ITEM;

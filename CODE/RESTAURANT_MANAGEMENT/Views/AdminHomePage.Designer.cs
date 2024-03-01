@@ -106,52 +106,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.panel4.Size = new System.Drawing.Size(171, 56);
             this.panel4.TabIndex = 3;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.branch);
-            this.panel1.Location = new System.Drawing.Point(4, 81);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(232, 76);
-            this.panel1.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.user);
-            this.panel2.Location = new System.Drawing.Point(3, 201);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 62);
-            this.panel2.TabIndex = 6;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.customer);
-            this.panel3.Location = new System.Drawing.Point(3, 269);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(174, 62);
-            this.panel3.TabIndex = 6;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.item);
-            this.panel5.Location = new System.Drawing.Point(3, 337);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(174, 62);
-            this.panel5.TabIndex = 7;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.categ);
-            this.panel6.Location = new System.Drawing.Point(3, 405);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(174, 62);
-            this.panel6.TabIndex = 8;
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.dashboard);
             this.panel7.Location = new System.Drawing.Point(2, 64);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(175, 50);
             this.panel7.TabIndex = 9;
@@ -167,7 +126,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.dashboard.Image = ((System.Drawing.Image)(resources.GetObject("dashboard.Image")));
             this.dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboard.Location = new System.Drawing.Point(2, 2);
-            this.dashboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dashboard.Margin = new System.Windows.Forms.Padding(2);
             this.dashboard.Name = "dashboard";
             this.dashboard.Size = new System.Drawing.Size(171, 46);
             this.dashboard.TabIndex = 5;
@@ -178,7 +137,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel1
             // 
             this.panel1.Controls.Add(this.branch);
-            this.panel1.Location = new System.Drawing.Point(3, 119);
+            this.panel1.Location = new System.Drawing.Point(4, 120);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(174, 62);
             this.panel1.TabIndex = 4;
@@ -204,7 +164,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel2
             // 
             this.panel2.Controls.Add(this.user);
-            this.panel2.Location = new System.Drawing.Point(3, 187);
+            this.panel2.Location = new System.Drawing.Point(3, 189);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(174, 62);
             this.panel2.TabIndex = 6;
@@ -230,7 +190,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel3
             // 
             this.panel3.Controls.Add(this.customer);
-            this.panel3.Location = new System.Drawing.Point(3, 255);
+            this.panel3.Location = new System.Drawing.Point(3, 257);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(174, 62);
             this.panel3.TabIndex = 6;
@@ -256,8 +216,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel5
             // 
             this.panel5.Controls.Add(this.item);
-            this.panel5.Location = new System.Drawing.Point(2, 322);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Location = new System.Drawing.Point(2, 324);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(175, 50);
             this.panel5.TabIndex = 7;
@@ -273,7 +233,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.item.Image = ((System.Drawing.Image)(resources.GetObject("item.Image")));
             this.item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.item.Location = new System.Drawing.Point(2, 2);
-            this.item.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.item.Margin = new System.Windows.Forms.Padding(2);
             this.item.Name = "item";
             this.item.Size = new System.Drawing.Size(173, 46);
             this.item.TabIndex = 5;
@@ -284,8 +244,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             // panel6
             // 
             this.panel6.Controls.Add(this.categ);
-            this.panel6.Location = new System.Drawing.Point(2, 376);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Location = new System.Drawing.Point(2, 378);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(175, 50);
             this.panel6.TabIndex = 8;
@@ -301,7 +261,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.categ.Image = ((System.Drawing.Image)(resources.GetObject("categ.Image")));
             this.categ.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.categ.Location = new System.Drawing.Point(2, 2);
-            this.categ.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.categ.Margin = new System.Windows.Forms.Padding(2);
             this.categ.Name = "categ";
             this.categ.Size = new System.Drawing.Size(173, 46);
             this.categ.TabIndex = 5;
@@ -318,6 +278,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.IsMdiContainer = true;
             this.Name = "AdminHomePage";
             this.ShowIcon = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
