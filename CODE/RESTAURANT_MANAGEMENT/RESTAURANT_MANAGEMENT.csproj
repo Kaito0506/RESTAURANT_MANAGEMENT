@@ -211,7 +211,9 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
+
     <Compile Include="Controllers\TableController.cs" />
+
     <Compile Include="Database.cs" />
     <Compile Include="ListItem.cs">
       <SubType>UserControl</SubType>
