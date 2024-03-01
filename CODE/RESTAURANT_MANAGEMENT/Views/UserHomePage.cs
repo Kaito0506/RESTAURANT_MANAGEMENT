@@ -25,6 +25,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             Load_tables();
             btnInside.BackColor = Color.Orange;
             panelTables.Enabled = true;
+            lbBranchName.Text = loadBranchName();
 
         }
 
@@ -37,6 +38,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
+                btn.Click += btn_click;
+                btn.Tag = table;
                 
                 if (table.status == 0)
                 {
@@ -51,6 +54,22 @@ namespace RESTAURANT_MANAGEMENT.Views
                 flpTables.Controls.Add(btn);
 
             }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void showBill(int table_id)
+        {
+            txtSelectedTable.Text = table_id.ToString();
+        }
+
+        private String loadBranchName()
+        {
+            String br_name = LoginController.GetUserBranchName(LoginController.GetUser().u_id);
+            return br_name;
         }
         private void btnMerge_Click(object sender, EventArgs e)
         {
@@ -74,6 +93,14 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.White;
             panelTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
+        }
+
+
+        void btn_click( object sender, EventArgs e)
+        {
+            int tab_id = (sender as TableModel.Table).id;
+
+            showBill(tab_id);
         }
 
 

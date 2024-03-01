@@ -149,5 +149,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             flowLayoutPanel.Controls.Clear();
             ApplyFiltersAndSearch();
         }
+
+   
     }
 }
