@@ -34,4 +34,21 @@ class MenuItemController {
             return null;
         }
     }
+
+    public bool DeleteMenuItem(int id)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("DELETE FROM MENU_ITEM WHERE id = @id", Database.Connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
 }
