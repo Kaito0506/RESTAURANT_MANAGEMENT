@@ -21,5 +21,6 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             this.ControlBox = false;
         }
+
     }
 }
