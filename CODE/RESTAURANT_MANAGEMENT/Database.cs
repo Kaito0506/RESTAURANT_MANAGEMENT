@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 class Database
@@ -38,5 +39,110 @@ class Database
             Console.WriteLine(ex.ToString());
             return false;
         }
+    }
+
+
+    public static DataTable ExecuteQuery(String cmd, object[] paras = null)
+    {
+        DataTable data = new DataTable();
+        try
+        {
+            SqlCommand command = new SqlCommand(cmd, Connection);
+            if (paras != null)
+            {
+                Connect();
+                String[] listPara = cmd.Split(' ');
+                int i = 0;
+                foreach (String s in listPara)
+                {
+
+                    if (s.Contains("@"))
+                    {
+                        command.Parameters.AddWithValue(s, paras[i]);
+                        i++;
+                    }
+                }
+            }
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(data);
+            Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.ToString()}");
+        }
+
+        return data;
+
+    }
+
+
+    public static int ExecuteNonQuery(String cmd, object[] paras = null)
+    {
+        int data = 0;
+        try
+        {
+            Connect();
+            SqlCommand command = new SqlCommand(cmd, Connection);
+            if (paras != null)
+            {
+               
+                String[] listPara = cmd.Split(' ');
+                int i = 0;
+                foreach (String s in listPara)
+                {
+
+                    if (s.Contains("@"))
+                    {
+                        command.Parameters.AddWithValue(s, paras[i]);
+                        i++;
+                    }
+                }
+            }
+            data = command.ExecuteNonQuery();
+            Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.ToString()}");
+        }
+
+
+        return data;
+    }
+
+
+    public static object ExecuteScalar(String cmd, object[] paras = null)
+    {
+        object data = null;
+        try
+        {
+            Connect();
+            SqlCommand command = new SqlCommand(cmd, Connection);
+            if (paras != null)
+            {    
+                String[] listPara = cmd.Split(' ');
+                int i = 0;
+                foreach (String s in listPara)
+                {
+
+                    if (s.Contains("@"))
+                    {
+                        command.Parameters.AddWithValue(s, paras[i]);
+                        i++;
+                    }
+                }            
+
+            }
+            data = command.ExecuteScalar();
+            Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.ToString()}");
+        }
+
+
+        return data;
     }
 }
