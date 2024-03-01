@@ -55,5 +55,13 @@ class LoginController
             
         return bi;
     }
+
+    public static String GetUserBranchName(int user_id)
+    {
+        String name = "";
+        object ojb = Database.ExecuteScalar("EXEC getBranchName @user_id", new object[] { user_id });
+        name = ojb.ToString();
+        return name;
+    }
 }
 
