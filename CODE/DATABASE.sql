@@ -2,7 +2,7 @@
 Create login admin with password='admin', CHECK_POLICY = OFF;
 
 
---DROP DATABASE RESTAURANT_MANAGEMENT;
+DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
@@ -161,10 +161,16 @@ INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, passwor
 (6, 0, N'9876543210', N'Hồ Minh Nhựt', '2002-06-05', N'M', N'632, tổ 7, khu vực/ấp Mỹ Khánh 2, Xã Mỹ Hòa', N'0783939975', N'admin123'),
 (7, 0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456');
 
+(10, 0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
+
+
+
+
 INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
 (8, 1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123');
 INSERT INTO USERS (id, role_id, cccd, name, dob, gender, address, phone, password) VALUES
 (9, 1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123');
+
 
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (1,1),
@@ -172,11 +178,13 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (3,2),
 (4,1),
 (5,3);
+
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (9,3),
 (8,1);
 
 select branch_id from assgin where u_id=@u_id
+
 select branch_id from ASSIGN where u_id=1;
 -- get branch id proc 
 drop proc getBranchID;
@@ -198,6 +206,7 @@ BEGIN
 	Select * from TABLES where branch_id=@branch_id;
 END
 GO
+
 EXEC getTableWithBranch @branch_id = 1;
 
 -- get branch name
