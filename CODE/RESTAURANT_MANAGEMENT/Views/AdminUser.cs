@@ -12,9 +12,12 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class AdminUser : Form
     {
+        List<String> managers = UserController.GetManagers();
         public AdminUser()
         {
             InitializeComponent();
+            lstManager.Items.Clear();
+            this.lstManager.Items.AddRange(managers.ToArray());
         }
 
         private void AdminUser_Load(object sender, EventArgs e)
@@ -22,19 +25,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.ControlBox = false;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void lstManager_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }
