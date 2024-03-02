@@ -35,6 +35,11 @@
             this.panelTables = new System.Windows.Forms.FlowLayoutPanel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBillItems = new System.Windows.Forms.Panel();
+            this.lstItems = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
             this.viewItems = new System.Windows.Forms.DataGridView();
             this.panelSelectedTbale = new System.Windows.Forms.Panel();
@@ -53,15 +58,11 @@
             this.ckbPrint = new System.Windows.Forms.CheckBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnFind = new System.Windows.Forms.Button();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lstItems = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnFind = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelTables.SuspendLayout();
@@ -150,6 +151,46 @@
             this.panelBillItems.Name = "panelBillItems";
             this.panelBillItems.Size = new System.Drawing.Size(608, 378);
             this.panelBillItems.TabIndex = 3;
+            // 
+            // lstItems
+            // 
+            this.lstItems.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lstItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lstItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstItems.GridLines = true;
+            this.lstItems.HideSelection = false;
+            this.lstItems.Location = new System.Drawing.Point(0, 0);
+            this.lstItems.Name = "lstItems";
+            this.lstItems.Size = new System.Drawing.Size(608, 378);
+            this.lstItems.TabIndex = 0;
+            this.lstItems.UseCompatibleStateImageBehavior = false;
+            this.lstItems.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 180;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Quantity";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 90;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Price";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 150;
             // 
             // panel4
             // 
@@ -335,6 +376,16 @@
             this.panel2.Size = new System.Drawing.Size(406, 97);
             this.panel2.TabIndex = 6;
             // 
+            // btnFind
+            // 
+            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
+            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFind.Location = new System.Drawing.Point(359, 51);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(44, 35);
+            this.btnFind.TabIndex = 0;
+            this.btnFind.UseVisualStyleBackColor = true;
+            // 
             // txtFindName
             // 
             this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -346,15 +397,17 @@
             // btnPay
             // 
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(54, 16);
+            this.btnPay.Location = new System.Drawing.Point(54, 51);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(150, 129);
+            this.btnPay.Size = new System.Drawing.Size(150, 94);
             this.btnPay.TabIndex = 0;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnOrder);
             this.panel3.Controls.Add(this.ckbPrint);
             this.panel3.Controls.Add(this.btnPay);
             this.panel3.Location = new System.Drawing.Point(728, 447);
@@ -362,55 +415,16 @@
             this.panel3.Size = new System.Drawing.Size(241, 212);
             this.panel3.TabIndex = 6;
             // 
-            // lstItems
+            // btnOrder
             // 
-            this.lstItems.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lstItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lstItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstItems.GridLines = true;
-            this.lstItems.HideSelection = false;
-            this.lstItems.Location = new System.Drawing.Point(0, 0);
-            this.lstItems.Name = "lstItems";
-            this.lstItems.Size = new System.Drawing.Size(608, 378);
-            this.lstItems.TabIndex = 0;
-            this.lstItems.UseCompatibleStateImageBehavior = false;
-            this.lstItems.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 180;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 90;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Price";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 150;
-            // 
-            // btnFind
-            // 
-            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
-            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFind.Location = new System.Drawing.Point(359, 51);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(44, 35);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.Location = new System.Drawing.Point(54, 2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(150, 40);
+            this.btnOrder.TabIndex = 11;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // UserHomePage
             // 
@@ -490,5 +504,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button btnOrder;
     }
 }
