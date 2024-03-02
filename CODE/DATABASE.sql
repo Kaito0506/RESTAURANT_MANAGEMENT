@@ -229,7 +229,6 @@ INSERT INTO CUSTOMER (id, name, phone, point, accumulated) VALUES
 
 
 
-Update TABLES set status=1 where id =17;
 DECLARE @i INT = 1
 WHILE @i <= 15
 BEGIN 
@@ -374,6 +373,60 @@ select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.id =
 select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
 
 select * from BILL where status=0 and table_id=1;
+------------
+
+select * from TABLES;
+select * from BILL;
+UPDATE TABLES
+SET status = 1
+FROM TABLES
+JOIN BILL ON TABLES.id = BILL.table_id
+WHERE BILL.status = 0;
+
+-- Proc to update status tables
+CREATE PROC updateTableStatus
+AS
+BEGIN
+	UPDATE TABLES SET status=1 FROM TABLES JOIN BILL ON TABLES.id = BILL.table_id WHERE BILL.status = 0;
+	UPDATE TABLES SET status=0 FROM TABLES JOIN BILL ON TABLES.id = BILL.table_id WHERE BILL.status = 1;
+END
+GO
+
+updateTableStatus
+----------------------------
+----proc PAY
+CREATE PROC PAY
+	@table_id int
+AS
+BEGIN
+	UPDATE TABLES SET status=0 WHERE id=@table_id;
+	UPDATE BILL SET status=1 WHERE table_id=@table_id;
+END
+GO
+
+PAY @table_id=7;
+
+----------- pROC order
+CREATE PROC ORDER_BILL
+	@table_id int
+AS
+BEGIN
+	INSERT INTO BILL 
+END
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
 DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
 DELETE FROM DETAIL_CATEGORY;
