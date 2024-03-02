@@ -151,7 +151,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 
                 selected_table = table.id;
             }
-
+            txtDiscount.Value = 0;
             showBill(table.id);
         }
 
