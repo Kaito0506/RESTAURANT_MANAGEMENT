@@ -41,8 +41,8 @@ namespace RESTAURANT_MANAGEMENT.Views
                 btn.Text = table.display_name;
 
                 btn.Click += Btn_Click;        
-                btn.Tag = table;       
-
+                btn.Tag = table;
+                
                 if (table.status == 0)
                 {
                     btn.BackColor = Color.LightBlue;
@@ -150,6 +150,8 @@ namespace RESTAURANT_MANAGEMENT.Views
                 showSelectedTable(table_name);
 
                 selected_table = table.id;
+
+                //MessageBox.Show(table.id.ToString());
             }
             txtDiscount.Value = 0;
             showBill(table.id);
@@ -170,6 +172,30 @@ namespace RESTAURANT_MANAGEMENT.Views
             int billId = BillController.GetBillid(selected_table);
             UpdateBill(billId, discount);
             
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            // clear tables
+            flpTables.Controls.Clear();
+            BillController.PayBill(selected_table);
+            BillController.UpdateTableStatus();
+            // reload tables
+            Load_tables();
+            // update and show bill
+            lstItems.Items.Clear();
+            showBill(selected_table);
+
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            // clear tables
+            flpTables.Controls.Clear();
+            BillController.OrderBill(selected_table);
+            BillController.UpdateTableStatus();
+            // reload tables
+            Load_tables();
         }
     }
 }

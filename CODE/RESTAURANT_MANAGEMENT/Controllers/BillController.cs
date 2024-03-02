@@ -77,5 +77,45 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             }
         }
 
+        public static void UpdateTableStatus()
+        {
+            try
+            {
+                Database.ExecuteNonQuery("updateTableStatus");
+                Console.WriteLine("Update status successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update error " + ex.Message);
+            }
+        }
+
+        public static void PayBill(int table_id)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("PAY @table_id=" + table_id);
+
+                Console.WriteLine("Pay successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Pay error " + ex.Message);
+            }
+        }
+
+        public static void OrderBill(int table_id)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("ORDER_BILL @table_id=" + table_id);
+                Console.WriteLine("Order successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Order error " + ex.Message);
+            }
+        }
+
     }
 }
