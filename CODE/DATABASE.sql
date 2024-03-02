@@ -341,20 +341,18 @@ select * from BILL where status=0;
 select * from BILL_DETAIL;
 
 
-
+drop proc CalculateBillTotal;
 CREATE PROC CalculateBillTotal 
 	@b_id int
 AS
 BEGIN
 	DECLARE @total int;
 
-	SELECT @total = SUM(bd.quantity * mi.price)
-    FROM BILL_DETAIL AS bd
-    JOIN MENU_ITEM AS mi ON bd.item_id = mi.id
-    WHERE bd.bill_id = @b_id;
+	SELECT @total = sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=@b_id;
 	
 	Update BILL Set total=@total where id=@b_id;
 END
+GO
 
 ---------------------------------------
 declare @c int = 1;
@@ -374,6 +372,7 @@ where status=0 and table_id=1;
 select * from BILL_DETAIL where bill_id=1;
 
 select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
+select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
 
 select * from BILL where status=0 and table_id=1;
 DELETE FROM BILL_DETAIL;
