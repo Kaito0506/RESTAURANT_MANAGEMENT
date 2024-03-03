@@ -208,6 +208,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BillItem.Designer.cs">
+      <DependentUpon>BillItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DetailCategoryController.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -329,6 +335,9 @@
     <Compile Include="Views\UserHomePage.Designer.cs">
       <DependentUpon>UserHomePage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillItem.resx">
+      <DependentUpon>BillItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
     </EmbeddedResource>

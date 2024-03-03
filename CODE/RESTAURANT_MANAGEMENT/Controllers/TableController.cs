@@ -12,7 +12,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 {
     internal class TableController
     {
-        public static int heihgt = 50, width = 120;
+        public static int heihgt = 100, width = 100;
         LoginController lg = new LoginController();
         public UserModel.User user;
         public static int   current_u_id =  LoginController.GetUser().u_id;
