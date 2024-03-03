@@ -21,7 +21,7 @@ namespace RESTAURANT_MANAGEMENT.Models
                 this.date = date;
                 this.status = status;
                 this.total = total;
-                this.customer_id = customer_id;
+
             }
 
             public Bill(DataRow r)
@@ -30,7 +30,7 @@ namespace RESTAURANT_MANAGEMENT.Models
                 this.date = (DateTime)r["checkin_date"];
                 this.status = (int)r["status"];
                 this.total = (float)Convert.ToDouble(r["total"]);
-                this.customer_id = (int)r["customer_id"];
+
             }
 
             public int bill_id {  get; set; }
@@ -38,10 +38,6 @@ namespace RESTAURANT_MANAGEMENT.Models
 
             public int status { get; set; }
             public float total { get; set; }
-            public int  customer_id { get; set; }
-
-
-
 
         }
 

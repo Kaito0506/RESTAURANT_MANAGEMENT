@@ -208,10 +208,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-
+    <Compile Include="BillItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BillItem.Designer.cs">
+      <DependentUpon>BillItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DetailCategoryController.cs" />
     <Compile Include="Controllers\BillController.cs" />
-
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
     <Compile Include="Controllers\TableController.cs" />
@@ -223,7 +227,6 @@
     <Compile Include="ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Models\DetailCategoryModel.cs" />
     <Compile Include="Models\BillDetailModel.cs" />
     <Compile Include="Models\BillModel.cs" />
@@ -320,12 +323,21 @@
     <Compile Include="Views\OrderPage.Designer.cs">
       <DependentUpon>OrderPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\UserHomePage.Designer.cs">
       <DependentUpon>UserHomePage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillItem.resx">
+      <DependentUpon>BillItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OrderPage.resx">
       <DependentUpon>OrderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserHomePage.resx">
       <DependentUpon>UserHomePage.cs</DependentUpon>
