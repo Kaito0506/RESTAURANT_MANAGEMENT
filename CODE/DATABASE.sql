@@ -2,7 +2,7 @@
 Create login admin with password='admin', CHECK_POLICY = OFF;
 
 
-DROP DATABASE RESTAURANT_MANAGEMENT;
+--DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
@@ -26,9 +26,6 @@ CREATE TABLE ROLE (
     salary MONEY NOT NULL,
 	 PRIMARY KEY(id)
 );
-
-
-
 
 -- branch table
 CREATE TABLE RESTAURANT_BRANCH (
@@ -118,7 +115,7 @@ CREATE TABLE BILL_DETAIL(
 	foreign key (item_id) references MENU_ITEM(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-
+------------------------------------------------------------
 INSERT INTO ROLE (role_name, salary) VALUES
 (N'Admin', 30000000),
 (N'Quản lý', 20000000),
@@ -127,16 +124,14 @@ INSERT INTO ROLE (role_name, salary) VALUES
 (N'Phụ bếp', 8000000),
 (N'Phục vụ', 7000000);
 
-
-
+------------------------------------------------------------
 INSERT INTO CATEGORY (name, describe) VALUES
 (N'Món khai vị', N'Những món ăn nhẹ để bắt đầu bữa ăn'),
 (N'Món chính', N'Những món ăn chủ yếu để no bụng'),
 (N'Món tráng miệng', N'Những món ăn ngọt để kết thúc bữa ăn'),
 (N'Đồ uống', N'Những loại nước giải khát hoặc rượu');
 
-
-
+------------------------------------------------------------
 INSERT INTO RESTAURANT_BRANCH (name, address, phone) VALUES
 (N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789'),
 (N'Nhà hàng B', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321'),
@@ -144,8 +139,7 @@ INSERT INTO RESTAURANT_BRANCH (name, address, phone) VALUES
 (N'Nhà hàng D', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321'),
 (N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789');
 
-
-
+------------------------------------------------------------
 INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES
 (1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
 (2, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
@@ -158,9 +152,7 @@ INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) V
 (1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123'),
 (0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
 
-
-select * from users;
-
+------------------------------------------------------------
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (1,1),
 (2,2),
@@ -173,47 +165,6 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (9,1),
 (10,2);
 
-
----------------------------------------------------
-select branch_id from ASSIGN where u_id=1;
--- get branch id proc 
---drop proc getBranchID;
-------------------------------------------------
-create proc getBranchID 
-	@user_id int
-AS
-BEGIN
-	select branch_id from ASSIGN where u_id=@user_id;
-END
-
-EXEC getBranchID @user_id=1;
-
-
--- -----------procedure get table with branch id
-create proc getTableWithBranch
-	@branch_id int
-AS
-BEGIN
-	Select * from TABLES where branch_id=@branch_id;
-END
-GO
-
-EXEC getTableWithBranch @branch_id = 1;
-------------------------------------------------------------------
--- get branch name
-CREATE PROCEDURE getBranchName
-    @user_id INT
-AS
-BEGIN
-    SELECT RESTAURANT_BRANCH.name  
-    FROM ASSIGN
-    JOIN RESTAURANT_BRANCH ON ASSIGN.branch_id = RESTAURANT_BRANCH.id
-    WHERE ASSIGN.u_id = @user_id;
-END
-GO
-
-EXEC getBranchName @user_id=8;
-
 ------------------------------------------------------------------
 DECLARE @i INT = 1
 WHILE @i <= 15
@@ -225,16 +176,8 @@ BEGIN
 
     SET @i = @i + 1
 END
-
-
-select * from TABLES;
-
-
-
-INSERT INTO BILL (checkin_date, table_id, status, total) VALUES
-('2024-02-01', 1, 0, 0),
-('2024-02-01', 2, 1, 0);
-
+--run 1 lne for 1 time, DONT UNCOMMENT 3 LINE in 1 time
+------------------------------------------------------------
 INSERT INTO DETAIL_CATEGORY (describe, name, category_id) VALUES
 (N'Các loại bánh ngọt, bánh mặn', N'Món Bánh', 2),
 (N'Các món hủ tiếu, bún....', N'Món nước', 2),
@@ -247,7 +190,7 @@ INSERT INTO DETAIL_CATEGORY (describe, name, category_id) VALUES
 (N'Trà sữa', N'Trà sữa', 4),
 (N'Nước cam ép, ....', N'Nước trái cây', 4);
 
-
+------------------------------------------------------------------------------------------------------------------------
 INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
 (1, 50000, N'Bánh mì pate', N'Bánh mì ăn kèm pate và rau sống', 1, 'food.png'),
 (2, 35000, N'Bún riêu', N'Bún nước dùng riêu cay nồng', 2, 'food1.png'),
@@ -271,24 +214,42 @@ INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
 (20, 32000, N'Nước lựu tươi', N'Nước trái cây lựu tươi ngon', 10, 'food19.png');
 
 
+------------------------------------------------------------------------------------------------------------------------
 -- Insert sample data into BILL_DETAIL table
--- Inserting data into BILL_DETAIL table
+DECLARE @today DATE = GETDATE();
+INSERT INTO BILL (checkin_date, table_id, status, total) VALUES
+('2024-02-01', 1, 0, 0),
+('2024-02-01', 2, 1, 0),
+('2024-02-02', 3, 0, 0),
+('2024-02-03', 4, 1, 0),
+('2024-02-04', 5, 0, 0),
+('2024-02-05', 6, 1, 0),
+('2024-02-06', 7, 0, 0),
+(@today, 1, 1, 0), 
+(@today, 2, 0, 0), 
+(@today, 3, 1, 0), 
+(@today, 4, 0, 0), 
+(@today, 1, 1, 0), 
+(@today, 2, 0, 0), 
+(@today, 3, 1, 0), 
+(@today, 4, 0, 0); 
+
+-- set some bill unpaid to test function
+UPDATE TABLES set status = 0;
+DECLARE @count int = 1
+while @count<=15
+BEGIN
+	UPDATE TABLES SET STATUS =1 where id=@count;
+	SET @count = @count +2;
+END
+------------------------------------------------------------------------------------------------------------------------
+
 INSERT INTO BILL_DETAIL (bill_id, item_id, quantity) 
 VALUES
 (1, 1, 2),  -- Bill 1 contains 2 Bánh mì pate
 (1, 3, 1),  -- Bill 1 contains 1 Cơm gà xối mỡ
 (2, 2, 3),  -- Bill 2 contains 3 Bún riêu
-(2, 5, 2);  -- Bill 2 contains 2 Lẩu canh chua cá
-
--- Inserting sample data into BILL table
-INSERT INTO BILL (checkin_date, table_id, status, total) 
-VALUES
-('2024-02-02', 3, 0, 0),
-('2024-02-03', 4, 1, 0);
--- Inserting sample data into BILL_DETAIL table
--- Inserting data into BILL_DETAIL table
-INSERT INTO BILL_DETAIL (bill_id, item_id, quantity) 
-VALUES
+(2, 5, 2),  -- Bill 2 contains 2 Lẩu canh chua cá
 (3, 7, 1),   -- Bill 3 contains 1 Trái cây hỗn hợp
 (3, 9, 2),   -- Bill 3 contains 2 Trà sữa matcha
 (4, 14, 3),  -- Bill 4 contains 3 Mực nước dừa xanh
@@ -298,37 +259,13 @@ VALUES
 (6, 11, 2),  -- Bill 6 contains 2 Phở bò
 (6, 14, 1),  -- Bill 6 contains 1 Mực nước dừa xanh
 (7, 19, 3),  -- Bill 7 contains 3 Trà sữa hòa quyện
-(7, 20, 2);  -- Bill 7 contains 2 Nước lựu tươi
-
--- Inserting sample data into BILL table
-INSERT INTO BILL (checkin_date, table_id, status, total) 
-VALUES
-('2024-02-04', 5, 0, 0),
-('2024-02-05', 6, 1, 0),
-('2024-02-06', 7, 0, 0);
-
--- Inserting sample data into BILL_DETAIL table
-INSERT INTO BILL_DETAIL (bill_id, item_id, quantity) 
-VALUES
+(7, 20, 2),  -- Bill 7 contains 2 Nước lựu tươi
 (8, 12, 2),  -- Bill 8 contains 2 Phở bò
 (8, 17, 1),  -- Bill 8 contains 1 Trái cây tươi
 (9, 8, 3),   -- Bill 9 contains 3 Pepsi
 (9, 15, 2),  -- Bill 9 contains 2 Sữa chua dâu
 (10, 4, 2),  -- Bill 10 contains 2 Sò điệp nướng mỡ hành
-(10, 10, 1);  -- Bill 10 contains 1 Nước cam ép
-
-DECLARE @today DATE = GETDATE();
-
-INSERT INTO BILL (checkin_date, table_id, status, total) 
-VALUES
-(@today, 1, 0, 0), -- Bill 12
-(@today, 2, 1, 0), -- Bill 13
-(@today, 3, 0, 0), -- Bill 14
-(@today, 4, 1, 0); -- Bill 15
-
--- Inserting sample data into BILL_DETAIL table
-INSERT INTO BILL_DETAIL (bill_id, item_id, quantity) 
-VALUES
+(10, 10, 1),  -- Bill 10 contains 1 Nước cam ép
 (11, 6, 3),   -- Bill 11 contains 3 Sữa chua đào
 (11, 13, 2),  -- Bill 11 contains 2 Cơm chiên hải sản
 (12, 2, 2),   -- Bill 12 contains 2 Bún riêu
@@ -339,13 +276,57 @@ VALUES
 (14, 16, 2),  -- Bill 14 contains 2 Sữa chua dâu
 (15, 14, 2),  -- Bill 15 contains 2 Mực nước dừa xanh
 (15, 18, 1);  -- Bill 15 contains 1 Trà sữa hòa quyện
+-- UPDATE TOTAL FOR BILL
+declare @c int = 1;
+while @c<=15
+begin 
+	EXEC CalculateBillTotal @b_id=@c;
+	set @c = @c +1;
+end
+------------------------------------------------------------------------------------------------------------------------
 
+--drop proc getBranchID;
+------------------------------------------------
+---------------------------------------------------------------------------------
+create proc getBranchID 
+	@user_id int
+AS
+BEGIN
+	select branch_id from ASSIGN where u_id=@user_id;
+END
 
-select * from BILL where status=1;
-select * from BILL_DETAIL;
--- update BILL set status=0;
+EXEC getBranchID @user_id=1;
+
+---------------------------------------------------------------------------------
+-- -----------procedure get table with branch id
+create proc getTableWithBranch
+	@branch_id int
+AS
+BEGIN
+	Select * from TABLES where branch_id=@branch_id;
+END
+GO
+
+EXEC getTableWithBranch @branch_id = 1;
+------------------------------------------------------------------
+---------------------------------------------------------------------------------
+-- get branch name
+CREATE PROCEDURE getBranchName
+    @user_id INT
+AS
+BEGIN
+    SELECT RESTAURANT_BRANCH.name  
+    FROM ASSIGN
+    JOIN RESTAURANT_BRANCH ON ASSIGN.branch_id = RESTAURANT_BRANCH.id
+    WHERE ASSIGN.u_id = @user_id;
+END
+GO
+
+EXEC getBranchName @user_id=8;
+
+---------------------------------------------------------------------------------
 ----------------------------------------------------------
-drop proc CalculateBillTotal;
+--drop proc CalculateBillTotal;
 CREATE PROC CalculateBillTotal 
 	@b_id int
 AS
@@ -357,20 +338,41 @@ BEGIN
 	Update BILL Set total=@total where id=@b_id;
 END
 GO
+---------------------------------------------------------------------------------------------------------------------------
+----proc PAY
+CREATE PROC PAY
+	@table_id int
+AS
+BEGIN
+	UPDATE TABLES SET status=0 WHERE id=@table_id;
+	UPDATE BILL SET status=1 WHERE table_id=@table_id;
+END
+GO
 
----------------------------------------
-declare @c int = 1;
-while @c<=25
-begin 
-	EXEC CalculateBillTotal @b_id=@c;
-	set @c = @c +1;
-end
----------------------------------------
+PAY @table_id=8;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------- pROC order
+CREATE PROC ORDER_BILL
+	@table_id int
+AS
+BEGIN
+	INSERT INTO BILL(checkin_date, table_id, total, status) 
+	VALUES(GETDATE(), @table_id, 0, 0);
+	UPDATE TABLES SET status = 1 where id=@table_id;
+END
+GO
+---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
+--------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
+--------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
+--------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
+
+
+
+
 SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=7;
 select * from BILL_DETAIL;
 EXEC CalculateBillTotal @b_id=7;
 ---------------------------------------
-
 select id 
 from BILL 
 where status=0 and table_id=1;
@@ -383,7 +385,9 @@ select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_i
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
-
+select * from BILL where status=1;
+select * from BILL_DETAIL;
+-- update BILL set status=0;
 select * from TABLES;
 select * from BILL;
 ----------------------------------------------------------
@@ -393,53 +397,12 @@ FROM TABLES
 JOIN BILL ON TABLES.id = BILL.table_id
 WHERE BILL.status = 0;
 
--- Proc to update status tables
-CREATE PROC updateTableStatus
-AS
-BEGIN
-	UPDATE TABLES SET status=1 FROM TABLES JOIN BILL ON TABLES.id = BILL.table_id WHERE BILL.status = 0;
-	UPDATE TABLES SET status=0 FROM TABLES JOIN BILL ON TABLES.id = BILL.table_id WHERE BILL.status = 1;
-END
-GO
 select * from BILL where status=0 and table_id=8;
 update BILL set status = 0;
+---------------------------
 
-updateTableStatus
-----------------------------
-----proc PAY
-CREATE PROC PAY
-	@table_id int
-AS
-BEGIN
-	UPDATE TABLES SET status=0 WHERE id=@table_id;
-	UPDATE BILL SET status=1 WHERE table_id=@table_id;
-END
-GO
-
-PAY @table_id=8;
-
------------ pROC order
-CREATE PROC ORDER_BILL
-	@table_id int
-AS
-BEGIN
-	INSERT INTO BILL(checkin_date, table_id, total, status) 
-	VALUES(GETDATE(), @table_id, 0, 0);
-	UPDATE TABLES SET status = 1 where id=@table_id;
-END
-GO
 
 ORDER_BILL @table_id =8;
-
-
-
-
-
-
-
-
-
-
 
 
 -------------------------------------
@@ -447,12 +410,7 @@ DELETE FROM BILL_DETAIL;
 DELETE FROM MENU_ITEM;
 DELETE FROM DETAIL_CATEGORY;
 DELETE FROM BILL;
-DELETE FROM CUSTOMER;
 DELETE FROM USERS;
 DELETE FROM RESTAURANT_BRANCH;
 DELETE FROM CATEGORY;
 DELETE FROM ROLE;
-
-SELECT * FROM MENU_ITEM;
-SELECT * FROM CATEGORY;
-SELECT MAX(id)+1 FROM MENU_ITEM;
