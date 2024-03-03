@@ -345,7 +345,7 @@ VALUES
 
 select * from BILL where status=1;
 select * from BILL_DETAIL;
-
+-- update BILL set status=0;
 ----------------------------------------------------------
 drop proc CalculateBillTotal;
 CREATE PROC CalculateBillTotal 
@@ -354,7 +354,7 @@ AS
 BEGIN
 	DECLARE @total int;
 
-	SELECT @total = sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=@b_id;
+	SELECT @total = sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=@b_id;
 	
 	Update BILL Set total=@total where id=@b_id;
 END
@@ -368,8 +368,8 @@ begin
 	set @c = @c +1;
 end
 ---------------------------------------
-SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=7;
-select bill_id from BILL_DETAIL;
+SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=7;
+select * from BILL_DETAIL;
 EXEC CalculateBillTotal @b_id=7;
 ---------------------------------------
 
@@ -381,7 +381,7 @@ select * from BILL_DETAIL where bill_id=1;
 ----------------------------------------------------------
 select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
 ------------------------
-select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=1;
+select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=1;
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
@@ -403,7 +403,7 @@ BEGIN
 	UPDATE TABLES SET status=0 FROM TABLES JOIN BILL ON TABLES.id = BILL.table_id WHERE BILL.status = 1;
 END
 GO
-
+select * from BILL where status=0 and table_id=8;
 update BILL set status = 0;
 
 updateTableStatus
@@ -418,7 +418,7 @@ BEGIN
 END
 GO
 
-PAY @table_id=10;
+PAY @table_id=8;
 
 ----------- pROC order
 CREATE PROC ORDER_BILL
@@ -431,7 +431,7 @@ BEGIN
 END
 GO
 
-ORDER_BILL @table_id =10;
+ORDER_BILL @table_id =8;
 
 
 
