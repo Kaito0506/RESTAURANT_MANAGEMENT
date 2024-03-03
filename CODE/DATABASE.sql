@@ -346,7 +346,7 @@ VALUES
 select * from BILL where status=1;
 select * from BILL_DETAIL;
 
-
+----------------------------------------------------------
 drop proc CalculateBillTotal;
 CREATE PROC CalculateBillTotal 
 	@b_id int
@@ -362,14 +362,15 @@ GO
 
 ---------------------------------------
 declare @c int = 1;
-while @c<=15
+while @c<=25
 begin 
 	EXEC CalculateBillTotal @b_id=@c;
 	set @c = @c +1;
 end
 ---------------------------------------
-
-EXEC CalculateBillTotal @b_id=1;
+SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=7;
+select bill_id from BILL_DETAIL;
+EXEC CalculateBillTotal @b_id=7;
 ---------------------------------------
 
 select id 

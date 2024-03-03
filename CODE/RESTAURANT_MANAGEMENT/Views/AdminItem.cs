@@ -65,6 +65,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
         }
 
+
+
         public void refreshItem(object sender, int id)
         {
             flowLayoutPanel.Controls.Clear();
