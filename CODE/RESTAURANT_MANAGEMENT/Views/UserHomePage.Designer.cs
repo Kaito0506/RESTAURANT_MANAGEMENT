@@ -38,12 +38,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.txtFindName = new System.Windows.Forms.TextBox();
             this.panelSelectedTbale = new System.Windows.Forms.Panel();
             this.txtSelectedTable = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,17 +57,21 @@
             this.btnOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtFindName = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelBillItems.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panelSelectedTbale.SuspendLayout();
             this.panelOperations.SuspendLayout();
             this.panelBillIfor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBranch
@@ -180,68 +178,6 @@
             this.columnHeader4.Text = "Price";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 150;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.flpItems);
-            this.panel4.Controls.Add(this.panel2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1260, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(596, 950);
-            this.panel4.TabIndex = 4;
-            // 
-            // flpItems
-            // 
-            this.flpItems.AutoScroll = true;
-            this.flpItems.Location = new System.Drawing.Point(7, 108);
-            this.flpItems.Name = "flpItems";
-            this.flpItems.Size = new System.Drawing.Size(401, 728);
-            this.flpItems.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.cbCategory);
-            this.panel2.Controls.Add(this.btnFind);
-            this.panel2.Controls.Add(this.txtFindName);
-            this.panel2.Location = new System.Drawing.Point(5, 6);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 97);
-            this.panel2.TabIndex = 6;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(0, 2);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(403, 34);
-            this.cbCategory.TabIndex = 0;
-            this.cbCategory.UseWaitCursor = true;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
-            // 
-            // btnFind
-            // 
-            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
-            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFind.Location = new System.Drawing.Point(359, 50);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(44, 34);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.UseVisualStyleBackColor = true;
-            // 
-            // txtFindName
-            // 
-            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindName.Location = new System.Drawing.Point(3, 54);
-            this.txtFindName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtFindName.Name = "txtFindName";
-            this.txtFindName.Size = new System.Drawing.Size(351, 32);
-            this.txtFindName.TabIndex = 3;
             // 
             // panelSelectedTbale
             // 
@@ -454,18 +390,67 @@
             this.flpTables.Size = new System.Drawing.Size(472, 708);
             this.flpTables.TabIndex = 8;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cbCategory);
+            this.panel2.Controls.Add(this.btnFind);
+            this.panel2.Controls.Add(this.txtFindName);
+            this.panel2.Location = new System.Drawing.Point(1263, 11);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(403, 97);
+            this.panel2.TabIndex = 6;
+            // 
+            // txtFindName
+            // 
+            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindName.Location = new System.Drawing.Point(3, 54);
+            this.txtFindName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFindName.Name = "txtFindName";
+            this.txtFindName.Size = new System.Drawing.Size(351, 32);
+            this.txtFindName.TabIndex = 3;
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
+            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFind.Location = new System.Drawing.Point(359, 50);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(44, 34);
+            this.btnFind.TabIndex = 0;
+            this.btnFind.UseVisualStyleBackColor = true;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(0, 2);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(403, 34);
+            this.cbCategory.TabIndex = 0;
+            this.cbCategory.UseWaitCursor = true;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
+            // flpItems
+            // 
+            this.flpItems.AutoScroll = true;
+            this.flpItems.Location = new System.Drawing.Point(1266, 113);
+            this.flpItems.Name = "flpItems";
+            this.flpItems.Size = new System.Drawing.Size(401, 728);
+            this.flpItems.TabIndex = 7;
+            // 
             // UserHomePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoScroll = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1703, 829);
+            this.ClientSize = new System.Drawing.Size(1683, 725);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.flpItems);
             this.Controls.Add(this.flpTables);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelMethod);
             this.Controls.Add(this.panelBranch);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserHomePage";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -477,9 +462,6 @@
             this.panelBranch.PerformLayout();
             this.panelMethod.ResumeLayout(false);
             this.panelBillItems.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panelSelectedTbale.ResumeLayout(false);
             this.panelSelectedTbale.PerformLayout();
             this.panelOperations.ResumeLayout(false);
@@ -489,6 +471,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -499,12 +483,10 @@
         private System.Windows.Forms.Panel panelMethod;
         private System.Windows.Forms.Panel panelBillItems;
         private System.Windows.Forms.Panel panelSelectedTbale;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelOperations;
         private System.Windows.Forms.Panel panelBillIfor;
         private System.Windows.Forms.Label lbBranchName;
         private System.Windows.Forms.Button btnAway;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnInside;
         private System.Windows.Forms.TextBox txtSelectedTable;
         private System.Windows.Forms.Label label2;
@@ -518,9 +500,6 @@
         private System.Windows.Forms.Button btnMerge;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cbTables;
-        private System.Windows.Forms.ComboBox cbCategory;
-        private System.Windows.Forms.TextBox txtFindName;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.CheckBox ckbPrint;
         private System.Windows.Forms.ListView lstItems;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -530,6 +509,10 @@
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flpTables;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txtFindName;
         private System.Windows.Forms.FlowLayoutPanel flpItems;
     }
 }
