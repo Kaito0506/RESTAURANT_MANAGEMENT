@@ -276,6 +276,22 @@ VALUES
 (14, 16, 2),  -- Bill 14 contains 2 Sữa chua dâu
 (15, 14, 2),  -- Bill 15 contains 2 Mực nước dừa xanh
 (15, 18, 1);  -- Bill 15 contains 1 Trà sữa hòa quyện
+
+----------------------------------------------------------
+--drop proc CalculateBillTotal;
+CREATE PROC CalculateBillTotal 
+	@b_id int
+AS
+BEGIN
+	DECLARE @total int;
+
+	SELECT @total = sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=@b_id;
+	
+	Update BILL Set total=@total where id=@b_id;
+END
+GO
+----------------------------------------------------------
+
 -- UPDATE TOTAL FOR BILL
 declare @c int = 1;
 while @c<=15
@@ -324,20 +340,7 @@ GO
 
 EXEC getBranchName @user_id=8;
 
----------------------------------------------------------------------------------
-----------------------------------------------------------
---drop proc CalculateBillTotal;
-CREATE PROC CalculateBillTotal 
-	@b_id int
-AS
-BEGIN
-	DECLARE @total int;
 
-	SELECT @total = sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=@b_id;
-	
-	Update BILL Set total=@total where id=@b_id;
-END
-GO
 ---------------------------------------------------------------------------------------------------------------------------
 ----proc PAY
 CREATE PROC PAY
