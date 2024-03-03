@@ -58,9 +58,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtFindName = new System.Windows.Forms.TextBox();
-            this.btnFind = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
@@ -90,7 +90,7 @@
             this.lbBranchName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBranchName.Location = new System.Drawing.Point(151, 12);
             this.lbBranchName.Name = "lbBranchName";
-            this.lbBranchName.Size = new System.Drawing.Size(159, 26);
+            this.lbBranchName.Size = new System.Drawing.Size(132, 22);
             this.lbBranchName.TabIndex = 0;
             this.lbBranchName.Text = "Branch_name";
             // 
@@ -134,7 +134,7 @@
             this.panelBillItems.Location = new System.Drawing.Point(16, 60);
             this.panelBillItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBillItems.Name = "panelBillItems";
-            this.panelBillItems.Size = new System.Drawing.Size(741, 458);
+            this.panelBillItems.Size = new System.Drawing.Size(622, 378);
             this.panelBillItems.TabIndex = 3;
             // 
             // lstItems
@@ -152,7 +152,7 @@
             this.lstItems.Location = new System.Drawing.Point(0, 0);
             this.lstItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstItems.Name = "lstItems";
-            this.lstItems.Size = new System.Drawing.Size(741, 458);
+            this.lstItems.Size = new System.Drawing.Size(622, 378);
             this.lstItems.TabIndex = 0;
             this.lstItems.UseCompatibleStateImageBehavior = false;
             this.lstItems.View = System.Windows.Forms.View.Details;
@@ -186,7 +186,7 @@
             this.panelSelectedTbale.Location = new System.Drawing.Point(16, 17);
             this.panelSelectedTbale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSelectedTbale.Name = "panelSelectedTbale";
-            this.panelSelectedTbale.Size = new System.Drawing.Size(755, 41);
+            this.panelSelectedTbale.Size = new System.Drawing.Size(622, 41);
             this.panelSelectedTbale.TabIndex = 2;
             // 
             // txtSelectedTable
@@ -196,7 +196,7 @@
             this.txtSelectedTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSelectedTable.Name = "txtSelectedTable";
             this.txtSelectedTable.ReadOnly = true;
-            this.txtSelectedTable.Size = new System.Drawing.Size(323, 32);
+            this.txtSelectedTable.Size = new System.Drawing.Size(323, 27);
             this.txtSelectedTable.TabIndex = 2;
             // 
             // label2
@@ -205,7 +205,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 26);
+            this.label2.Size = new System.Drawing.Size(138, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Selected table";
             // 
@@ -213,10 +213,10 @@
             // 
             this.panelOperations.Controls.Add(this.cbTables);
             this.panelOperations.Controls.Add(this.btnMerge);
-            this.panelOperations.Location = new System.Drawing.Point(16, 733);
+            this.panelOperations.Location = new System.Drawing.Point(13, 632);
             this.panelOperations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelOperations.Name = "panelOperations";
-            this.panelOperations.Size = new System.Drawing.Size(745, 90);
+            this.panelOperations.Size = new System.Drawing.Size(622, 90);
             this.panelOperations.TabIndex = 1;
             // 
             // cbTables
@@ -226,7 +226,7 @@
             this.cbTables.Location = new System.Drawing.Point(191, 18);
             this.cbTables.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTables.Name = "cbTables";
-            this.cbTables.Size = new System.Drawing.Size(177, 37);
+            this.cbTables.Size = new System.Drawing.Size(177, 30);
             this.cbTables.TabIndex = 2;
             this.cbTables.UseWaitCursor = true;
             // 
@@ -250,10 +250,10 @@
             this.panelBillIfor.Controls.Add(this.label6);
             this.panelBillIfor.Controls.Add(this.label5);
             this.panelBillIfor.Controls.Add(this.label4);
-            this.panelBillIfor.Location = new System.Drawing.Point(15, 522);
+            this.panelBillIfor.Location = new System.Drawing.Point(16, 442);
             this.panelBillIfor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBillIfor.Name = "panelBillIfor";
-            this.panelBillIfor.Size = new System.Drawing.Size(515, 207);
+            this.panelBillIfor.Size = new System.Drawing.Size(381, 186);
             this.panelBillIfor.TabIndex = 2;
             // 
             // txtTotal
@@ -263,7 +263,7 @@
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(168, 32);
+            this.txtTotal.Size = new System.Drawing.Size(168, 27);
             this.txtTotal.TabIndex = 9;
             // 
             // txtDiscount
@@ -277,7 +277,7 @@
             this.txtDiscount.Location = new System.Drawing.Point(191, 63);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(168, 32);
+            this.txtDiscount.Size = new System.Drawing.Size(168, 27);
             this.txtDiscount.TabIndex = 8;
             this.txtDiscount.ValueChanged += new System.EventHandler(this.txtDiscount_ValueChanged);
             // 
@@ -288,7 +288,7 @@
             this.txtSum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSum.Name = "txtSum";
             this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(168, 32);
+            this.txtSum.Size = new System.Drawing.Size(168, 27);
             this.txtSum.TabIndex = 7;
             // 
             // label6
@@ -298,7 +298,7 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(20, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 26);
+            this.label6.Size = new System.Drawing.Size(56, 22);
             this.label6.TabIndex = 6;
             this.label6.Text = "Total";
             // 
@@ -308,7 +308,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(20, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 26);
+            this.label5.Size = new System.Drawing.Size(80, 22);
             this.label5.TabIndex = 5;
             this.label5.Text = "Discount";
             // 
@@ -318,7 +318,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 26);
+            this.label4.Size = new System.Drawing.Size(88, 22);
             this.label4.TabIndex = 4;
             this.label4.Text = "Sub Total";
             // 
@@ -329,7 +329,7 @@
             this.ckbPrint.Location = new System.Drawing.Point(76, 162);
             this.ckbPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckbPrint.Name = "ckbPrint";
-            this.ckbPrint.Size = new System.Drawing.Size(101, 29);
+            this.ckbPrint.Size = new System.Drawing.Size(82, 24);
             this.ckbPrint.TabIndex = 10;
             this.ckbPrint.Text = "Print bill";
             this.ckbPrint.UseVisualStyleBackColor = true;
@@ -351,10 +351,10 @@
             this.panel3.Controls.Add(this.btnOrder);
             this.panel3.Controls.Add(this.ckbPrint);
             this.panel3.Controls.Add(this.btnPay);
-            this.panel3.Location = new System.Drawing.Point(536, 522);
+            this.panel3.Location = new System.Drawing.Point(403, 442);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(235, 207);
+            this.panel3.Size = new System.Drawing.Size(235, 187);
             this.panel3.TabIndex = 6;
             // 
             // btnOrder
@@ -376,10 +376,10 @@
             this.panel1.Controls.Add(this.panelSelectedTbale);
             this.panel1.Controls.Add(this.panelBillIfor);
             this.panel1.Controls.Add(this.panelBillItems);
-            this.panel1.Location = new System.Drawing.Point(500, 13);
+            this.panel1.Location = new System.Drawing.Point(516, 12);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(760, 937);
+            this.panel1.Size = new System.Drawing.Size(634, 735);
             this.panel1.TabIndex = 7;
             // 
             // flpTables
@@ -387,7 +387,7 @@
             this.flpTables.Location = new System.Drawing.Point(15, 128);
             this.flpTables.Margin = new System.Windows.Forms.Padding(4);
             this.flpTables.Name = "flpTables";
-            this.flpTables.Size = new System.Drawing.Size(472, 708);
+            this.flpTables.Size = new System.Drawing.Size(472, 619);
             this.flpTables.TabIndex = 8;
             // 
             // panel2
@@ -395,31 +395,11 @@
             this.panel2.Controls.Add(this.cbCategory);
             this.panel2.Controls.Add(this.btnFind);
             this.panel2.Controls.Add(this.txtFindName);
-            this.panel2.Location = new System.Drawing.Point(1263, 11);
+            this.panel2.Location = new System.Drawing.Point(1166, 18);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 97);
+            this.panel2.Size = new System.Drawing.Size(261, 97);
             this.panel2.TabIndex = 6;
-            // 
-            // txtFindName
-            // 
-            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindName.Location = new System.Drawing.Point(3, 54);
-            this.txtFindName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtFindName.Name = "txtFindName";
-            this.txtFindName.Size = new System.Drawing.Size(351, 32);
-            this.txtFindName.TabIndex = 3;
-            // 
-            // btnFind
-            // 
-            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
-            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFind.Location = new System.Drawing.Point(359, 50);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(44, 34);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.UseVisualStyleBackColor = true;
             // 
             // cbCategory
             // 
@@ -428,23 +408,43 @@
             this.cbCategory.Location = new System.Drawing.Point(0, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(403, 34);
+            this.cbCategory.Size = new System.Drawing.Size(258, 30);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.UseWaitCursor = true;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
+            // btnFind
+            // 
+            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
+            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFind.Location = new System.Drawing.Point(211, 53);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(44, 34);
+            this.btnFind.TabIndex = 0;
+            this.btnFind.UseVisualStyleBackColor = true;
+            // 
+            // txtFindName
+            // 
+            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindName.Location = new System.Drawing.Point(3, 54);
+            this.txtFindName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFindName.Name = "txtFindName";
+            this.txtFindName.Size = new System.Drawing.Size(202, 27);
+            this.txtFindName.TabIndex = 3;
+            // 
             // flpItems
             // 
             this.flpItems.AutoScroll = true;
-            this.flpItems.Location = new System.Drawing.Point(1266, 113);
+            this.flpItems.Location = new System.Drawing.Point(1157, 114);
             this.flpItems.Name = "flpItems";
-            this.flpItems.Size = new System.Drawing.Size(401, 728);
+            this.flpItems.Size = new System.Drawing.Size(270, 633);
             this.flpItems.TabIndex = 7;
             // 
             // UserHomePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1683, 725);
+            this.ClientSize = new System.Drawing.Size(1455, 774);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flpItems);
             this.Controls.Add(this.flpTables);
@@ -457,6 +457,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserHomePage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.UserHomePage_Load);
             this.panelBranch.ResumeLayout(false);
             this.panelBranch.PerformLayout();
