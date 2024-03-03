@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
@@ -19,7 +20,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
-
+        List<MenuItemModel.MenuItem> filteredItems;
 
         public UserHomePage()
         {
@@ -29,6 +30,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.Orange;
             flpTables.Enabled = true;
             lbBranchName.Text = loadBranchName();
+            LoadMenuItems();
 
         }
 
@@ -77,7 +79,45 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
         }
 
+        private void LoadMenuItems()
+        {
+            //flpItems.Controls.Clear();
+            List<BillItem> listBillItems = new List<BillItem>();
+            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+            //MessageBox.Show(filteredItems[0].mi_name);
+            foreach(MenuItemModel.MenuItem item in menuItems)
+            {
+                BillItem i = new BillItem();
+                i.Id = item.mi_id;
+                i.Name = item.mi_name;
+                i.Price = (float)item.mi_price;
+                i.Image = GetImage(item.mi_image);
+                listBillItems.Add(i);
+                // add click handler
+                //MessageBox.Show(i.Name);
+                flpItems.Controls.Add(i);
+            }
+        }
 
+        private Image GetImage(string imageName)
+        {
+            try
+            {
+                string fullPath = Path.GetFullPath(Path.Combine("..", "..", "images", "foods", imageName));
+
+                if (File.Exists(fullPath))
+                {
+                    return Image.FromFile(fullPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            string defaultImagePath = Path.GetFullPath(Path.Combine("..", "..", "images", "foods", "food.png"));
+            return Image.FromFile(defaultImagePath);
+        }
 
         private void showSelectedTable (String tablename)
         {
@@ -158,7 +198,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             flpTables.Controls.Clear(); 
             LoadTables ();
         }
-
 
 
         private void Btn_Click(object sender, EventArgs e)
@@ -247,6 +286,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             LoadTables();
             btnPay.Enabled = true;
             btnOrder.Enabled = false;
+        }
+
+        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
