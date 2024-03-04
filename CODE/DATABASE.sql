@@ -393,6 +393,9 @@ select * from BILL_DETAIL;
 -- update BILL set status=0;
 select * from TABLES;
 select * from BILL;
+SELECT * FROM CATEGORY c JOIN DETAIL_CATEGORY dc ON c.id = dc.category_id;
+SELECT dc.id, dc.name as dc_name, dc.describe as dc_desc, dc.category_id, c.name as c_name, c.describe as c_desc FROM DETAIL_CATEGORY dc JOIN CATEGORY c on dc.category_id = c.id WHERE dc.category_id = 2;
+SELECT * FROM DETAIL_CATEGORY;
 ----------------------------------------------------------
 UPDATE TABLES
 SET status = 1
