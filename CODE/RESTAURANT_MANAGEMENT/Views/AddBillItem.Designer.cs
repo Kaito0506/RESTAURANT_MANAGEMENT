@@ -35,7 +35,9 @@
             this.txtItemPrice = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ItemQuantity = new System.Windows.Forms.NumericUpDown();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -45,11 +47,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             // 
             this.txtItemName.AutoSize = true;
             this.txtItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemName.Location = new System.Drawing.Point(276, 18);
+            this.txtItemName.Location = new System.Drawing.Point(273, 18);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(99, 26);
             this.txtItemName.TabIndex = 1;
@@ -96,7 +97,7 @@
             // 
             this.txtItemPrice.AutoSize = true;
             this.txtItemPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemPrice.Location = new System.Drawing.Point(276, 18);
+            this.txtItemPrice.Location = new System.Drawing.Point(273, 18);
             this.txtItemPrice.Name = "txtItemPrice";
             this.txtItemPrice.Size = new System.Drawing.Size(92, 26);
             this.txtItemPrice.TabIndex = 1;
@@ -114,8 +115,9 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.ItemQuantity);
+            this.panel3.Controls.Add(this.btnPlus);
+            this.panel3.Controls.Add(this.btnMinus);
+            this.panel3.Controls.Add(this.nudQuantity);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(27, 165);
@@ -123,14 +125,45 @@
             this.panel3.Size = new System.Drawing.Size(511, 62);
             this.panel3.TabIndex = 3;
             // 
-            // ItemQuantity
+            // btnPlus
             // 
-            this.ItemQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemQuantity.Location = new System.Drawing.Point(281, 18);
-            this.ItemQuantity.Name = "ItemQuantity";
-            this.ItemQuantity.Size = new System.Drawing.Size(111, 32);
-            this.ItemQuantity.TabIndex = 2;
-            this.ItemQuantity.Value = new decimal(new int[] {
+            this.btnPlus.BackColor = System.Drawing.Color.White;
+            this.btnPlus.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.plus;
+            this.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPlus.Location = new System.Drawing.Point(408, 18);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(35, 32);
+            this.btnPlus.TabIndex = 4;
+            this.btnPlus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPlus.UseVisualStyleBackColor = false;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.BackColor = System.Drawing.Color.White;
+            this.btnMinus.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.minus;
+            this.btnMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMinus.Location = new System.Drawing.Point(240, 16);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(30, 32);
+            this.btnMinus.TabIndex = 3;
+            this.btnMinus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinus.UseVisualStyleBackColor = false;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // nudQuantity
+            // 
+            this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudQuantity.Location = new System.Drawing.Point(281, 18);
+            this.nudQuantity.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.Size = new System.Drawing.Size(111, 32);
+            this.nudQuantity.TabIndex = 2;
+            this.nudQuantity.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -218,7 +251,7 @@
             // btnAddItem
             // 
             this.btnAddItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddItem.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.addButton;
+            this.btnAddItem.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.check;
             this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddItem.Location = new System.Drawing.Point(303, 0);
@@ -227,20 +260,11 @@
             this.btnAddItem.TabIndex = 0;
             this.btnAddItem.UseVisualStyleBackColor = false;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(399, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // AddBillItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(535, 506);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -256,7 +280,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -273,7 +297,7 @@
         private System.Windows.Forms.Label txtItemPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown ItemQuantity;
+        private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
@@ -283,6 +307,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMinus;
     }
 }

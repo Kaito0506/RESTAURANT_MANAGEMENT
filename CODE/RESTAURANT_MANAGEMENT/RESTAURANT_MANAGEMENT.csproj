@@ -1340,6 +1340,7 @@
     <Content Include="images\btnAdd.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\categ.png" />
+    <None Include="images\check.jpg" />
     <Content Include="images\customer.png" />
     <Content Include="images\dashboard.png" />
     <Content Include="images\delete.png" />
@@ -1350,7 +1351,9 @@
     <Content Include="images\food.jpg" />
     <Content Include="images\foods\food.png" />
     <Content Include="images\foods\food1.png" />
+    <None Include="images\minus.png" />
     <Content Include="images\pass.png" />
+    <None Include="images\plus.png" />
     <Content Include="images\pw.png" />
     <Content Include="images\rb.png" />
     <Content Include="images\res.jpg" />

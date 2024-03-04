@@ -393,6 +393,7 @@ select * from BILL_DETAIL;
 -- update BILL set status=0;
 select * from TABLES;
 select * from BILL;
+SELECT * FROM MENU_ITEM WHERE id = 1;
 ----------------------------------------------------------
 UPDATE TABLES
 SET status = 1

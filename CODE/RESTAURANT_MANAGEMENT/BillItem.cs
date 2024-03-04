@@ -44,7 +44,7 @@ namespace RESTAURANT_MANAGEMENT
 
         private void ShowDetailDialog()
         {
-            AddBillItem a = new AddBillItem();
+            AddBillItem a = new AddBillItem(_id);
             a.ShowDialog();
         }
 

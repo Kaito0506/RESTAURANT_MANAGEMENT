@@ -407,7 +407,6 @@
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(258, 34);
             this.cbCategory.TabIndex = 0;
-            this.cbCategory.UseWaitCursor = true;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // txtFindName

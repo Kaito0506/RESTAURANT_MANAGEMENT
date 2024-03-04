@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -111,5 +112,19 @@ class MenuItemController {
             Console.WriteLine(e);
             return -1;
         }
+    }
+
+    public static MenuItemModel.MenuItem getItem(int id)
+    {
+        DataTable result = Database.ExecuteQuery("SELECT * FROM MENU_ITEM WHERE id =" + id.ToString());
+        if (result.Rows.Count > 0)
+        {
+            foreach (DataRow row in result.Rows)
+            {
+                MenuItemModel.MenuItem m = new MenuItemModel.MenuItem(row);
+                return m;
+            }
+        }
+        return null; // Return null if no item found
     }
 }
