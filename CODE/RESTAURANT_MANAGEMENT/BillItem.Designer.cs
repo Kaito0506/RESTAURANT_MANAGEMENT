@@ -74,8 +74,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lbItemName);
             this.panel1.Controls.Add(this.lbPrice);
+            this.panel1.Controls.Add(this.lbItemName);
             this.panel1.Location = new System.Drawing.Point(108, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";

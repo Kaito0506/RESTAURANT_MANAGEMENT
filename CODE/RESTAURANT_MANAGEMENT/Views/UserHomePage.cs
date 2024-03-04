@@ -11,14 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
+using System.Xml.Serialization;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class UserHomePage : Form
     {
-        int selected_table;
+        public static int selectedTable;
         private Button previousButton = null;
         private CultureInfo culture = new CultureInfo("vi-VN");
+        public static int selectedItemId;
 
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
@@ -97,8 +99,9 @@ namespace RESTAURANT_MANAGEMENT.Views
                 i.Image = GetImage(item.mi_image);
                 listBillItems.Add(i);
                 // add click handler
-
+                i.Click += lstViewItem_Click;
                 flpItems.Controls.Add(i);
+
             }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,6 +281,11 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
+        private void lstViewItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("item click");
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateUIMenuItem();
@@ -296,7 +304,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             flpTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
             txtSelectedTable.Text = "Take away";
-            selected_table = -1;
+            selectedTable = -1;
             flpTables.Controls.Clear(); 
             LoadTables ();
         }
@@ -321,14 +329,14 @@ namespace RESTAURANT_MANAGEMENT.Views
                 showSelectedTable(table_name);
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 5;
-                selected_table = table.id;
+                selectedTable = table.id;
             }
 
             // Update previousButton to the currently clicked button
             previousButton = btn;
 
             // Enable or disable buttons based on bill status
-            BillModel.Bill b = BillController.GetBill(selected_table);
+            BillModel.Bill b = BillController.GetBill(selectedTable);
             if (b != null)
             {
                 btnOrder.Enabled = false;
@@ -352,7 +360,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             int discount = (int)txtDiscount.Value;
 
 
-            int billId = BillController.GetBillid(selected_table);
+            int billId = BillController.GetBillid(selectedTable);
             UpdateBill(billId, discount);
             
         }
@@ -361,12 +369,12 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             // clear tables
             flpTables.Controls.Clear();
-            BillController.PayBill(selected_table);
+            BillController.PayBill(selectedTable);
             // reload tables
             LoadTables();
             // update and show bill
             lstItems.Items.Clear();
-            showBill(selected_table);
+            showBill(selectedTable);
 
             btnPay.Enabled=false;
             btnOrder.Enabled=true;
@@ -377,8 +385,8 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             // clear tables
             flpTables.Controls.Clear();
-            BillModel.Bill b = BillController.GetBill(selected_table);
-            BillController.OrderBill(selected_table);
+            BillModel.Bill b = BillController.GetBill(selectedTable);
+            BillController.OrderBill(selectedTable);
 
             // reload tables
             LoadTables();
