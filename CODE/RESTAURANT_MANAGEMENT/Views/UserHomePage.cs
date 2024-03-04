@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Globalization;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
@@ -17,6 +18,7 @@ namespace RESTAURANT_MANAGEMENT.Views
     {
         int selected_table;
         private Button previousButton = null;
+        private CultureInfo culture = new CultureInfo("vi-VN");
 
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
@@ -31,10 +33,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             flpTables.Enabled = true;
             lbBranchName.Text = loadBranchName();
             LoadMenuItems();
+            //UpdateUIMenuItem();
 
         }
 
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void LoadTables()
         {
             List<TableModel.Table> listTable = TableController.GetTableList();
@@ -63,11 +66,11 @@ namespace RESTAURANT_MANAGEMENT.Views
 
             }
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void LoadDetailCategories()
         {
             cbCategory.Items.Clear();
-            cbCategory.Items.Add("All");
+            cbCategory.Items.Add("Tất cả");
             cbCategory.SelectedIndex = 0;
 
             if(detailCategories.Count > 0)
@@ -78,12 +81,12 @@ namespace RESTAURANT_MANAGEMENT.Views
                 }
             }
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void LoadMenuItems()
         {
-            //flpItems.Controls.Clear();
+            flpItems.Controls.Clear();
             List<BillItem> listBillItems = new List<BillItem>();
-            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+            //filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
             //MessageBox.Show(filteredItems[0].mi_name);
             foreach(MenuItemModel.MenuItem item in menuItems)
             {
@@ -94,11 +97,11 @@ namespace RESTAURANT_MANAGEMENT.Views
                 i.Image = GetImage(item.mi_image);
                 listBillItems.Add(i);
                 // add click handler
-                //MessageBox.Show(i.Name);
+
                 flpItems.Controls.Add(i);
             }
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private Image GetImage(string imageName)
         {
             try
@@ -118,18 +121,20 @@ namespace RESTAURANT_MANAGEMENT.Views
             string defaultImagePath = Path.GetFullPath(Path.Combine("..", "..", "images", "foods", "food.png"));
             return Image.FromFile(defaultImagePath);
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void showSelectedTable (String tablename)
         {
             txtSelectedTable.Text = tablename;
             txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void showBill(int table_id)
         {
             lstItems.Items.Clear();
             int id = BillController.GetBillid(table_id);
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
+
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -137,14 +142,18 @@ namespace RESTAURANT_MANAGEMENT.Views
                 ListViewItem lstItem = new ListViewItem(i.ToString());
                 lstItem.SubItems.Add(item.name.ToString());
                 lstItem.SubItems.Add(item.quantity.ToString());
-                lstItem.SubItems.Add(item.price.ToString());
+                lstItem.SubItems.Add(((int)item.price).ToString("C0", culture));
                 i++;
                 lstItems.Items.Add(lstItem);
+               
             }
 
 
         }
 
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void UpdateBill(int billId, int discount)
         {
             if (billId != -1)
@@ -154,9 +163,9 @@ namespace RESTAURANT_MANAGEMENT.Views
                 if (bill != null)
                 {
                     float total = bill.total;
-                    txtSum.Text = total.ToString();
+                    txtSum.Text = total.ToString("C0", culture);
                     total *= (1 - (discount / 100.0f)); // Apply discount
-                    txtTotal.Text = total.ToString();
+                    txtTotal.Text = total.ToString("C0", culture);
                 }
             }
             else
@@ -165,29 +174,122 @@ namespace RESTAURANT_MANAGEMENT.Views
                 txtSum.Text = "0";
             }
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        private void ApplyFilter()
+        {
+           
+            string category = cbCategory.Text.ToLower();
+            string searchText = txtFindName.Text.ToLower();
+            //MessageBox.Show(category);
+            if (category == "tất cả" && string.IsNullOrEmpty(searchText))
+            {
+                filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+                return;
+            }
+            else
+            {
+                filteredItems = new List<MenuItemModel.MenuItem>();
+                foreach (MenuItemModel.MenuItem item in menuItems)
+                {
+                    if (category == "tất cả")
+                    {
+                        if (RemoveVietnameseSigns(item.mi_name.ToLower()).Contains(RemoveVietnameseSigns(searchText)))
+                        {
+                            filteredItems.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        if (item.ca_name.ToLower() == category && string.IsNullOrEmpty(searchText))
+                        {
+                            filteredItems.Add(item);
+                        }
+                        else if (item.ca_name.ToLower() == category && RemoveVietnameseSigns(item.mi_name.ToLower()).Contains(RemoveVietnameseSigns(searchText)))
+                        {
+                            filteredItems.Add(item);
+                        }
+                    }
+                }
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        private string RemoveVietnameseSigns(string str)
+        {
+            string[] vietnameseSigns = new string[]
+            {
+        "aAeEoOuUiIdDyY",
+        "áàạảãâấầậẩẫăắằặẳẵ",
+        "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+        "éèẹẻẽêếềệểễ",
+        "ÉÈẸẺẼÊẾỀỆỂỄ",
+        "óòọỏõôốồộổỗơớờợởỡ",
+        "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+        "úùụủũưứừựửữ",
+        "ÚÙỤỦŨƯỨỪỰỬỮ",
+        "íìịỉĩ",
+        "ÍÌỊỈĨ",
+        "đ",
+        "Đ",
+        "ýỳỵỷỹ",
+        "ÝỲỴỶỸ"
+            };
 
+            StringBuilder sb = new StringBuilder(str);
+
+            for (int i = 1; i < vietnameseSigns.Length; i++)
+            {
+                for (int j = 0; j < vietnameseSigns[i].Length; j++)
+                {
+                    sb.Replace(vietnameseSigns[i][j], vietnameseSigns[0][i - 1]);
+                }
+            }
+
+            return sb.ToString();
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        private void UpdateUIMenuItem()
+        {
+            ApplyFilter();
+            if (filteredItems!=null)
+            {
+                flpItems.Controls.Clear();
+                foreach (MenuItemModel.MenuItem item in filteredItems)
+                {
+                    BillItem i = new BillItem();
+                    i.Id = item.mi_id;
+                    i.Name = item.mi_name;
+                    i.Price = (float)item.mi_price;
+                    i.Image = GetImage(item.mi_image);
+                    flpItems.Controls.Add(i);
+                }
+            }
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private String loadBranchName()
         {
             String br_name = LoginController.GetUserBranchName(LoginController.GetUser().u_id);
             return br_name;
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnMerge_Click(object sender, EventArgs e)
         {
 
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            UpdateUIMenuItem();
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnInside_Click(object sender, EventArgs e)
         {
             btnInside.BackColor = Color.Orange;
             flpTables.Enabled = true;
             btnAway.BackColor = Color.White;
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnAway_Click(object sender, EventArgs e)
         {
             btnInside.BackColor = Color.White;
@@ -199,7 +301,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             LoadTables ();
         }
 
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void Btn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -244,11 +346,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         }
 
 
-        private void UserHomePage_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void txtDiscount_ValueChanged(object sender, EventArgs e)
         {
             int discount = (int)txtDiscount.Value;
@@ -258,7 +356,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             UpdateBill(billId, discount);
             
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnPay_Click(object sender, EventArgs e)
         {
             // clear tables
@@ -274,7 +372,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnOrder.Enabled=true;
 
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnOrder_Click(object sender, EventArgs e)
         {
             // clear tables
@@ -287,15 +385,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnPay.Enabled = true;
             btnOrder.Enabled = false;
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void lstItems_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtFindName_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
+            UpdateUIMenuItem();
         }
     }
 }
