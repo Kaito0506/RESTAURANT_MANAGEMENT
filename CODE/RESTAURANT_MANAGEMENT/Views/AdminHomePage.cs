@@ -14,13 +14,13 @@ namespace RESTAURANT_MANAGEMENT.Views
     {
         AdminBranch abranch;
         AdminUser auser;
-        AdminCustomer acustomer;
         AdminDashboard adashboard;
         AdminItem aitem;
         AdminCategory acategory;
 
         private Form[] adminForms;
 
+        login login;
         LoginController lg = new LoginController();
         UserModel.User admin;
         public AdminHomePage()
@@ -29,7 +29,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             admin = LoginController.GetUser();
             lbName.Text = admin.u_name.Split(' ').Last();
             mdiProp();
-            adminForms = new Form[] { abranch, auser, acustomer, adashboard, aitem, acategory };
+            adminForms = new Form[] { abranch, auser, adashboard, aitem, acategory };
         }
 
         private void close_Forms(Form form)
@@ -96,27 +96,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             auser = null;
         }
 
-        private void customer_Click(object sender, EventArgs e)
-        {
-            close_Forms(acustomer);
-            if (acustomer == null)
-            {
-                acustomer = new AdminCustomer();
-                acustomer.FormClosed += acustomer_FormClosed;
-                acustomer.MdiParent = this;
-                acustomer.Dock = DockStyle.Fill;
-                acustomer.Show();
-            }
-            else
-            {
-                acustomer.Activate();
-            }
-        }
-
-        private void acustomer_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            acustomer = null;
-        }
 
         private void dashboard_Click(object sender, EventArgs e)
         {
@@ -182,6 +161,14 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void acategory_FormClosed(object sender, FormClosedEventArgs e)
         {
             acategory = null;
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            login = new login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
         }
     }
 }
