@@ -59,7 +59,6 @@
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.btnFind = new System.Windows.Forms.Button();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBranch.SuspendLayout();
@@ -90,7 +89,7 @@
             this.lbBranchName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBranchName.Location = new System.Drawing.Point(151, 12);
             this.lbBranchName.Name = "lbBranchName";
-            this.lbBranchName.Size = new System.Drawing.Size(132, 22);
+            this.lbBranchName.Size = new System.Drawing.Size(159, 26);
             this.lbBranchName.TabIndex = 0;
             this.lbBranchName.Text = "Branch_name";
             // 
@@ -156,7 +155,6 @@
             this.lstItems.TabIndex = 0;
             this.lstItems.UseCompatibleStateImageBehavior = false;
             this.lstItems.View = System.Windows.Forms.View.Details;
-            this.lstItems.SelectedIndexChanged += new System.EventHandler(this.lstItems_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -196,7 +194,7 @@
             this.txtSelectedTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSelectedTable.Name = "txtSelectedTable";
             this.txtSelectedTable.ReadOnly = true;
-            this.txtSelectedTable.Size = new System.Drawing.Size(323, 27);
+            this.txtSelectedTable.Size = new System.Drawing.Size(323, 32);
             this.txtSelectedTable.TabIndex = 2;
             // 
             // label2
@@ -205,7 +203,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 22);
+            this.label2.Size = new System.Drawing.Size(164, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "Selected table";
             // 
@@ -226,7 +224,7 @@
             this.cbTables.Location = new System.Drawing.Point(191, 18);
             this.cbTables.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTables.Name = "cbTables";
-            this.cbTables.Size = new System.Drawing.Size(177, 30);
+            this.cbTables.Size = new System.Drawing.Size(177, 37);
             this.cbTables.TabIndex = 2;
             this.cbTables.UseWaitCursor = true;
             // 
@@ -263,7 +261,7 @@
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(168, 27);
+            this.txtTotal.Size = new System.Drawing.Size(168, 32);
             this.txtTotal.TabIndex = 9;
             // 
             // txtDiscount
@@ -277,7 +275,7 @@
             this.txtDiscount.Location = new System.Drawing.Point(191, 63);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(168, 27);
+            this.txtDiscount.Size = new System.Drawing.Size(168, 32);
             this.txtDiscount.TabIndex = 8;
             this.txtDiscount.ValueChanged += new System.EventHandler(this.txtDiscount_ValueChanged);
             // 
@@ -288,7 +286,7 @@
             this.txtSum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSum.Name = "txtSum";
             this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(168, 27);
+            this.txtSum.Size = new System.Drawing.Size(168, 32);
             this.txtSum.TabIndex = 7;
             // 
             // label6
@@ -298,7 +296,7 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(20, 113);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 22);
+            this.label6.Size = new System.Drawing.Size(64, 26);
             this.label6.TabIndex = 6;
             this.label6.Text = "Total";
             // 
@@ -308,7 +306,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(20, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 22);
+            this.label5.Size = new System.Drawing.Size(97, 26);
             this.label5.TabIndex = 5;
             this.label5.Text = "Discount";
             // 
@@ -318,7 +316,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 22);
+            this.label4.Size = new System.Drawing.Size(104, 26);
             this.label4.TabIndex = 4;
             this.label4.Text = "Sub Total";
             // 
@@ -329,7 +327,7 @@
             this.ckbPrint.Location = new System.Drawing.Point(76, 162);
             this.ckbPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckbPrint.Name = "ckbPrint";
-            this.ckbPrint.Size = new System.Drawing.Size(82, 24);
+            this.ckbPrint.Size = new System.Drawing.Size(101, 29);
             this.ckbPrint.TabIndex = 10;
             this.ckbPrint.Text = "Print bill";
             this.ckbPrint.UseVisualStyleBackColor = true;
@@ -393,12 +391,11 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.cbCategory);
-            this.panel2.Controls.Add(this.btnFind);
             this.panel2.Controls.Add(this.txtFindName);
-            this.panel2.Location = new System.Drawing.Point(1166, 18);
+            this.panel2.Location = new System.Drawing.Point(1157, 18);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 97);
+            this.panel2.Size = new System.Drawing.Size(270, 97);
             this.panel2.TabIndex = 6;
             // 
             // cbCategory
@@ -406,32 +403,22 @@
             this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(0, 2);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(258, 30);
+            this.cbCategory.Size = new System.Drawing.Size(258, 34);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.UseWaitCursor = true;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
-            // btnFind
-            // 
-            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
-            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFind.Location = new System.Drawing.Point(211, 53);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(44, 34);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.UseVisualStyleBackColor = true;
-            // 
             // txtFindName
             // 
-            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFindName.Location = new System.Drawing.Point(3, 54);
-            this.txtFindName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFindName.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
             this.txtFindName.Name = "txtFindName";
-            this.txtFindName.Size = new System.Drawing.Size(202, 27);
+            this.txtFindName.Size = new System.Drawing.Size(255, 32);
             this.txtFindName.TabIndex = 3;
+            this.txtFindName.TextChanged += new System.EventHandler(this.txtFindName_TextChanged);
             // 
             // flpItems
             // 
@@ -458,7 +445,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserHomePage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.UserHomePage_Load);
             this.panelBranch.ResumeLayout(false);
             this.panelBranch.PerformLayout();
             this.panelMethod.ResumeLayout(false);
@@ -512,7 +498,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpTables;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox cbCategory;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFindName;
         private System.Windows.Forms.FlowLayoutPanel flpItems;
     }
