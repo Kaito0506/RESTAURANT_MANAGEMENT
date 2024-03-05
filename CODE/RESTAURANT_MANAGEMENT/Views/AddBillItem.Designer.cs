@@ -67,10 +67,10 @@
             // txtItemName
             // 
             this.txtItemName.AutoSize = true;
-            this.txtItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemName.Location = new System.Drawing.Point(273, 18);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(99, 26);
+            this.txtItemName.Size = new System.Drawing.Size(101, 29);
             this.txtItemName.TabIndex = 1;
             this.txtItemName.Text = "<name>";
             // 
@@ -96,10 +96,10 @@
             // txtItemPrice
             // 
             this.txtItemPrice.AutoSize = true;
-            this.txtItemPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemPrice.Location = new System.Drawing.Point(273, 18);
             this.txtItemPrice.Name = "txtItemPrice";
-            this.txtItemPrice.Size = new System.Drawing.Size(92, 26);
+            this.txtItemPrice.Size = new System.Drawing.Size(95, 29);
             this.txtItemPrice.TabIndex = 1;
             this.txtItemPrice.Text = "<price>";
             // 
@@ -259,6 +259,7 @@
             this.btnAddItem.Size = new System.Drawing.Size(80, 80);
             this.btnAddItem.TabIndex = 0;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // AddBillItem
             // 

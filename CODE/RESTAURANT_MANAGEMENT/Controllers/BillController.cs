@@ -53,7 +53,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
         public static List<ShowBillModel.ShowBill> GetBillView(int bill_id)
         {
             List<ShowBillModel.ShowBill> lstItem = new List<ShowBillModel.ShowBill>();
-            DataTable data = Database.ExecuteQuery("select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=" + bill_id);
+            DataTable data = Database.ExecuteQuery("select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
             if (data.Rows.Count > 0)
             {
                 foreach (DataRow row in data.Rows)
@@ -115,6 +115,20 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             {
                 Console.WriteLine("Order error " + ex.Message);
             }
+        }
+
+        public static void AddBillDetail(int bill_id, int item_id, int quantity)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("EXEC addBillDetail @bill_id  , @item_id , @quantity ", new object[] { bill_id, item_id, quantity });
+                Console.WriteLine("Success insert bill detail");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error when inserting bill detail" + ex);
+            }
+
         }
 
     }
