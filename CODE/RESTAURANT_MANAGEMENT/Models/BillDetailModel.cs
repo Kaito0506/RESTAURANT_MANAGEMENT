@@ -31,8 +31,8 @@ namespace RESTAURANT_MANAGEMENT.Models
             public int id { get; set; }
             public int bill_id { get; set; }
             public int item_id { get; set; }
-            public int quantity { get; set;
-            }
+            public int quantity { get; set;}
+            public string desc { get; set; }
         }
     }
 }

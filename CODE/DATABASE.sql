@@ -364,13 +364,50 @@ BEGIN
 	UPDATE TABLES SET status = 1 where id=@table_id;
 END
 GO
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------- pROC add bill detail
+CREATE PROC addBillDetail
+	@bill_id int, @item_id int, @quantity int
+AS
+BEGIN
+	DECLARE @isExist int;
+	DECLARE @currentQuantity int;
+
+	SELECT @isExist=id, @currentQuantity=quantity 
+	FROM BILL_DETAIL 
+	WHERE bill_id=@bill_id and item_id=@item_id;
+
+	IF (@isExist > 0)
+		BEGIN
+			DECLARE @newQuantity int = @quantity + @currentQuantity;
+			IF (@newQuantity > 0)
+				BEGIN
+						UPDATE BILL_DETAIL SET quantity=@newQuantity  where bill_id=@bill_id and item_id=@item_id;
+				END
+			ELSE
+				BEGIN
+						DELETE BILL_DETAIL where bill_id=@bill_id and item_id=@item_id;
+				END
+		END
+		ELSE
+			BEGIN
+				INSERT INTO BILL_DETAIL(bill_id, item_id, quantity) VALUES (@bill_id, @item_id, @quantity);
+			END
+END
+
+
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
 
-
-
+select * from BILL_DETAIL;
+EXEC addBillDetail @bill_id=3 , @item_id=5, @quantity=1;
+select * from bill where id =3;
+select * from BILL_DETAIL where bill_id=3;
+select *from MENU_ITEM;
+select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=3;
+select * from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=3;
 
 SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=7;
 select * from BILL_DETAIL;
@@ -388,8 +425,9 @@ select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_i
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
+
 select * from BILL where status=1;
-select * from BILL_DETAIL;
+select * from MENU_ITEM;
 -- update BILL set status=0;
 select * from TABLES;
 select * from BILL;
@@ -409,8 +447,8 @@ select * from BILL where status=0 and table_id=8;
 update BILL set status = 0;
 ---------------------------
 
-
-ORDER_BILL @table_id =8;
+select * from BILL where status=0 and table_id=11;
+ORDER_BILL @table_id =11;
 
 
 -------------------------------------

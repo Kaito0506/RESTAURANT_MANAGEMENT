@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
 using System.Xml.Serialization;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Runtime.CompilerServices;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
@@ -21,7 +23,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private Button previousButton = null;
         private CultureInfo culture = new CultureInfo("vi-VN");
         public static int selectedItemId;
-
+        public static int selectedBillId;
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
         List<MenuItemModel.MenuItem> filteredItems;
@@ -38,6 +40,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             //UpdateUIMenuItem();
 
         }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void LoadTables()
@@ -99,7 +102,6 @@ namespace RESTAURANT_MANAGEMENT.Views
                 i.Image = GetImage(item.mi_image);
                 listBillItems.Add(i);
                 // add click handler
-                i.Click += lstViewItem_Click;
                 flpItems.Controls.Add(i);
 
             }
@@ -131,13 +133,13 @@ namespace RESTAURANT_MANAGEMENT.Views
             txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        private void showBill(int table_id)
+        public void showBill(int table_id)
         {
             lstItems.Items.Clear();
             int id = BillController.GetBillid(table_id);
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
-
+            selectedBillId = id;
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -150,10 +152,7 @@ namespace RESTAURANT_MANAGEMENT.Views
                 lstItems.Items.Add(lstItem);
                
             }
-
-
         }
-
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -281,10 +280,6 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        private void lstViewItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("item click");
-        }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -341,6 +336,16 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 btnOrder.Enabled = false;
                 btnPay.Enabled = true;
+                selectedBillId = b.bill_id;
+
+                MessageBox.Show(selectedBillId.ToString());
+                //MessageBox.Show(BillController.GetBillid(selectedTable).ToString());
+                BillModel.Bill bill = BillController.GetBill(selectedTable);
+
+                float total = bill.total;
+                txtSum.Text = total.ToString("C0", culture);
+                total *= (1 - ((int)txtDiscount.Value / 100.0f)); // Apply discount
+                txtTotal.Text = total.ToString("C0", culture);
             }
             else
             {
@@ -349,6 +354,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
 
             txtDiscount.Value = 0;
+            UpdateBill(selectedBillId, (int)txtDiscount.Value);
             showBill(table.id);
             this.Refresh();
         }
@@ -385,9 +391,11 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             // clear tables
             flpTables.Controls.Clear();
-            BillModel.Bill b = BillController.GetBill(selectedTable);
+            //BillModel.Bill b = BillController.GetBill(selectedTable);
             BillController.OrderBill(selectedTable);
+            selectedBillId = BillController.GetBillid(selectedTable);
 
+            UpdateBill(selectedBillId, (int)txtDiscount.Value);
             // reload tables
             LoadTables();
             btnPay.Enabled = true;
