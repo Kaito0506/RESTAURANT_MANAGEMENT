@@ -21,5 +21,6 @@ class MenuItemModel {
         public string mi_desc { get; set; }
         public decimal mi_price { get; set; }
         public string mi_image { get; set; }
+
     }
 }

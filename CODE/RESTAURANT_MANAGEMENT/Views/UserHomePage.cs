@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
 using System.Xml.Serialization;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
@@ -21,7 +22,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private Button previousButton = null;
         private CultureInfo culture = new CultureInfo("vi-VN");
         public static int selectedItemId;
-
+        public static int selectedBillId;
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
         List<MenuItemModel.MenuItem> filteredItems;
@@ -137,7 +138,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             int id = BillController.GetBillid(table_id);
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
-
+            selectedBillId = id;
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -150,8 +151,6 @@ namespace RESTAURANT_MANAGEMENT.Views
                 lstItems.Items.Add(lstItem);
                
             }
-
-
         }
 
 
