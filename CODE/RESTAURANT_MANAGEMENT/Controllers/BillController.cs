@@ -77,18 +77,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             }
         }
 
-        public static void UpdateTableStatus()
-        {
-            try
-            {
-                Database.ExecuteNonQuery("updateTableStatus");
-                Console.WriteLine("Update status successfully");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Update error " + ex.Message);
-            }
-        }
+
 
         public static void PayBill(int table_id)
         {

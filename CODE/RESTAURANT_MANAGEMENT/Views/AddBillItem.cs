@@ -36,7 +36,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             
             InitializeComponent();
             itemId = id;
-            MessageBox.Show(UserHomePage.selectedBillId.ToString());
+            //MessageBox.Show(itemId.ToString());
             setValue();
         }
 
@@ -63,7 +63,15 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            BillController.AddBillDetail(UserHomePage.selectedBillId, UserHomePage.selectedTable, itemId);
+            BillController.AddBillDetail(UserHomePage.selectedBillId, itemId, (int)nudQuantity.Value);
+
+            this.Close();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

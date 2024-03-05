@@ -395,19 +395,19 @@ BEGIN
 			END
 END
 
-EXEC addBillDetail @bill_id=3 , @item_id=5, @quantity=1;
-select * from bill where id =3;
-select * from BILL_DETAIL where bill_id=3;
-select *from MENU_ITEM;
-select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=3;
-select * from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=3;
+
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
 
 select * from BILL_DETAIL;
-
+EXEC addBillDetail @bill_id=3 , @item_id=5, @quantity=1;
+select * from bill where id =3;
+select * from BILL_DETAIL where bill_id=3;
+select *from MENU_ITEM;
+select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=3;
+select * from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=3;
 
 SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=7;
 select * from BILL_DETAIL;
