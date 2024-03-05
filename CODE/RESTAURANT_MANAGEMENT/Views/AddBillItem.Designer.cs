@@ -70,7 +70,7 @@
             this.txtItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemName.Location = new System.Drawing.Point(273, 18);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(101, 29);
+            this.txtItemName.Size = new System.Drawing.Size(93, 26);
             this.txtItemName.TabIndex = 1;
             this.txtItemName.Text = "<name>";
             // 
@@ -99,7 +99,7 @@
             this.txtItemPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemPrice.Location = new System.Drawing.Point(273, 18);
             this.txtItemPrice.Name = "txtItemPrice";
-            this.txtItemPrice.Size = new System.Drawing.Size(95, 29);
+            this.txtItemPrice.Size = new System.Drawing.Size(85, 26);
             this.txtItemPrice.TabIndex = 1;
             this.txtItemPrice.Text = "<price>";
             // 
@@ -247,6 +247,7 @@
             this.button1.Size = new System.Drawing.Size(80, 80);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnAddItem
             // 
