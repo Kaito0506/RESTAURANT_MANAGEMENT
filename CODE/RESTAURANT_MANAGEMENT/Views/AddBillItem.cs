@@ -14,6 +14,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class AddBillItem : Form
     {
+        public static event EventHandler isChosen;
         private int itemId;
         private string name;
         private string description;
@@ -64,7 +65,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             BillController.AddBillDetail(UserHomePage.selectedBillId, itemId, (int)nudQuantity.Value);
-
+            isChosen?.Invoke(this, e);
             this.Close();
 
         }

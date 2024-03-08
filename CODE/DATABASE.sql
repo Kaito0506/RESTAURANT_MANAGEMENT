@@ -99,7 +99,7 @@ CREATE TABLE BILL(
 	id int primary key IDENTITY(1,1),  
 	checkin_date date not null,   
 	total money not null,
-	table_id int not null,
+	table_id int not null, -- ì table_id ==0, take way bill
 	status int not null, --o:not paid, 1: paid
 	foreign key (table_id) references TABLES(id) on delete cascade on update cascade
 );
@@ -290,6 +290,8 @@ BEGIN
 	Update BILL Set total=@total where id=@b_id;
 END
 GO
+select * from bill;
+EXEC CalculateBillTotal @b_id=30
 ----------------------------------------------------------
 
 -- UPDATE TOTAL FOR BILL
@@ -364,6 +366,7 @@ BEGIN
 	UPDATE TABLES SET status = 1 where id=@table_id;
 END
 GO
+EXEC ORDER_BILL @table_id=0;
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------- pROC add bill detail
 CREATE PROC addBillDetail

@@ -19,7 +19,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class UserHomePage : Form
     {
-        public static int selectedTable;
+        public static int selectedTable=0;
         private Button previousButton = null;
         private CultureInfo culture = new CultureInfo("vi-VN");
         public static int selectedItemId;
@@ -27,7 +27,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
         List<MenuItemModel.MenuItem> filteredItems;
-
+        
         public UserHomePage()
         {
             InitializeComponent();
@@ -37,7 +37,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             flpTables.Enabled = true;
             lbBranchName.Text = loadBranchName();
             LoadMenuItems();
-            //UpdateUIMenuItem();
+            AddBillItem.isChosen += refreshBillItem;
+            //MessageBox.Show(selectedTable.ToString());
 
         }
 
@@ -161,7 +162,8 @@ namespace RESTAURANT_MANAGEMENT.Views
             if (billId != -1)
             {
                 BillController.UpdateBillTotal(billId);
-                BillModel.Bill bill = BillController.GetBill(billId);
+                BillModel.Bill bill = BillController.GetBill(selectedTable);
+                //MessageBox.Show("hello updatebill works with bill id " + billId.ToString());
                 if (bill != null)
                 {
                     float total = bill.total;
@@ -300,8 +302,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnAway.BackColor = Color.Orange;
             txtSelectedTable.Text = "Take away";
             selectedTable = -1;
-            flpTables.Controls.Clear(); 
-            LoadTables ();
+            //flpTables.Controls.Clear(); 
+            //LoadTables();
+            UpdateBill(selectedTable, (int)txtDiscount.Value);
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -338,14 +341,11 @@ namespace RESTAURANT_MANAGEMENT.Views
                 btnPay.Enabled = true;
                 selectedBillId = b.bill_id;
 
-                MessageBox.Show(selectedBillId.ToString());
+                //MessageBox.Show(selectedBillId.ToString());
                 //MessageBox.Show(BillController.GetBillid(selectedTable).ToString());
                 BillModel.Bill bill = BillController.GetBill(selectedTable);
 
-                float total = bill.total;
-                txtSum.Text = total.ToString("C0", culture);
-                total *= (1 - ((int)txtDiscount.Value / 100.0f)); // Apply discount
-                txtTotal.Text = total.ToString("C0", culture);
+
             }
             else
             {
@@ -389,23 +389,49 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            // clear tables
-            flpTables.Controls.Clear();
-            //BillModel.Bill b = BillController.GetBill(selectedTable);
-            BillController.OrderBill(selectedTable);
-            selectedBillId = BillController.GetBillid(selectedTable);
+            //MessageBox.Show(selectedTable.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (selectedTable>0) 
+            {
+                // clear tables
+                flpTables.Controls.Clear();
+                //BillModel.Bill b = BillController.GetBill(selectedTable);
+                BillController.OrderBill(selectedTable);
+                selectedBillId = BillController.GetBillid(selectedTable);
 
-            UpdateBill(selectedBillId, (int)txtDiscount.Value);
-            // reload tables
-            LoadTables();
-            btnPay.Enabled = true;
-            btnOrder.Enabled = false;
+                UpdateBill(selectedBillId, (int)txtDiscount.Value);
+                // reload tables
+                LoadTables();
+                btnPay.Enabled = true;
+                btnOrder.Enabled = false;
+            }
+            else if(selectedTable==-1)
+            {
+                BillController.OrderBill(0);
+                MessageBox.Show("hello");
+                selectedBillId = BillController.GetBillid(0);
+                UpdateBill(selectedBillId, (int)txtDiscount.Value);
+
+                btnPay.Enabled = true;
+                btnOrder.Enabled = false;
+
+            }
+            else if (selectedTable==0)
+            {
+                MessageBox.Show("Please choose a table or take away mode", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnPay.Enabled = false;
+            }
+
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void txtFindName_TextChanged(object sender, EventArgs e)
         {
             UpdateUIMenuItem();
+        }
+
+        private void refreshBillItem(object sender, EventArgs e)
+        {
+            showBill(selectedTable);
         }
     }
 }
