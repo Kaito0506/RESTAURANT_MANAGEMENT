@@ -65,6 +65,11 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             BillController.AddBillDetail(UserHomePage.selectedBillId, itemId, (int)nudQuantity.Value);
+            if(UserHomePage.selectedBillId == -1)
+            {
+                MessageBox.Show("Please choose a table or take away mode", "Error when inserting item", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             isChosen?.Invoke(this, e);
             this.Close();
 
