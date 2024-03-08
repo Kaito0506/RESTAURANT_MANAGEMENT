@@ -47,15 +47,18 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void LoadTables()
         {
             List<TableModel.Table> listTable = TableController.GetTableList();
-
+            flpTables.Controls.Clear();
             foreach (TableModel.Table table in listTable)
             {
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
+                // show table in cbox
+                cbTables.Items.Add(table.display_name);
 
                 btn.Click += Btn_Click;        
                 btn.Tag = table;
-                
+
+
                 if (table.status == 0)
                 {
                     btn.BackColor = Color.LightBlue;
@@ -134,13 +137,23 @@ namespace RESTAURANT_MANAGEMENT.Views
             txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        public void showBill(int table_id)
+        public void showBill(int? table_id)
         {
             lstItems.Items.Clear();
-            int id = BillController.GetBillid(table_id);
+            int id;
+            if(table_id>0)
+            {
+                id = BillController.GetBillid(table_id);
+            }
+            else
+            {
+                id = BillController.GetBillid(null);
+            }
+            selectedBillId = id;
+            Console.WriteLine("Show bill " + id.ToString());
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
-            selectedBillId = id;
+            
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -163,7 +176,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 BillController.UpdateBillTotal(billId);
                 BillModel.Bill bill = BillController.GetBill(selectedTable);
-                //MessageBox.Show("hello updatebill works with bill id " + billId.ToString());
+
                 if (bill != null)
                 {
                     float total = bill.total;
@@ -184,7 +197,6 @@ namespace RESTAURANT_MANAGEMENT.Views
            
             string category = cbCategory.Text.ToLower();
             string searchText = txtFindName.Text.ToLower();
-            //MessageBox.Show(category);
             if (category == "tất cả" && string.IsNullOrEmpty(searchText))
             {
                 filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
@@ -293,18 +305,37 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.Orange;
             flpTables.Enabled = true;
             btnAway.BackColor = Color.White;
+            selectedTable = 0;
+            LoadTables();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnAway_Click(object sender, EventArgs e)
         {
+            LoadTables();
             btnInside.BackColor = Color.White;
             flpTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
+            btnMerge.Enabled = false;
             txtSelectedTable.Text = "Take away";
             selectedTable = -1;
             //flpTables.Controls.Clear(); 
             //LoadTables();
-            UpdateBill(selectedTable, (int)txtDiscount.Value);
+            int id = BillController.GetBillid(null);
+            selectedBillId = id;
+            if(id == -1)
+            {
+                btnOrder.Enabled = true;
+                btnPay.Enabled = false;
+            }
+            else
+            {
+                btnOrder.Enabled = false;
+                btnPay.Enabled = true;
+            }
+            showBill(null);
+            UpdateBill(id, (int)txtDiscount.Value);
+
+
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -340,9 +371,6 @@ namespace RESTAURANT_MANAGEMENT.Views
                 btnOrder.Enabled = false;
                 btnPay.Enabled = true;
                 selectedBillId = b.bill_id;
-
-                //MessageBox.Show(selectedBillId.ToString());
-                //MessageBox.Show(BillController.GetBillid(selectedTable).ToString());
                 BillModel.Bill bill = BillController.GetBill(selectedTable);
 
 
@@ -389,7 +417,6 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(selectedTable.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             if (selectedTable>0) 
             {
                 // clear tables
@@ -406,9 +433,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
             else if(selectedTable==-1)
             {
-                BillController.OrderBill(0);
-                MessageBox.Show("hello");
-                selectedBillId = BillController.GetBillid(0);
+                BillController.OrderBill(-1);
+                Console.WriteLine("selected table = -1 order bill with table=null");
+                selectedBillId = BillController.GetBillid(null);
                 UpdateBill(selectedBillId, (int)txtDiscount.Value);
 
                 btnPay.Enabled = true;
@@ -432,6 +459,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         private void refreshBillItem(object sender, EventArgs e)
         {
             showBill(selectedTable);
+            UpdateBill(selectedBillId, (int)txtDiscount.Value);
         }
     }
 }
