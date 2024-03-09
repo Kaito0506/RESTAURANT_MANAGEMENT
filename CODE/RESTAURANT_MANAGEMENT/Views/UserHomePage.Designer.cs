@@ -226,7 +226,6 @@
             this.cbTables.Name = "cbTables";
             this.cbTables.Size = new System.Drawing.Size(177, 37);
             this.cbTables.TabIndex = 2;
-            this.cbTables.UseWaitCursor = true;
             // 
             // btnMerge
             // 
@@ -236,7 +235,7 @@
             this.btnMerge.Name = "btnMerge";
             this.btnMerge.Size = new System.Drawing.Size(128, 37);
             this.btnMerge.TabIndex = 1;
-            this.btnMerge.Text = "Merge";
+            this.btnMerge.Text = "Change";
             this.btnMerge.UseVisualStyleBackColor = true;
             this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
