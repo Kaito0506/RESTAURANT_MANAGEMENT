@@ -309,6 +309,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 MessageBox.Show("Please choose another table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (bill1 == -1)
+            {
+                MessageBox.Show("Please choose a table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             else
             {
                 try
