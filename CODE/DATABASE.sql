@@ -4,7 +4,7 @@ Create login admin with password='admin', CHECK_POLICY = OFF;
 
 --DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
-USE RESTAURANT_MANAGEMENT;
+	
 
 sp_changedbowner admin; 
 
@@ -423,12 +423,26 @@ BEGIN
 		select * from BILL where status=0 and table_id is null;
 	END
 END
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ALTER PROC changeTable
+	@table1 int, @table2 int
+AS BEGIN 
+	DECLARE @bill1 int, @bill2 int;
+	select @bill1 = id from BILL WHERE status=0 and table_id=@table1;
+	select @bill2 = id from BILL WHERE status=0 and table_id=@table2;
+	IF ( @bill1 is not null and @bill2 is null)
+	BEGIN
+		UPDATE BILL SET table_id=@table2 where id=@bill1;
+		UPDATE TABLES SET status=1 WHERE id=@table2;
+		UPDATE TABLES SET status=0 WHERE id=@table1;
+	END
+END
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
 
-
+changeTable @table1=4, @table2=10;
 
 SELECT id from	BILL where table_id is null and status=0;
 EXEC ORDER_BILL @table_id=null;
@@ -436,11 +450,16 @@ select * from BILL
 delete from bill where table_id IS NULL;
 PAY @table_id=null;
 select *from BILL;
-
+delete from BILL;
 getBillId @table_id=null;
 
+
+update TABLES set status =0;
 select * from BILL where status=0 and table_id is null;
-EXEC addBillDetail @bill_id=28 , @item_id=5, @quantity=2;
+EXEC addBillDetail @bill_id=57 , @item_id=5, @quantity=2;
+CalculateBillTotal @b_id=57;
+
+
 
 select * from bill where id =3;
 select * from BILL_DETAIL where bill_id=3;

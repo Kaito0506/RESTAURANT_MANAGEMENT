@@ -15,7 +15,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
         public static int GetBillid(int? table_id)
         {
             DataTable data;
-            if (table_id == null)
+            if (table_id == -1)
             {
                 data = Database.ExecuteQuery("getBillId @table_id=null");
             }
@@ -33,10 +33,20 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
         public static BillModel.Bill GetBill(int? table_id)
         {
-            DataTable data = Database.ExecuteQuery("select * from BILL where status=0 and table_id=" + table_id);
+            DataTable data;
+            if (table_id == -1)
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=null");
+                //MessageBox.Show("get bill from null");
+            }
+            else
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=" + table_id);
+            }
             if (data.Rows.Count > 0)
             {
                 BillModel.Bill b = new BillModel.Bill(data.Rows[0]);
+                //MessageBox.Show(b.bill_id.ToString());
                 return b;
             }
             return null; //no bill unpaid
@@ -118,18 +128,20 @@ namespace RESTAURANT_MANAGEMENT.Controllers
                 if(table_id == -1)
                 {
                     Database.ExecuteNonQuery("EXEC ORDER_BILL @table_id=null");
+                    Console.WriteLine("Order successfully with null table");
                     //MessageBox.Show("order null success");
                 }
                 else
                 {
                     Database.ExecuteNonQuery("ORDER_BILL @table_id=" + table_id);
+                    Console.WriteLine("Order successfully");
                 }
-                Console.WriteLine("Order successfully");
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Order error " + ex.Message);
-                MessageBox.Show("order success");
+                //MessageBox.Show("order failed");
             }
         }
 
