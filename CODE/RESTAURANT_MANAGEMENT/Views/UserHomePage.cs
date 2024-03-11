@@ -510,5 +510,17 @@ namespace RESTAURANT_MANAGEMENT.Views
             showBill(selectedTable);
             UpdateBill(selectedBillId, (int)txtDiscount.Value);
         }
+
+        private void bntPrint_Click(object sender, EventArgs e)
+        {
+            frmPrint printPage = new frmPrint();
+            printPage.branch = lbBranchName.Text;
+            printPage.sum = txtSum.Text;
+            printPage.total = txtTotal.Text;
+            printPage.discount = txtDiscount.Text;
+            printPage.table = txtSelectedTable.Text;
+            printPage.listItem = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + selectedBillId);
+            printPage.ShowDialog();
+        }
     }
 }

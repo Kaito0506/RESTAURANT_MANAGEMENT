@@ -53,6 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bntPrint = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
@@ -60,7 +61,6 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.bntPrint = new System.Windows.Forms.Button();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelBillItems.SuspendLayout();
@@ -196,6 +196,7 @@
             this.txtSelectedTable.ReadOnly = true;
             this.txtSelectedTable.Size = new System.Drawing.Size(323, 32);
             this.txtSelectedTable.TabIndex = 2;
+            this.txtSelectedTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -342,6 +343,18 @@
             this.panel3.Size = new System.Drawing.Size(235, 187);
             this.panel3.TabIndex = 6;
             // 
+            // bntPrint
+            // 
+            this.bntPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntPrint.Location = new System.Drawing.Point(53, 146);
+            this.bntPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bntPrint.Name = "bntPrint";
+            this.bntPrint.Size = new System.Drawing.Size(149, 39);
+            this.bntPrint.TabIndex = 12;
+            this.bntPrint.Text = "Bill";
+            this.bntPrint.UseVisualStyleBackColor = true;
+            this.bntPrint.Click += new System.EventHandler(this.bntPrint_Click);
+            // 
             // btnOrder
             // 
             this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -413,17 +426,6 @@
             this.flpItems.Name = "flpItems";
             this.flpItems.Size = new System.Drawing.Size(270, 633);
             this.flpItems.TabIndex = 7;
-            // 
-            // bntPrint
-            // 
-            this.bntPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntPrint.Location = new System.Drawing.Point(53, 146);
-            this.bntPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bntPrint.Name = "bntPrint";
-            this.bntPrint.Size = new System.Drawing.Size(149, 39);
-            this.bntPrint.TabIndex = 12;
-            this.bntPrint.Text = "Bill";
-            this.bntPrint.UseVisualStyleBackColor = true;
             // 
             // UserHomePage
             // 

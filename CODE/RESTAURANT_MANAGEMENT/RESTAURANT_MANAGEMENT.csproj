@@ -294,6 +294,12 @@
     <Compile Include="Views\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminUser.resx">
       <DependentUpon>AdminUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -1329,6 +1338,7 @@
     <None Include="images\minus.png" />
     <Content Include="images\pass.png" />
     <None Include="images\plus.png" />
+    <None Include="images\print.png" />
     <Content Include="images\pw.png" />
     <Content Include="images\rb.png" />
     <Content Include="images\res.jpg" />

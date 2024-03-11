@@ -492,7 +492,7 @@ select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_i
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
-
+select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=8;
 select * from BILL where status=1;
 select * from MENU_ITEM;
 -- update BILL set status=0;
