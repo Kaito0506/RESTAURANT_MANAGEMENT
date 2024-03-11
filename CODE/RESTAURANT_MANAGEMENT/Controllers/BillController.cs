@@ -98,17 +98,17 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
 
 
-        public static void PayBill(int table_id)
+        public static void PayBill(int table_id, float discount)
         {
             try
             {
                 if (table_id == -1)
                 {
-                    Database.ExecuteNonQuery("PAY @table_id=null");
+                    Database.ExecuteNonQuery("PAY @table_id=null , @discount=" + discount);
                 }
                 else 
                 {
-                    Database.ExecuteNonQuery("PAY @table_id=" + table_id);
+                    Database.ExecuteNonQuery("PAY @table_id , @discount", new object[] {table_id, discount});
 
                 }
                 
