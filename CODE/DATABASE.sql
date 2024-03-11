@@ -4,7 +4,7 @@ Create login admin with password='admin', CHECK_POLICY = OFF;
 
 --DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
-USE RESTAURANT_MANAGEMENT;
+	
 
 sp_changedbowner admin; 
 
@@ -97,9 +97,10 @@ CREATE table MENU_ITEM(
 -- bill table
 CREATE TABLE BILL(
 	id int primary key IDENTITY(1,1),  
-	checkin_date date not null,   
+	checkin_date date not null,
+	discount int default 0, 
 	total money not null,
-	table_id int not null,
+	table_id int , -- ì table_id is null, take way bill
 	status int not null, --o:not paid, 1: paid
 	foreign key (table_id) references TABLES(id) on delete cascade on update cascade
 );
@@ -166,16 +167,19 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (10,2);
 
 ------------------------------------------------------------------
+
 DECLARE @i INT = 1
-WHILE @i <= 15
+WHILE @i <= 20
 BEGIN 
     INSERT INTO TABLES (display_name, branch_id) 
-    VALUES ('A' + CONVERT(VARCHAR(10), @i), 1);
-			--('B' + CONVERT(VARCHAR(10), @i), 2);
-          --('C' + CONVERT(VARCHAR(10), @i), 3);
+    VALUES ('A' + CONVERT(VARCHAR(10), @i), 1),
+			('B' + CONVERT(VARCHAR(10), @i), 2),
+          ('C' + CONVERT(VARCHAR(10), @i),3);
 
     SET @i = @i + 1
 END
+
+
 --run 1 lne for 1 time, DONT UNCOMMENT 3 LINE in 1 time
 ------------------------------------------------------------
 INSERT INTO DETAIL_CATEGORY (describe, name, category_id) VALUES
@@ -216,6 +220,7 @@ INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
 
 ------------------------------------------------------------------------------------------------------------------------
 -- Insert sample data into BILL_DETAIL table
+select * from tables;
 DECLARE @today DATE = GETDATE();
 INSERT INTO BILL (checkin_date, table_id, status, total) VALUES
 ('2024-02-01', 1, 0, 0),
@@ -290,6 +295,7 @@ BEGIN
 	Update BILL Set total=@total where id=@b_id;
 END
 GO
+
 ----------------------------------------------------------
 
 -- UPDATE TOTAL FOR BILL
@@ -343,16 +349,29 @@ EXEC getBranchName @user_id=8;
 
 ---------------------------------------------------------------------------------------------------------------------------
 ----proc PAY
-CREATE PROC PAY
-	@table_id int
+ALTER PROC PAY
+	@table_id int, @discount float
 AS
 BEGIN
-	UPDATE TABLES SET status=0 WHERE id=@table_id;
-	UPDATE BILL SET status=1 WHERE table_id=@table_id;
+	DECLARE @bill_id int;
+	DECLARE @final_total Money;
+	IF (@table_id IS NOT NULL)
+	BEGIN
+		UPDATE TABLES SET status=0 WHERE id=@table_id;
+		SELECT @bill_id=id from	BILL where table_id=@table_id and status=0;
+		UPDATE BILL SET status=1 WHERE id=@bill_id;
+	END
+	ELSE
+	BEGIN
+		SELECT @bill_id=id from	BILL where table_id is null and status=0;
+		UPDATE BILL SET status=1 WHERE id = @bill_id;
+	END
+	SELECT @final_total=total*(1-@discount/100) from BILL where id=@bill_id;
+	UPDATE BILL SET total = @final_total, discount=@discount where id=@bill_id;
 END
 GO
 
-PAY @table_id=8;
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------- pROC order
 CREATE PROC ORDER_BILL
@@ -364,6 +383,7 @@ BEGIN
 	UPDATE TABLES SET status = 1 where id=@table_id;
 END
 GO
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------- pROC add bill detail
 CREATE PROC addBillDetail
@@ -389,20 +409,67 @@ BEGIN
 						DELETE BILL_DETAIL where bill_id=@bill_id and item_id=@item_id;
 				END
 		END
-		ELSE
+	ELSE
+		BEGIN
+			IF(@quantity>0)
 			BEGIN
 				INSERT INTO BILL_DETAIL(bill_id, item_id, quantity) VALUES (@bill_id, @item_id, @quantity);
 			END
+		END
 END
-
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROC getBillId
+	@table_id int
+AS
+BEGIN
+	if(@table_id is not null)
+	BEGIN
+		select * from BILL where status=0 and table_id=@table_id;
+	END
+	ELSE
+	BEGIN
+		select * from BILL where status=0 and table_id is null;
+	END
+END
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE PROC changeTable
+	@table1 int, @table2 int
+AS BEGIN 
+	DECLARE @bill1 int, @bill2 int;
+	select @bill1 = id from BILL WHERE status=0 and table_id=@table1;
+	select @bill2 = id from BILL WHERE status=0 and table_id=@table2;
+	IF ( @bill1 is not null and @bill2 is null)
+	BEGIN
+		UPDATE BILL SET table_id=@table2 where id=@bill1;
+		UPDATE TABLES SET status=1 WHERE id=@table2;
+		UPDATE TABLES SET status=0 WHERE id=@table1;
+	END
+END
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
 
-select * from BILL_DETAIL;
-EXEC addBillDetail @bill_id=3 , @item_id=5, @quantity=1;
+changeTable @table1=4, @table2=10;
+
+SELECT id from	BILL where table_id is null and status=0;
+EXEC ORDER_BILL @table_id=null;
+select * from BILL
+delete from bill where table_id IS NULL;
+PAY @table_id=null, @discount=5;
+select *from BILL;
+delete from BILL;
+getBillId @table_id=null;
+update BILL set status=0 where id=3;
+
+
+update TABLES set status =0;
+select * from BILL where status=0 and table_id is null;
+EXEC addBillDetail @bill_id=4 , @item_id=5, @quantity=2;
+CalculateBillTotal @b_id=4;
+
+
+
 select * from bill where id =3;
 select * from BILL_DETAIL where bill_id=3;
 select *from MENU_ITEM;
@@ -411,7 +478,7 @@ select * from BILL_DETAIL as b join MENU_ITEM as m on b.id = m.id where bill_id=
 
 SELECT sum(quantity*price) as total from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=7;
 select * from BILL_DETAIL;
-EXEC CalculateBillTotal @b_id=7;
+EXEC CalculateBillTotal @b_id=21;
 ---------------------------------------
 select id 
 from BILL 
@@ -425,7 +492,7 @@ select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_i
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
-
+select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=8;
 select * from BILL where status=1;
 select * from MENU_ITEM;
 -- update BILL set status=0;

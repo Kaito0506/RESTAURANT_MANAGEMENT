@@ -42,5 +42,18 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             }
 
         }
+
+        public static void ChangeTable(int table1, int table2)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("changeTable @table1 , @table2", new object[] { table1, table2 });
+                Console.WriteLine("Change table success");
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Change table failed");
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

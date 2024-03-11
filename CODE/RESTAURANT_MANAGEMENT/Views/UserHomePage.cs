@@ -14,12 +14,14 @@ using System.Globalization;
 using System.Xml.Serialization;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.CompilerServices;
+using static RESTAURANT_MANAGEMENT.Models.TableModel;
+using static RESTAURANT_MANAGEMENT.Models.BillModel;
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class UserHomePage : Form
     {
-        public static int selectedTable;
+        public static int selectedTable=0;
         private Button previousButton = null;
         private CultureInfo culture = new CultureInfo("vi-VN");
         public static int selectedItemId;
@@ -27,7 +29,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
         List<MenuItemModel.MenuItem> filteredItems;
-
+        
         public UserHomePage()
         {
             InitializeComponent();
@@ -37,7 +39,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             flpTables.Enabled = true;
             lbBranchName.Text = loadBranchName();
             LoadMenuItems();
-            //UpdateUIMenuItem();
+            AddBillItem.isChosen += refreshBillItem;
+            
+            //MessageBox.Show(selectedTable.ToString());
 
         }
 
@@ -45,16 +49,24 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void LoadTables()
         {
+            flpTables.Controls.Clear();
+            //cbTables.Items.Clear();
             List<TableModel.Table> listTable = TableController.GetTableList();
-
+            cbTables.DataSource = listTable;
+            cbTables.DisplayMember = "display_name";
+            cbTables.ValueMember = "id";
             foreach (TableModel.Table table in listTable)
             {
                 Button btn = new Button() { Width = TableController.width, Height = TableController.heihgt};
                 btn.Text = table.display_name;
+                // show table in cbox
+
+                //cbTables.Items.Add(table.display_name);
 
                 btn.Click += Btn_Click;        
                 btn.Tag = table;
-                
+
+
                 if (table.status == 0)
                 {
                     btn.BackColor = Color.LightBlue;
@@ -133,13 +145,23 @@ namespace RESTAURANT_MANAGEMENT.Views
             txtSelectedTable.TextAlign = HorizontalAlignment.Center;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        public void showBill(int table_id)
+        public void showBill(int? table_id)
         {
             lstItems.Items.Clear();
-            int id = BillController.GetBillid(table_id);
+            int id;
+            if(table_id>0)
+            {
+                id = BillController.GetBillid(table_id);
+            }
+            else
+            {
+                id = BillController.GetBillid(-1);
+            }
+            selectedBillId = id;
+            Console.WriteLine("Show bill " + id.ToString());
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
-            selectedBillId = id;
+            
             List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
             int i = 1;
             foreach (ShowBillModel.ShowBill item in listDetail)
@@ -158,10 +180,12 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void UpdateBill(int billId, int discount)
         {
+            //MessageBox.Show("table: " + selectedTable.ToString() + "bill: "+selectedBillId.ToString());
             if (billId != -1)
             {
                 BillController.UpdateBillTotal(billId);
-                BillModel.Bill bill = BillController.GetBill(billId);
+                BillModel.Bill bill = BillController.GetBill(selectedTable);
+                //
                 if (bill != null)
                 {
                     float total = bill.total;
@@ -182,7 +206,6 @@ namespace RESTAURANT_MANAGEMENT.Views
            
             string category = cbCategory.Text.ToLower();
             string searchText = txtFindName.Text.ToLower();
-            //MessageBox.Show(category);
             if (category == "tất cả" && string.IsNullOrEmpty(searchText))
             {
                 filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
@@ -277,6 +300,32 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnMerge_Click(object sender, EventArgs e)
         {
+            int table1 = selectedTable;
+            int table2 = (int)cbTables.SelectedValue;
+            //MessageBox.Show(table2.ToString());
+            int bill1 = BillController.GetBillid(table1);
+            int bill2 = BillController.GetBillid(table2);
+            if(bill2 != -1)
+            {
+                MessageBox.Show("Please choose another table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (bill1 == -1)
+            {
+                MessageBox.Show("Please choose a table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                try
+                {
+                    TableController.ChangeTable(table1, table2);
+                    //Console.WriteLine("success change");
+                    LoadTables();
+                }catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -291,17 +340,46 @@ namespace RESTAURANT_MANAGEMENT.Views
             btnInside.BackColor = Color.Orange;
             flpTables.Enabled = true;
             btnAway.BackColor = Color.White;
+            selectedTable = 0;
+            LoadTables();
+            btnMerge.Enabled = true;
+            cbTables.Enabled = true;
+            cbTables.Visible = true;
+            btnMerge.Visible = true;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnAway_Click(object sender, EventArgs e)
         {
+            //LoadTables();
+            flpTables.Controls.Clear();
             btnInside.BackColor = Color.White;
             flpTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
+            btnMerge.Enabled = false;
+            cbTables.Enabled = false;
             txtSelectedTable.Text = "Take away";
             selectedTable = -1;
-            flpTables.Controls.Clear(); 
-            LoadTables ();
+            cbTables.Visible = false;
+            btnMerge.Visible = false;
+
+            //flpTables.Controls.Clear(); 
+            //LoadTables();
+            int id = BillController.GetBillid(-1);
+            selectedBillId = id;
+            if(id == -1)
+            {
+                btnOrder.Enabled = true;
+                btnPay.Enabled = false;
+            }
+            else
+            {
+                btnOrder.Enabled = false;
+                btnPay.Enabled = true;
+            }
+            showBill(-1);
+            UpdateBill(id, (int)txtDiscount.Value);
+
+
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -337,15 +415,9 @@ namespace RESTAURANT_MANAGEMENT.Views
                 btnOrder.Enabled = false;
                 btnPay.Enabled = true;
                 selectedBillId = b.bill_id;
-
-                MessageBox.Show(selectedBillId.ToString());
-                //MessageBox.Show(BillController.GetBillid(selectedTable).ToString());
                 BillModel.Bill bill = BillController.GetBill(selectedTable);
 
-                float total = bill.total;
-                txtSum.Text = total.ToString("C0", culture);
-                total *= (1 - ((int)txtDiscount.Value / 100.0f)); // Apply discount
-                txtTotal.Text = total.ToString("C0", culture);
+
             }
             else
             {
@@ -375,13 +447,18 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             // clear tables
             flpTables.Controls.Clear();
-            BillController.PayBill(selectedTable);
+            float discount = (float)txtDiscount.Value;
+            BillController.PayBill(selectedTable, discount);
             // reload tables
-            LoadTables();
+            if(selectedTable!=-1)
+            {
+                LoadTables();
+            }
+      
             // update and show bill
             lstItems.Items.Clear();
             showBill(selectedTable);
-
+            txtDiscount.Value = 0;
             btnPay.Enabled=false;
             btnOrder.Enabled=true;
 
@@ -389,23 +466,61 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            // clear tables
-            flpTables.Controls.Clear();
-            //BillModel.Bill b = BillController.GetBill(selectedTable);
-            BillController.OrderBill(selectedTable);
-            selectedBillId = BillController.GetBillid(selectedTable);
+            if (selectedTable>0) 
+            {
+                // clear tables
+                flpTables.Controls.Clear();
+                BillController.OrderBill(selectedTable);
+                selectedBillId = BillController.GetBillid(selectedTable);
 
-            UpdateBill(selectedBillId, (int)txtDiscount.Value);
-            // reload tables
-            LoadTables();
-            btnPay.Enabled = true;
-            btnOrder.Enabled = false;
+                UpdateBill(selectedBillId, (int)txtDiscount.Value);
+                // reload tables
+                LoadTables();
+                btnPay.Enabled = true;
+                btnOrder.Enabled = false;
+            }
+            else if(selectedTable==-1)
+            {
+                BillController.OrderBill(-1);
+                
+                selectedBillId = BillController.GetBillid(-1);
+                Console.WriteLine("selected table = -1 order bill with table=null bill id=" + selectedBillId.ToString());
+                UpdateBill(selectedBillId, (int)txtDiscount.Value);
+
+                btnPay.Enabled = true;
+                btnOrder.Enabled = false;
+
+            }
+            else if (selectedTable==0)
+            {
+                MessageBox.Show("Please choose a table or take away mode", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnPay.Enabled = false;
+            }
+
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void txtFindName_TextChanged(object sender, EventArgs e)
         {
             UpdateUIMenuItem();
+        }
+
+        private void refreshBillItem(object sender, EventArgs e)
+        {
+            showBill(selectedTable);
+            UpdateBill(selectedBillId, (int)txtDiscount.Value);
+        }
+
+        private void bntPrint_Click(object sender, EventArgs e)
+        {
+            frmPrint printPage = new frmPrint();
+            printPage.branch = lbBranchName.Text;
+            printPage.sum = txtSum.Text;
+            printPage.total = txtTotal.Text;
+            printPage.discount = txtDiscount.Text;
+            printPage.table = txtSelectedTable.Text;
+            printPage.listItem = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + selectedBillId);
+            printPage.ShowDialog();
         }
     }
 }

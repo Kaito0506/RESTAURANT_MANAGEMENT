@@ -51,9 +51,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ckbPrint = new System.Windows.Forms.CheckBox();
             this.btnPay = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bntPrint = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
@@ -196,6 +196,7 @@
             this.txtSelectedTable.ReadOnly = true;
             this.txtSelectedTable.Size = new System.Drawing.Size(323, 32);
             this.txtSelectedTable.TabIndex = 2;
+            this.txtSelectedTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -226,7 +227,6 @@
             this.cbTables.Name = "cbTables";
             this.cbTables.Size = new System.Drawing.Size(177, 37);
             this.cbTables.TabIndex = 2;
-            this.cbTables.UseWaitCursor = true;
             // 
             // btnMerge
             // 
@@ -236,7 +236,7 @@
             this.btnMerge.Name = "btnMerge";
             this.btnMerge.Size = new System.Drawing.Size(128, 37);
             this.btnMerge.TabIndex = 1;
-            this.btnMerge.Text = "Merge";
+            this.btnMerge.Text = "Change";
             this.btnMerge.UseVisualStyleBackColor = true;
             this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
@@ -320,22 +320,10 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Sub Total";
             // 
-            // ckbPrint
-            // 
-            this.ckbPrint.AutoSize = true;
-            this.ckbPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbPrint.Location = new System.Drawing.Point(76, 162);
-            this.ckbPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ckbPrint.Name = "ckbPrint";
-            this.ckbPrint.Size = new System.Drawing.Size(101, 29);
-            this.ckbPrint.TabIndex = 10;
-            this.ckbPrint.Text = "Print bill";
-            this.ckbPrint.UseVisualStyleBackColor = true;
-            // 
             // btnPay
             // 
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(53, 50);
+            this.btnPay.Location = new System.Drawing.Point(53, 45);
             this.btnPay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(149, 94);
@@ -346,14 +334,26 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.bntPrint);
             this.panel3.Controls.Add(this.btnOrder);
-            this.panel3.Controls.Add(this.ckbPrint);
             this.panel3.Controls.Add(this.btnPay);
             this.panel3.Location = new System.Drawing.Point(403, 442);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(235, 187);
             this.panel3.TabIndex = 6;
+            // 
+            // bntPrint
+            // 
+            this.bntPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntPrint.Location = new System.Drawing.Point(53, 146);
+            this.bntPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bntPrint.Name = "bntPrint";
+            this.bntPrint.Size = new System.Drawing.Size(149, 39);
+            this.bntPrint.TabIndex = 12;
+            this.bntPrint.Text = "Bill";
+            this.bntPrint.UseVisualStyleBackColor = true;
+            this.bntPrint.Click += new System.EventHandler(this.bntPrint_Click);
             // 
             // btnOrder
             // 
@@ -455,7 +455,6 @@
             this.panelBillIfor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -486,7 +485,6 @@
         private System.Windows.Forms.Button btnMerge;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cbTables;
-        private System.Windows.Forms.CheckBox ckbPrint;
         private System.Windows.Forms.ListView lstItems;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -499,5 +497,6 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.TextBox txtFindName;
         private System.Windows.Forms.FlowLayoutPanel flpItems;
+        private System.Windows.Forms.Button bntPrint;
     }
 }

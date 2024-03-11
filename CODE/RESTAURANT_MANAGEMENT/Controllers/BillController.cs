@@ -5,15 +5,24 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace RESTAURANT_MANAGEMENT.Controllers
 {
     class BillController
     {
-        public static int GetBillid(int table_id)
+        public static int GetBillid(int? table_id)
         {
-            DataTable data = Database.ExecuteQuery("select * from BILL where status=0 and table_id=" + table_id);
+            DataTable data;
+            if (table_id == -1)
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=null");
+            }
+            else
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=" + table_id);
+            }
             if(data.Rows.Count>0)
             {
                 BillModel.Bill b = new BillModel.Bill(data.Rows[0]);
@@ -22,12 +31,22 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             return -1; //no bill unpaid
         }
 
-        public static BillModel.Bill GetBill(int table_id)
+        public static BillModel.Bill GetBill(int? table_id)
         {
-            DataTable data = Database.ExecuteQuery("select * from BILL where status=0 and table_id=" + table_id);
+            DataTable data;
+            if (table_id == -1)
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=null");
+                //MessageBox.Show("get bill from null");
+            }
+            else
+            {
+                data = Database.ExecuteQuery("getBillId @table_id=" + table_id);
+            }
             if (data.Rows.Count > 0)
             {
                 BillModel.Bill b = new BillModel.Bill(data.Rows[0]);
+                //MessageBox.Show(b.bill_id.ToString());
                 return b;
             }
             return null; //no bill unpaid
@@ -79,11 +98,20 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
 
 
-        public static void PayBill(int table_id)
+        public static void PayBill(int table_id, float discount)
         {
             try
             {
-                Database.ExecuteNonQuery("PAY @table_id=" + table_id);
+                if (table_id == -1)
+                {
+                    Database.ExecuteNonQuery("PAY @table_id=null , @discount=" + discount);
+                }
+                else 
+                {
+                    Database.ExecuteNonQuery("PAY @table_id , @discount", new object[] {table_id, discount});
+
+                }
+                
 
                 Console.WriteLine("Pay successfully");
             }
@@ -93,16 +121,27 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             }
         }
 
-        public static void OrderBill(int table_id)
+        public static void OrderBill(int? table_id)
         {
             try
             {
-                Database.ExecuteNonQuery("ORDER_BILL @table_id=" + table_id);
-                Console.WriteLine("Order successfully");
+                if(table_id == -1)
+                {
+                    Database.ExecuteNonQuery("EXEC ORDER_BILL @table_id=null");
+                    Console.WriteLine("Order successfully with null table");
+                    //MessageBox.Show("order null success");
+                }
+                else
+                {
+                    Database.ExecuteNonQuery("ORDER_BILL @table_id=" + table_id);
+                    Console.WriteLine("Order successfully");
+                }
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Order error " + ex.Message);
+                //MessageBox.Show("order failed");
             }
         }
 
