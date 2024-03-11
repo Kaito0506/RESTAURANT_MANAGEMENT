@@ -447,13 +447,18 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             // clear tables
             flpTables.Controls.Clear();
-            BillController.PayBill(selectedTable);
+            float discount = (float)txtDiscount.Value;
+            BillController.PayBill(selectedTable, discount);
             // reload tables
-            LoadTables();
+            if(selectedTable!=-1)
+            {
+                LoadTables();
+            }
+      
             // update and show bill
             lstItems.Items.Clear();
             showBill(selectedTable);
-
+            txtDiscount.Value = 0;
             btnPay.Enabled=false;
             btnOrder.Enabled=true;
 

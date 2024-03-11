@@ -100,7 +100,7 @@ CREATE TABLE BILL(
 	checkin_date date not null,
 	discount int default 0, 
 	total money not null,
-	table_id int , -- ì table_id ==0, take way bill
+	table_id int , -- ì table_id is null, take way bill
 	status int not null, --o:not paid, 1: paid
 	foreign key (table_id) references TABLES(id) on delete cascade on update cascade
 );
@@ -167,7 +167,7 @@ INSERT INTO ASSIGN (u_id, branch_id) VALUES
 (10,2);
 
 ------------------------------------------------------------------
-delete from TABLES;
+
 DECLARE @i INT = 1
 WHILE @i <= 20
 BEGIN 
@@ -349,21 +349,25 @@ EXEC getBranchName @user_id=8;
 
 ---------------------------------------------------------------------------------------------------------------------------
 ----proc PAY
-CREATE PROC PAY
-	@table_id int
+ALTER PROC PAY
+	@table_id int, @discount float
 AS
 BEGIN
 	DECLARE @bill_id int;
+	DECLARE @final_total Money;
 	IF (@table_id IS NOT NULL)
 	BEGIN
 		UPDATE TABLES SET status=0 WHERE id=@table_id;
-		UPDATE BILL SET status=1 WHERE table_id=@table_id;
+		SELECT @bill_id=id from	BILL where table_id=@table_id and status=0;
+		UPDATE BILL SET status=1 WHERE id=@bill_id;
 	END
 	ELSE
 	BEGIN
 		SELECT @bill_id=id from	BILL where table_id is null and status=0;
 		UPDATE BILL SET status=1 WHERE id = @bill_id;
 	END
+	SELECT @final_total=total*(1-@discount/100) from BILL where id=@bill_id;
+	UPDATE BILL SET total = @final_total, discount=@discount where id=@bill_id;
 END
 GO
 
@@ -405,10 +409,13 @@ BEGIN
 						DELETE BILL_DETAIL where bill_id=@bill_id and item_id=@item_id;
 				END
 		END
-		ELSE
+	ELSE
+		BEGIN
+			IF(@quantity>0)
 			BEGIN
 				INSERT INTO BILL_DETAIL(bill_id, item_id, quantity) VALUES (@bill_id, @item_id, @quantity);
 			END
+		END
 END
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROC getBillId
@@ -449,16 +456,17 @@ SELECT id from	BILL where table_id is null and status=0;
 EXEC ORDER_BILL @table_id=null;
 select * from BILL
 delete from bill where table_id IS NULL;
-PAY @table_id=null;
+PAY @table_id=null, @discount=5;
 select *from BILL;
 delete from BILL;
 getBillId @table_id=null;
+update BILL set status=0 where id=3;
 
 
 update TABLES set status =0;
 select * from BILL where status=0 and table_id is null;
-EXEC addBillDetail @bill_id=57 , @item_id=5, @quantity=2;
-CalculateBillTotal @b_id=57;
+EXEC addBillDetail @bill_id=4 , @item_id=5, @quantity=2;
+CalculateBillTotal @b_id=4;
 
 
 
