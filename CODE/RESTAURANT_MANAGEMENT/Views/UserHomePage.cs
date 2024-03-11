@@ -309,6 +309,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 MessageBox.Show("Please choose another table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (bill1 == -1)
+            {
+                MessageBox.Show("Please choose a table to change", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             else
             {
                 try
@@ -338,13 +343,15 @@ namespace RESTAURANT_MANAGEMENT.Views
             selectedTable = 0;
             LoadTables();
             btnMerge.Enabled = true;
-
             cbTables.Enabled = true;
+            cbTables.Visible = true;
+            btnMerge.Visible = true;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         private void btnAway_Click(object sender, EventArgs e)
         {
-            LoadTables();
+            //LoadTables();
+            flpTables.Controls.Clear();
             btnInside.BackColor = Color.White;
             flpTables.Enabled = false;
             btnAway.BackColor = Color.Orange;
@@ -352,6 +359,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             cbTables.Enabled = false;
             txtSelectedTable.Text = "Take away";
             selectedTable = -1;
+            cbTables.Visible = false;
+            btnMerge.Visible = false;
+
             //flpTables.Controls.Clear(); 
             //LoadTables();
             int id = BillController.GetBillid(-1);
