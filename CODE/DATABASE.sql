@@ -97,7 +97,8 @@ CREATE table MENU_ITEM(
 -- bill table
 CREATE TABLE BILL(
 	id int primary key IDENTITY(1,1),  
-	checkin_date date not null,   
+	checkin_date date not null,
+	discount int default 0, 
 	total money not null,
 	table_id int , -- ì table_id ==0, take way bill
 	status int not null, --o:not paid, 1: paid
@@ -424,7 +425,7 @@ BEGIN
 	END
 END
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ALTER PROC changeTable
+CREATE PROC changeTable
 	@table1 int, @table2 int
 AS BEGIN 
 	DECLARE @bill1 int, @bill2 int;
