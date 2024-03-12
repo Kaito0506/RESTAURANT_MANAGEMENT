@@ -238,11 +238,13 @@
     <Compile Include="BillItem.Designer.cs">
       <DependentUpon>BillItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DetailCategoryController.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Database.cs" />
@@ -252,10 +254,12 @@
     <Compile Include="ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DetailCategoryModel.cs" />
     <Compile Include="Models\BillDetailModel.cs" />
     <Compile Include="Models\BillModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\ShowBillModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\TableModel.cs" />
