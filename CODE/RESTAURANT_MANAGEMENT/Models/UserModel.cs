@@ -7,6 +7,9 @@ class UserModel
         public User() { }
         public int u_id { get; set; }
         public int ro_id { get; set; }
+        public string ro_name { get; set; }
+        public int b_id { get; set; }
+        public string b_name { get; set; }
         public string u_cccd { get; set; }
         public string u_name { get; set; }
         public DateTime u_dob { get; set; }

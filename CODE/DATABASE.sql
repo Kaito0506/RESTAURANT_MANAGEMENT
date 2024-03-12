@@ -42,7 +42,7 @@ CREATE TABLE USERS (
     dob DATE,
     gender CHAR(1),
     address NVARCHAR(255),
-    phone NVARCHAR(15) not null,
+    phone NVARCHAR(15) not null unique,
     password nvarchar(20) not null check (len(password) between 6 and 16)
 	FOREIGN KEY (role_id) REFERENCES ROLE(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -120,7 +120,7 @@ INSERT INTO ROLE (role_name, salary) VALUES
 (N'Quản lý', 20000000),
 (N'Nhân viên', 10000000),
 (N'Bếp trưởng', 15000000),
-(N'Phụ bếp', 8000000),
+(N'Bảo vệ', 4000000),
 (N'Phục vụ', 7000000);
 
 ------------------------------------------------------------
@@ -140,7 +140,7 @@ INSERT INTO RESTAURANT_BRANCH (name, address, phone) VALUES
 
 ------------------------------------------------------------
 INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES
-(1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
+(1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0887654321', N'password123'),
 (2, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
 (3, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
 (4, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
@@ -507,6 +507,8 @@ SELECT * FROM MENU_ITEM WHERE id = 1;
 SELECT * FROM CATEGORY c JOIN DETAIL_CATEGORY dc ON c.id = dc.category_id;
 SELECT dc.id, dc.name as dc_name, dc.describe as dc_desc, dc.category_id, c.name as c_name, c.describe as c_desc FROM DETAIL_CATEGORY dc JOIN CATEGORY c on dc.category_id = c.id WHERE dc.category_id = 2;
 SELECT * FROM DETAIL_CATEGORY;
+Select u.name from USERS u JOIN ASSIGN a on a.u_id = u.id where u.role_id=1 AND a.branch_id=1; 
+c1;
 
 ----------------------------------------------------------
 UPDATE TABLES
