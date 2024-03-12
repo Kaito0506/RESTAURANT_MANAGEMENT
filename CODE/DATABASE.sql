@@ -1,10 +1,8 @@
-﻿
-Create login admin with password='admin', CHECK_POLICY = OFF;
-
+﻿Create login admin with password='admin', CHECK_POLICY = OFF;
 
 --DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
-	
+USE RESTAURANT_MANAGEMENT;
 
 sp_changedbowner admin; 
 
@@ -221,6 +219,7 @@ INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
 ------------------------------------------------------------------------------------------------------------------------
 -- Insert sample data into BILL_DETAIL table
 select * from tables;
+
 DECLARE @today DATE = GETDATE();
 INSERT INTO BILL (checkin_date, table_id, status, total) VALUES
 ('2024-02-01', 1, 0, 0),
@@ -349,26 +348,29 @@ EXEC getBranchName @user_id=8;
 
 ---------------------------------------------------------------------------------------------------------------------------
 ----proc PAY
-ALTER PROC PAY
-	@table_id int, @discount float
+CREATE PROCEDURE PAY
+    @table_id INT,
+    @discount FLOAT
 AS
 BEGIN
-	DECLARE @bill_id int;
-	DECLARE @final_total Money;
-	IF (@table_id IS NOT NULL)
-	BEGIN
-		UPDATE TABLES SET status=0 WHERE id=@table_id;
-		SELECT @bill_id=id from	BILL where table_id=@table_id and status=0;
-		UPDATE BILL SET status=1 WHERE id=@bill_id;
-	END
-	ELSE
-	BEGIN
-		SELECT @bill_id=id from	BILL where table_id is null and status=0;
-		UPDATE BILL SET status=1 WHERE id = @bill_id;
-	END
-	SELECT @final_total=total*(1-@discount/100) from BILL where id=@bill_id;
-	UPDATE BILL SET total = @final_total, discount=@discount where id=@bill_id;
-END
+    DECLARE @bill_id INT;
+    DECLARE @final_total MONEY;
+
+    IF (@table_id IS NOT NULL)
+    BEGIN
+        UPDATE TABLES SET status = 0 WHERE id = @table_id;
+        SELECT @bill_id = id FROM BILL WHERE table_id = @table_id AND status = 0;
+        UPDATE BILL SET status = 1 WHERE id = @bill_id;
+    END
+    ELSE
+    BEGIN
+        SELECT @bill_id = id FROM BILL WHERE table_id IS NULL AND status = 0;
+        UPDATE BILL SET status = 1 WHERE id = @bill_id;
+    END
+
+    SELECT @final_total = total * (1 - @discount / 100) FROM BILL WHERE id = @bill_id;
+    UPDATE BILL SET total = @final_total, discount = @discount WHERE id = @bill_id;
+END;
 GO
 
 
@@ -445,6 +447,9 @@ AS BEGIN
 		UPDATE TABLES SET status=0 WHERE id=@table1;
 	END
 END
+
+
+
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
