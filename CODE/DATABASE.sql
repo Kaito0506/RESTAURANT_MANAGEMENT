@@ -508,7 +508,14 @@ SELECT * FROM CATEGORY c JOIN DETAIL_CATEGORY dc ON c.id = dc.category_id;
 SELECT dc.id, dc.name as dc_name, dc.describe as dc_desc, dc.category_id, c.name as c_name, c.describe as c_desc FROM DETAIL_CATEGORY dc JOIN CATEGORY c on dc.category_id = c.id WHERE dc.category_id = 2;
 SELECT * FROM DETAIL_CATEGORY;
 Select u.name from USERS u JOIN ASSIGN a on a.u_id = u.id where u.role_id=1 AND a.branch_id=1; 
-c1;
+SELECT id FROM RESTAURANT_BRANCH where name = N'Nhà hàng A';
+SELECT * FROM ROLE;
+SELECT * FROM ROLE WHERE role_name = N'Quản lý';
+UPDATE USERS SET role_id= 1, cccd= '123456789012' , name= N'Nguyễn Văn B', dob= '1990-01-01' , gender= 'M' , address= '123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh' , phone= '0887654321' , password= 'password123' WHERE id=1;
+
+SELECT * FROM USERS;
+SELECT id FROM USERS WHERE phone='0901248021';
+SELECT * FROM ASSIGN;
 
 ----------------------------------------------------------
 UPDATE TABLES

@@ -28,5 +28,25 @@ class RoleController {
             Console.WriteLine(e);
             return null;
         }
-    } 
+    }
+    
+    public static int GetRoleIdByName(string name)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand($"SELECT id FROM ROLE WHERE role_name=N'{name}'", Database.Connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader.GetInt32(0);
+            }
+            return -1;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return -1;
+        }
+    }
 }
