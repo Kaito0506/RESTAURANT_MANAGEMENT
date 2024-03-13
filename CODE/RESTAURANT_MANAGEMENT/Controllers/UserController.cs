@@ -63,4 +63,100 @@ class UserController
             return null;
         }
     }
+
+    public static int GetUserIdByPhone(string phone)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("SELECT id FROM USERS WHERE phone=@phone", Database.Connection);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader.GetInt32(0);
+            }
+            return -1;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return -1;
+        }
+    }
+
+    public static bool UpdateUserDetailsById(UserModel.User user)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("UPDATE USERS SET role_id=@role, cccd=@cccd, name=@name, dob=@dob, gender=@gender, address=@address, phone=@phone, password=@password WHERE id=@id", Database.Connection);
+            SqlCommand cmd2 = new SqlCommand("UPDATE ASSIGN SET branch_id=@branch WHERE u_id=@id", Database.Connection);
+            cmd.Parameters.AddWithValue("@role", user.ro_id);
+            cmd.Parameters.AddWithValue("@cccd", user.u_cccd);
+            cmd.Parameters.AddWithValue("@name", user.u_name);
+            cmd.Parameters.AddWithValue("@dob", user.u_dob);
+            cmd.Parameters.AddWithValue("@gender", user.u_gender);
+            cmd.Parameters.AddWithValue("@address", user.u_address);
+            cmd.Parameters.AddWithValue("@phone", user.u_phone);
+            cmd.Parameters.AddWithValue("@password", user.u_password);
+            cmd.Parameters.AddWithValue("@id", user.u_id);
+            cmd2.Parameters.AddWithValue("@branch", user.b_id);
+            cmd2.Parameters.AddWithValue("@id", user.u_id);
+            cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
+            return true;
+        } catch (Exception e)
+        {
+            MessageBox.Show("Update user failed");
+            MessageBox.Show(e.Message.ToString());
+            Console.WriteLine(e);
+            return false;
+        }
+    }
+
+    public static bool CreateUser(UserModel.User user)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES (@role, @cccd, @name, @dob, @gender, @address, @phone, @password)", Database.Connection);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO ASSIGN (u_id, branch_id) VALUES (@id, @branch)", Database.Connection);
+            cmd.Parameters.AddWithValue("@role", user.ro_id);
+            cmd.Parameters.AddWithValue("@cccd", user.u_cccd);
+            cmd.Parameters.AddWithValue("@name", user.u_name);
+            cmd.Parameters.AddWithValue("@dob", user.u_dob);
+            cmd.Parameters.AddWithValue("@gender", user.u_gender);
+            cmd.Parameters.AddWithValue("@address", user.u_address);
+            cmd.Parameters.AddWithValue("@phone", user.u_phone);
+            cmd.Parameters.AddWithValue("@password", user.u_password);
+            cmd.ExecuteNonQuery();
+            int id = GetUserIdByPhone(user.u_phone);
+            cmd2.Parameters.AddWithValue("@id", id);
+            cmd2.Parameters.AddWithValue("@branch", user.b_id);
+            cmd2.ExecuteNonQuery();
+            return true;
+        } catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
+    
+    public static bool DeleteUserById(int id)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("DELETE FROM USERS WHERE id=@id", Database.Connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
 }

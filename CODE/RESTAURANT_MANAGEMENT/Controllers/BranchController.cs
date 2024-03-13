@@ -29,4 +29,24 @@ class BranchController {
             return null;
         }
     }
+
+    public static int GetBranchIdByName(string name)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand($"SELECT id FROM RESTAURANT_BRANCH WHERE name=N'{name}'", Database.Connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader.GetInt32(0);
+            }
+            return -1;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return -1;
+        }
+    }
 }
