@@ -69,20 +69,15 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             return listBillDetail;
         }
 
-        public static List<ShowBillModel.ShowBill> GetBillView(int bill_id)
+        public static DataTable GetBillView(int bill_id)
         {
-            List<ShowBillModel.ShowBill> lstItem = new List<ShowBillModel.ShowBill>();
-            DataTable data = Database.ExecuteQuery("select name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
+            DataTable data = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
             if (data.Rows.Count > 0)
             {
-                foreach (DataRow row in data.Rows)
-                {
-                    ShowBillModel.ShowBill b = new ShowBillModel.ShowBill(row);
-                    lstItem.Add(b);
-                }
+                return data;
             }
 
-            return lstItem;
+            return null;
         }
 
         public static void UpdateBillTotal(int bill_id) {
