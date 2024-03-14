@@ -206,7 +206,6 @@
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.cancel;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(124, 3);
@@ -218,7 +217,6 @@
             // btnAddItem
             // 
             this.btnAddItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddItem.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.addButton;
             this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddItem.Location = new System.Drawing.Point(303, 0);

@@ -90,7 +90,7 @@
             this.panel4.Controls.Add(this.label16);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.roundPictureBox3);
+           // this.panel4.Controls.Add(this.roundPictureBox3);
             this.panel4.Location = new System.Drawing.Point(33, 448);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(835, 67);
@@ -172,7 +172,7 @@
             this.panel5.Controls.Add(this.label20);
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.label22);
-            this.panel5.Controls.Add(this.roundPictureBox4);
+            //this.panel5.Controls.Add(this.roundPictureBox4);
             this.panel5.Location = new System.Drawing.Point(33, 375);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(835, 67);
@@ -234,7 +234,7 @@
             this.panel6.Controls.Add(this.label24);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Controls.Add(this.label26);
-            this.panel6.Controls.Add(this.roundPictureBox5);
+           // this.panel6.Controls.Add(this.roundPictureBox5);
             this.panel6.Location = new System.Drawing.Point(33, 302);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(835, 67);
@@ -316,7 +316,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.roundPictureBox2);
+           // this.panel3.Controls.Add(this.roundPictureBox2);
             this.panel3.Location = new System.Drawing.Point(33, 229);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(835, 67);
@@ -358,7 +358,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.roundPictureBox1);
+            //this.panel1.Controls.Add(this.roundPictureBox1);
             this.panel1.Location = new System.Drawing.Point(33, 156);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(835, 67);

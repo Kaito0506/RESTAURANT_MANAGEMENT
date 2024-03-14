@@ -339,7 +339,6 @@
             // 
             // btnFind
             // 
-            this.btnFind.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.find;
             this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnFind.Location = new System.Drawing.Point(322, 5);
             this.btnFind.Name = "btnFind";
