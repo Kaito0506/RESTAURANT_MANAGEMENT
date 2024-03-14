@@ -147,7 +147,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         public void showBill(int? table_id)
         {
-            lstItems.Items.Clear();
+            lstItems.DataSource = null;
             int id;
             if(table_id>0)
             {
@@ -162,18 +162,49 @@ namespace RESTAURANT_MANAGEMENT.Views
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
             
-            List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
-            int i = 1;
-            foreach (ShowBillModel.ShowBill item in listDetail)
+            DataTable listDetail = BillController.GetBillView(id);
+            
+            if (listDetail!=null)
             {
-                ListViewItem lstItem = new ListViewItem(i.ToString());
-                lstItem.SubItems.Add(item.name.ToString());
-                lstItem.SubItems.Add(item.quantity.ToString());
-                lstItem.SubItems.Add(((int)item.price).ToString("C0", culture));
-                i++;
-                lstItems.Items.Add(lstItem);
-               
+                lstItems.DataSource = listDetail;
+                customtaGridView();
+                DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+                btnCol.Name = "editBtn";
+                btnCol.HeaderText = "Action";
+                btnCol.Text = "Edit";
+                btnCol.UseColumnTextForButtonValue = true;
+                lstItems.Columns.Add(btnCol);
             }
+
+
+        }
+
+        private void customtaGridView()
+        {
+            
+            lstItems.Columns["id"].HeaderText = "ID";
+            lstItems.Columns["id"].ReadOnly = true;
+            lstItems.Columns["name"].HeaderText = "Name";
+            lstItems.Columns["name"].ReadOnly = true;
+            lstItems.Columns["price"].HeaderText = "Price";
+            lstItems.Columns["price"].ValueType = typeof(int);
+            lstItems.Columns["price"].ReadOnly = true;
+            lstItems.Columns["quantity"].HeaderText = "Quantity";
+
+            // Set column widths\
+            lstItems.Columns["id"].Width = 50;
+            lstItems.Columns["name"].Width = 200; // Adjust width according to your requirement
+            lstItems.Columns["price"].Width = 100;
+            lstItems.Columns["quantity"].Width = 100;
+
+            // Set text alignment to center for specific columns
+            lstItems.Columns["ID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            lstItems.Columns["price"].DefaultCellStyle.Format = "C0";
+            lstItems.Columns["price"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");
+            
         }
 
 
@@ -454,9 +485,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 LoadTables();
             }
-      
+
             // update and show bill
-            lstItems.Items.Clear();
+            lstItems.DataSource = null;
             showBill(selectedTable);
             txtDiscount.Value = 0;
             btnPay.Enabled=false;
