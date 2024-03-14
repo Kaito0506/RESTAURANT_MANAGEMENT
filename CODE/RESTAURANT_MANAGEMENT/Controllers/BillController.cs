@@ -151,6 +151,32 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
         }
 
+        public static void deleteBillDetail(int id)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("DELETE FROM BILL_DETAIL WHERE id = " + id);
+                Console.WriteLine("Delete item successflly");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Delete item FAILED" + e);
+            }
+        }
+
+        public static void updateBillDetail(int id, int quantity)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("UPDATE BILL_DETAIL SET quantity=" + quantity + " WHERE id = " + id);
+                MessageBox.Show("Update successflly");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Update failed");
+            }
+        }
+
         public static decimal GetTotalRevenueTodayAll()
         {
             try
