@@ -38,6 +38,7 @@
             this.btnInside = new System.Windows.Forms.Button();
             this.btnAway = new System.Windows.Forms.Button();
             this.panelBillItems = new System.Windows.Forms.Panel();
+            this.lstItems = new System.Windows.Forms.DataGridView();
             this.panelSelectedTbale = new System.Windows.Forms.Panel();
             this.txtSelectedTable = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,10 +62,15 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.lstItems = new System.Windows.Forms.DataGridView();
+            this.itemCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelBillItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstItems)).BeginInit();
             this.panelSelectedTbale.SuspendLayout();
             this.panelOperations.SuspendLayout();
             this.panelBillIfor.SuspendLayout();
@@ -72,7 +78,6 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBranch
@@ -137,6 +142,66 @@
             this.panelBillItems.Name = "panelBillItems";
             this.panelBillItems.Size = new System.Drawing.Size(622, 378);
             this.panelBillItems.TabIndex = 3;
+            // 
+            // lstItems
+            // 
+            this.lstItems.AllowUserToAddRows = false;
+            this.lstItems.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            this.lstItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.lstItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.lstItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.lstItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lstItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lstItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.lstItems.ColumnHeadersHeight = 30;
+            this.lstItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemCol,
+            this.idCol,
+            this.nameCol,
+            this.quantityCol,
+            this.priceCol});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lstItems.DefaultCellStyle = dataGridViewCellStyle3;
+            this.lstItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstItems.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lstItems.Location = new System.Drawing.Point(0, 0);
+            this.lstItems.Margin = new System.Windows.Forms.Padding(8);
+            this.lstItems.Name = "lstItems";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lstItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.lstItems.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue;
+            this.lstItems.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.lstItems.RowTemplate.Height = 60;
+            this.lstItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lstItems.Size = new System.Drawing.Size(622, 378);
+            this.lstItems.TabIndex = 0;
+            this.lstItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lstItems_CellContentClick);
+            this.lstItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.lstItems_CellEndEdit);
             // 
             // panelSelectedTbale
             // 
@@ -388,57 +453,43 @@
             this.flpItems.Size = new System.Drawing.Size(270, 633);
             this.flpItems.TabIndex = 7;
             // 
-            // lstItems
+            // itemCol
             // 
-            this.lstItems.AllowUserToAddRows = false;
-            this.lstItems.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-            this.lstItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.lstItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lstItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.lstItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lstItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lstItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.lstItems.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lstItems.DefaultCellStyle = dataGridViewCellStyle3;
-            this.lstItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstItems.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lstItems.Location = new System.Drawing.Point(0, 0);
-            this.lstItems.Margin = new System.Windows.Forms.Padding(8);
-            this.lstItems.Name = "lstItems";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lstItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.lstItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue;
-            this.lstItems.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.lstItems.RowTemplate.Height = 60;
-            this.lstItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lstItems.Size = new System.Drawing.Size(622, 378);
-            this.lstItems.TabIndex = 0;
+            this.itemCol.HeaderText = "Item_id";
+            this.itemCol.MinimumWidth = 6;
+            this.itemCol.Name = "itemCol";
+            this.itemCol.Visible = false;
+            // 
+            // idCol
+            // 
+            this.idCol.FillWeight = 85.06875F;
+            this.idCol.HeaderText = "ID";
+            this.idCol.MinimumWidth = 6;
+            this.idCol.Name = "idCol";
+            this.idCol.ReadOnly = true;
+            // 
+            // nameCol
+            // 
+            this.nameCol.FillWeight = 168.0289F;
+            this.nameCol.HeaderText = "Name";
+            this.nameCol.MinimumWidth = 6;
+            this.nameCol.Name = "nameCol";
+            this.nameCol.ReadOnly = true;
+            // 
+            // quantityCol
+            // 
+            this.quantityCol.FillWeight = 95.48656F;
+            this.quantityCol.HeaderText = "Quantity";
+            this.quantityCol.MinimumWidth = 6;
+            this.quantityCol.Name = "quantityCol";
+            // 
+            // priceCol
+            // 
+            this.priceCol.FillWeight = 105.926F;
+            this.priceCol.HeaderText = "Price";
+            this.priceCol.MinimumWidth = 6;
+            this.priceCol.Name = "priceCol";
+            this.priceCol.ReadOnly = true;
             // 
             // UserHomePage
             // 
@@ -461,6 +512,7 @@
             this.panelBranch.PerformLayout();
             this.panelMethod.ResumeLayout(false);
             this.panelBillItems.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lstItems)).EndInit();
             this.panelSelectedTbale.ResumeLayout(false);
             this.panelSelectedTbale.PerformLayout();
             this.panelOperations.ResumeLayout(false);
@@ -471,7 +523,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,5 +559,10 @@
         private System.Windows.Forms.FlowLayoutPanel flpItems;
         private System.Windows.Forms.Button bntPrint;
         private System.Windows.Forms.DataGridView lstItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceCol;
     }
 }

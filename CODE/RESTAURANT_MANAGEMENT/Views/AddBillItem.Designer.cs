@@ -155,11 +155,6 @@
             // 
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudQuantity.Location = new System.Drawing.Point(281, 18);
-            this.nudQuantity.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
             this.nudQuantity.Name = "nudQuantity";
             this.nudQuantity.Size = new System.Drawing.Size(111, 32);
             this.nudQuantity.TabIndex = 2;

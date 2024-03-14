@@ -147,7 +147,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         public void showBill(int? table_id)
         {
-            lstItems.DataSource = null;
+            lstItems.Rows.Clear();
             int id;
             if(table_id>0)
             {
@@ -163,47 +163,47 @@ namespace RESTAURANT_MANAGEMENT.Views
             UpdateBill(id, discount);
             
             DataTable listDetail = BillController.GetBillView(id);
-            
+            Image imgDelete = Image.FromFile("..\\..\\images\\delete.png");
+            DataGridViewImageColumn btnDelete = new DataGridViewImageColumn()
+            {
+                Image = imgDelete,
+                Name = "delete",
+                HeaderText = ""
+            };
+            // Remove the "delete" button column if it exists
+            if (lstItems.Columns.Contains("delete"))
+            {
+                lstItems.Columns.Remove("delete");
+            }
+            lstItems.Columns.Add(btnDelete);
             if (listDetail!=null)
             {
-                lstItems.DataSource = listDetail;
-                customtaGridView();
-                DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
-                btnCol.Name = "editBtn";
-                btnCol.HeaderText = "Action";
-                btnCol.Text = "Edit";
-                btnCol.UseColumnTextForButtonValue = true;
-                lstItems.Columns.Add(btnCol);
-            }
+                customGridView();
+                lstItems.Rows.Clear();
+                foreach (DataRow item in listDetail.Rows)
+                {
 
+                    int rowIndex = lstItems.Rows.Add(item["detail_id"], item["id"], item["name"], item["quantity"], item["price"]);
+                    
+                }
+
+
+            }
+            //lstItems.CellContentClick += lstItems_CellContentClick;
 
         }
 
-        private void customtaGridView()
+        private void customGridView()
         {
             
-            lstItems.Columns["id"].HeaderText = "ID";
-            lstItems.Columns["id"].ReadOnly = true;
-            lstItems.Columns["name"].HeaderText = "Name";
-            lstItems.Columns["name"].ReadOnly = true;
-            lstItems.Columns["price"].HeaderText = "Price";
-            lstItems.Columns["price"].ValueType = typeof(int);
-            lstItems.Columns["price"].ReadOnly = true;
-            lstItems.Columns["quantity"].HeaderText = "Quantity";
-
-            // Set column widths\
-            lstItems.Columns["id"].Width = 50;
-            lstItems.Columns["name"].Width = 200; // Adjust width according to your requirement
-            lstItems.Columns["price"].Width = 100;
-            lstItems.Columns["quantity"].Width = 100;
 
             // Set text alignment to center for specific columns
-            lstItems.Columns["ID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            lstItems.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            lstItems.Columns["quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["idCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["priceCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["quantityCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            lstItems.Columns["price"].DefaultCellStyle.Format = "C0";
-            lstItems.Columns["price"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");
+            lstItems.Columns["priceCol"].DefaultCellStyle.Format = "C0";
+            lstItems.Columns["priceCol"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");
             
         }
 
@@ -552,6 +552,45 @@ namespace RESTAURANT_MANAGEMENT.Views
             printPage.table = txtSelectedTable.Text;
             printPage.listItem = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + selectedBillId);
             printPage.ShowDialog();
+        }
+
+        private void lstItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>=0 && e.ColumnIndex== lstItems.Columns["delete"].Index)
+            {
+                int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
+                // Display a confirmation dialog
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(result == DialogResult.Yes)
+                {
+                    BillController.deleteBillDetail(id);
+                    showBill(selectedTable);
+                    //MessageBox.Show(item_id.ToString());
+                }
+                
+            }
+        }
+
+        private void lstItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && e.ColumnIndex == lstItems.Columns["quantityCol"].Index)
+            {
+
+                int quantity = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["quantityCol"].Value);
+                int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
+                if(quantity > 0)
+                {
+
+                    BillController.updateBillDetail(id, quantity);
+                    showBill(selectedTable);
+                }
+                else
+                {
+                    MessageBox.Show("Please enter positive number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showBill(selectedTable);
+                }
+
+            }
         }
     }
 }
