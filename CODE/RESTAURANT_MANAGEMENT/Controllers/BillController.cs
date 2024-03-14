@@ -68,7 +68,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
         public static DataTable GetBillView(int bill_id)
         {
-            DataTable data = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
+            DataTable data = Database.ExecuteQuery("select b.id as detail_id, ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
             if (data.Rows.Count > 0)
             {
                 return data;
@@ -158,8 +158,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
                 Database.ExecuteNonQuery("DELETE FROM BILL_DETAIL WHERE id = " + id);
                 Console.WriteLine("Delete item successflly");
             }
-            catch (Exception e)
-            {
+            catch( Exception e) {
                 Console.WriteLine("Delete item FAILED" + e);
             }
         }
@@ -176,7 +175,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
                 MessageBox.Show("Update failed");
             }
         }
-
+      
         public static decimal GetTotalRevenueTodayAll()
         {
             try

@@ -455,7 +455,7 @@ END
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
-
+select item_id, ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=2;
 changeTable @table1=4, @table2=10;
 
 SELECT id from	BILL where table_id is null and status=0;
@@ -463,7 +463,8 @@ EXEC ORDER_BILL @table_id=null;
 select * from BILL
 delete from bill where table_id IS NULL;
 PAY @table_id=null, @discount=5;
-select *from BILL;
+select *from BILL_DETAIL;
+DELETE FROM BILL_DETAIL WHERE id =33;
 delete from BILL;
 getBillId @table_id=null;
 update BILL set status=0 where id=3;
