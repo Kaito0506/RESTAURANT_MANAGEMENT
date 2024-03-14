@@ -71,7 +71,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
 
         public static DataTable GetBillView(int bill_id)
         {
-            DataTable data = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
+            DataTable data = Database.ExecuteQuery("select b.id as detail_id, ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
             if (data.Rows.Count > 0)
             {
                 return data;
@@ -152,6 +152,31 @@ namespace RESTAURANT_MANAGEMENT.Controllers
                 Console.WriteLine("Error when inserting bill detail" + ex);
             }
 
+        }
+
+        public static void deleteBillDetail(int id)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("DELETE FROM BILL_DETAIL WHERE id = " + id);
+                Console.WriteLine("Delete item successflly");
+            }
+            catch( Exception e) {
+                Console.WriteLine("Delete item FAILED" + e);
+            }
+        }
+
+        public static void updateBillDetail(int id, int quantity)
+        {
+            try
+            {
+                Database.ExecuteNonQuery("UPDATE BILL_DETAIL SET quantity=" + quantity + " WHERE id = " + id);
+                MessageBox.Show("Update successflly");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Update failed");
+            }
         }
 
     }
