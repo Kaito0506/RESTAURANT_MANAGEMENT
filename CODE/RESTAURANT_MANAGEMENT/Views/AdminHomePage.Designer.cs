@@ -41,20 +41,20 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.branch = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.user = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.logout = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.item = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.categ = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.logout = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -94,7 +94,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 434);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 599);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // panel4
@@ -187,32 +187,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.user.UseVisualStyleBackColor = false;
             this.user.Click += new System.EventHandler(this.user_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.logout);
-            this.panel3.Location = new System.Drawing.Point(3, 365);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(174, 62);
-            this.panel3.TabIndex = 6;
-            // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
-            this.logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.logout.FlatAppearance.BorderSize = 0;
-            this.logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logout.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logout.Location = new System.Drawing.Point(3, 3);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(169, 56);
-            this.logout.TabIndex = 5;
-            this.logout.Text = "Logout";
-            this.logout.UseVisualStyleBackColor = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.item);
@@ -269,6 +243,32 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.categ.UseVisualStyleBackColor = false;
             this.categ.Click += new System.EventHandler(this.categ_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.logout);
+            this.panel3.Location = new System.Drawing.Point(3, 365);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(174, 62);
+            this.panel3.TabIndex = 6;
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.logout.FlatAppearance.BorderSize = 0;
+            this.logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logout.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logout.Location = new System.Drawing.Point(3, 3);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(169, 56);
+            this.logout.TabIndex = 5;
+            this.logout.Text = "Logout";
+            this.logout.UseVisualStyleBackColor = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // AdminHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,9 +285,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             this.panel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

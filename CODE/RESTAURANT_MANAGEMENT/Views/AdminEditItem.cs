@@ -145,5 +145,11 @@ namespace RESTAURANT_MANAGEMENT.Views
                 }
             }
         }
+
+        private void AdminEditItem_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.upload, "Upload Image");
+        }
     }
 }

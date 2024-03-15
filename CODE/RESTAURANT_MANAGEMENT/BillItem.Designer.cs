@@ -39,10 +39,9 @@
             // pbImage
             // 
             this.pbImage.InitialImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.food1;
-            this.pbImage.Location = new System.Drawing.Point(4, 4);
-            this.pbImage.Margin = new System.Windows.Forms.Padding(4);
+            this.pbImage.Location = new System.Drawing.Point(3, 3);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(100, 107);
+            this.pbImage.Size = new System.Drawing.Size(87, 87);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
@@ -51,11 +50,10 @@
             // lbItemName
             // 
             this.lbItemName.AutoSize = true;
-            this.lbItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbItemName.Location = new System.Drawing.Point(4, 0);
-            this.lbItemName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbItemName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbItemName.Location = new System.Drawing.Point(3, 0);
             this.lbItemName.Name = "lbItemName";
-            this.lbItemName.Size = new System.Drawing.Size(68, 25);
+            this.lbItemName.Size = new System.Drawing.Size(56, 21);
             this.lbItemName.TabIndex = 1;
             this.lbItemName.Text = "Name";
             this.lbItemName.Click += new System.EventHandler(this.lbItemName_Click);
@@ -63,11 +61,10 @@
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
-            this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrice.Location = new System.Drawing.Point(4, 41);
-            this.lbPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrice.Location = new System.Drawing.Point(3, 58);
             this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(72, 25);
+            this.lbPrice.Size = new System.Drawing.Size(58, 21);
             this.lbPrice.TabIndex = 2;
             this.lbPrice.Text = "30.000";
             this.lbPrice.Click += new System.EventHandler(this.lbPrice_Click);
@@ -76,16 +73,15 @@
             // 
             this.panel1.Controls.Add(this.lbPrice);
             this.panel1.Controls.Add(this.lbItemName);
-            this.panel1.Location = new System.Drawing.Point(108, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(96, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 107);
+            this.panel1.Size = new System.Drawing.Size(203, 87);
             this.panel1.TabIndex = 3;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
             // BillItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -93,9 +89,8 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbImage);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BillItem";
-            this.Size = new System.Drawing.Size(315, 115);
+            this.Size = new System.Drawing.Size(306, 93);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

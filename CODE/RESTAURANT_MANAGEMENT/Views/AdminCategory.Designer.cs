@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminCategory));
             this.label1 = new System.Windows.Forms.Label();
             this.cbbCateg = new System.Windows.Forms.ComboBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.refresh = new System.Windows.Forms.Button();
-            this.add = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.refresh = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,19 +48,23 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(407, 54);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(410, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category";
             // 
             // cbbCateg
             // 
+            this.cbbCateg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbCateg.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCateg.FormattingEnabled = true;
-            this.cbbCateg.Location = new System.Drawing.Point(460, 50);
+            this.cbbCateg.Location = new System.Drawing.Point(477, 51);
             this.cbbCateg.Name = "cbbCateg";
-            this.cbbCateg.Size = new System.Drawing.Size(121, 21);
+            this.cbbCateg.Size = new System.Drawing.Size(121, 25);
             this.cbbCateg.TabIndex = 1;
             this.cbbCateg.SelectedIndexChanged += new System.EventHandler(this.cbbCateg_SelectedIndexChanged);
             // 
@@ -67,6 +72,9 @@
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -78,28 +86,9 @@
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(543, 314);
+            this.dgv.Size = new System.Drawing.Size(560, 314);
             this.dgv.TabIndex = 2;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
-            // 
-            // refresh
-            // 
-            this.refresh.Location = new System.Drawing.Point(506, 77);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(75, 29);
-            this.refresh.TabIndex = 3;
-            this.refresh.Text = "Refresh";
-            this.refresh.UseVisualStyleBackColor = true;
-            // 
-            // add
-            // 
-            this.add.Location = new System.Drawing.Point(410, 77);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(75, 29);
-            this.add.TabIndex = 4;
-            this.add.Text = "Add";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
             // 
             // id
             // 
@@ -140,36 +129,70 @@
             this.delete.UseColumnTextForButtonValue = true;
             this.delete.Width = 80;
             // 
+            // refresh
+            // 
+            this.refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh.BackgroundImage")));
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refresh.FlatAppearance.BorderSize = 0;
+            this.refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refresh.Location = new System.Drawing.Point(566, 79);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(32, 29);
+            this.refresh.TabIndex = 3;
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // add
+            // 
+            this.add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.add.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add.Location = new System.Drawing.Point(474, 79);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(86, 29);
+            this.add.TabIndex = 4;
+            this.add.Text = "Add";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(101, 23);
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.Location = new System.Drawing.Point(120, 23);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(300, 20);
+            this.tbName.Size = new System.Drawing.Size(281, 25);
             this.tbName.TabIndex = 5;
             // 
             // tbDesc
             // 
-            this.tbDesc.Location = new System.Drawing.Point(101, 60);
+            this.tbDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDesc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDesc.Location = new System.Drawing.Point(120, 60);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(300, 46);
+            this.tbDesc.Size = new System.Drawing.Size(281, 46);
             this.tbDesc.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(35, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(35, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(79, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Description";
             // 
@@ -177,6 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(619, 442);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -190,6 +214,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminCategory";
             this.Text = "AdminCategory";
+            this.Load += new System.EventHandler(this.AdminCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
