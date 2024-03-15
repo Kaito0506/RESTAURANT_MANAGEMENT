@@ -23,6 +23,8 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void AdminUser_Load(object sender, EventArgs e)
         {
+            System.Windows.Forms.ToolTip t = new System.Windows.Forms.ToolTip();
+            t.SetToolTip(this.create, "Add User");
             this.ControlBox = false;
         }
 

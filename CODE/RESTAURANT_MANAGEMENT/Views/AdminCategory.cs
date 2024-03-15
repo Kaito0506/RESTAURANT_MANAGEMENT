@@ -117,5 +117,17 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
             
         }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            getCategories();
+            getDetailCategoriesByCategory();
+        }
+
+        private void AdminCategory_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip t = new System.Windows.Forms.ToolTip();
+            t.SetToolTip(this.refresh, "Refresh");
+        }
     }
 }

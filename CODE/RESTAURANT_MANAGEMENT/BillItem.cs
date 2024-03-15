@@ -1,6 +1,7 @@
 ﻿using RESTAURANT_MANAGEMENT.Views;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace RESTAURANT_MANAGEMENT
@@ -27,7 +28,7 @@ namespace RESTAURANT_MANAGEMENT
         public float Price
         {
             get { return _price; }
-            set { _price = value; lbPrice.Text = value.ToString(); }
+            set { _price = value; CultureInfo vietnameseCulture = new CultureInfo("vi-VN"); lbPrice.Text = value.ToString("C0", vietnameseCulture); }
         }
 
         public Image Image
