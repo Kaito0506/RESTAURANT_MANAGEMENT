@@ -59,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(907, 863);
             this.Controls.Add(this.viewer);
             this.Name = "frmPrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Print";
             this.Load += new System.EventHandler(this.frmPrint_Load);
             this.ResumeLayout(false);
