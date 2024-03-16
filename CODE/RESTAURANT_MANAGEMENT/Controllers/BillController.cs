@@ -73,7 +73,22 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             {
                 return data;
             }
+            return null;
+        }
 
+        public static List<ShowBillModel.ShowBill> GetPrintPage(int bill_id)
+        {
+            List<ShowBillModel.ShowBill> l = new List<ShowBillModel.ShowBill>();
+            DataTable data = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + bill_id);
+            if (data.Rows.Count > 0)
+            {
+                foreach(DataRow row in data.Rows)
+                {
+                    ShowBillModel.ShowBill b = new ShowBillModel.ShowBill(row);
+                    l.Add(b);
+                }
+                return l;
+            }
             return null;
         }
 

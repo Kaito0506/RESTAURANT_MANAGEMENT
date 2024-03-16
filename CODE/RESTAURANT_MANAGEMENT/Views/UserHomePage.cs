@@ -485,7 +485,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 LoadTables();
             }
-
+            txtSelectedTable.Text = "";
             // update and show bill
             lstItems.DataSource = null;
             showBill(selectedTable);
@@ -544,15 +544,34 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         private void bntPrint_Click(object sender, EventArgs e)
         {
-            frmPrint printPage = new frmPrint();
-            printPage.branch = lbBranchName.Text;
-            printPage.sum = txtSum.Text;
-            printPage.total = txtTotal.Text;
-            printPage.discount = txtDiscount.Text;
-            printPage.table = txtSelectedTable.Text;
-            printPage.listItem = Database.ExecuteQuery("select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=" + selectedBillId);
-            printPage.ShowDialog();
+            if (selectedBillId > 0)
+            {
+
+                frmPrint printPage = new frmPrint();
+                printPage.sum = txtSum.Text;
+                printPage.total = txtTotal.Text;
+                printPage.discount = txtDiscount.Text;
+                printPage.table = txtSelectedTable.Text;
+                printPage.branch = lbBranchName.Text;
+                printPage.address = BranchController.getAddress(lbBranchName.Text);                
+                printPage.listDetail = BillController.GetPrintPage(selectedBillId);         
+                printPage.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a bill to print", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        //private void setButtonStatus()
+        //{
+        //    if (selectedBillId > 0)
+        //    {
+        //        btnPay.Enabled = true;
+        //        btnOrder.Enabled = false;
+        //        btnPrint.Enabled = true;
+        //    }
+        //}
 
         private void lstItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

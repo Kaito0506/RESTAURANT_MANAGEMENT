@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 class BranchController {
     public static List<BranchModel.Branch> GetBranches()
@@ -48,5 +50,22 @@ class BranchController {
             Console.WriteLine(e);
             return -1;
         }
+    }
+
+    public static string getAddress(string branchName)
+    {
+        //MessageBox.Show(branchName);
+        DataTable data = Database.ExecuteQuery("select address from RESTAURANT_BRANCH where name = '" + branchName + "'");
+        string add = null;
+        if (data.Rows.Count > 0)
+        {
+            foreach (DataRow row in data.Rows)
+            {
+                add =  (string)row["address"];
+            }
+            return add;
+        }
+        return add;
+
     }
 }

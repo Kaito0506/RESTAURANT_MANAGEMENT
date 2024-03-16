@@ -457,7 +457,7 @@ END
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
 select item_id, ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=2;
 changeTable @table1=4, @table2=10;
-
+select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=2
 SELECT id from	BILL where table_id is null and status=0;
 EXEC ORDER_BILL @table_id=null;
 select * from BILL
@@ -469,14 +469,14 @@ delete from BILL;
 getBillId @table_id=null;
 update BILL set status=0 where id=3;
 
-
+select * from BILL
 update TABLES set status =0;
 select * from BILL where status=0 and table_id is null;
 EXEC addBillDetail @bill_id=4 , @item_id=5, @quantity=2;
 CalculateBillTotal @b_id=4;
 
-
-
+select * from RESTAURANT_BRANCH;
+select address from RESTAURANT_BRANCH where name = 'Nhà hàng A'
 select * from bill where id =3;
 select * from BILL_DETAIL where bill_id=3;
 select *from MENU_ITEM;
