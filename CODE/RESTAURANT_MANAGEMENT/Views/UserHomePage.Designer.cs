@@ -58,16 +58,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnPay = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bntPrint = new System.Windows.Forms.Button();
-            this.btnOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpTables = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.bntPrint = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.panelBranch.SuspendLayout();
             this.panelMethod.SuspendLayout();
             this.panelBillItems.SuspendLayout();
@@ -95,9 +95,9 @@
             this.lbBranchName.AutoSize = true;
             this.lbBranchName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbBranchName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBranchName.Location = new System.Drawing.Point(140, 27);
+            this.lbBranchName.Location = new System.Drawing.Point(131, 14);
             this.lbBranchName.Name = "lbBranchName";
-            this.lbBranchName.Size = new System.Drawing.Size(131, 25);
+            this.lbBranchName.Size = new System.Drawing.Size(166, 32);
             this.lbBranchName.TabIndex = 0;
             this.lbBranchName.Text = "Branch_name";
             // 
@@ -265,11 +265,11 @@
             this.txtSelectedTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSelectedTable.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSelectedTable.Location = new System.Drawing.Point(144, 4);
+            this.txtSelectedTable.Location = new System.Drawing.Point(174, 4);
             this.txtSelectedTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSelectedTable.Name = "txtSelectedTable";
             this.txtSelectedTable.ReadOnly = true;
-            this.txtSelectedTable.Size = new System.Drawing.Size(446, 33);
+            this.txtSelectedTable.Size = new System.Drawing.Size(416, 39);
             this.txtSelectedTable.TabIndex = 2;
             this.txtSelectedTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -279,7 +279,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 25);
+            this.label2.Size = new System.Drawing.Size(173, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Selected table";
             // 
@@ -302,7 +302,7 @@
             this.cbTables.Location = new System.Drawing.Point(154, 34);
             this.cbTables.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTables.Name = "cbTables";
-            this.cbTables.Size = new System.Drawing.Size(177, 30);
+            this.cbTables.Size = new System.Drawing.Size(177, 37);
             this.cbTables.TabIndex = 2;
             // 
             // btnMerge
@@ -342,7 +342,7 @@
             this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(299, 29);
+            this.txtTotal.Size = new System.Drawing.Size(299, 34);
             this.txtTotal.TabIndex = 9;
             // 
             // txtDiscount
@@ -358,7 +358,7 @@
             this.txtDiscount.Location = new System.Drawing.Point(99, 84);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(299, 29);
+            this.txtDiscount.Size = new System.Drawing.Size(299, 34);
             this.txtDiscount.TabIndex = 8;
             this.txtDiscount.ValueChanged += new System.EventHandler(this.txtDiscount_ValueChanged);
             // 
@@ -371,7 +371,7 @@
             this.txtSum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSum.Name = "txtSum";
             this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(299, 29);
+            this.txtSum.Size = new System.Drawing.Size(299, 34);
             this.txtSum.TabIndex = 7;
             // 
             // label6
@@ -381,7 +381,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(32)))), ((int)(((byte)(78)))));
             this.label6.Location = new System.Drawing.Point(8, 149);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 25);
+            this.label6.Size = new System.Drawing.Size(70, 32);
             this.label6.TabIndex = 6;
             this.label6.Text = "Total";
             // 
@@ -391,7 +391,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(6, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 21);
+            this.label5.Size = new System.Drawing.Size(89, 28);
             this.label5.TabIndex = 5;
             this.label5.Text = "Discount";
             // 
@@ -401,24 +401,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(4, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 21);
+            this.label4.Size = new System.Drawing.Size(93, 28);
             this.label4.TabIndex = 4;
             this.label4.Text = "Sub Total";
-            // 
-            // btnPay
-            // 
-            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
-            this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPay.Location = new System.Drawing.Point(15, 59);
-            this.btnPay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnPay.Size = new System.Drawing.Size(149, 78);
-            this.btnPay.TabIndex = 0;
-            this.btnPay.Text = "Pay";
-            this.btnPay.UseVisualStyleBackColor = true;
-            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // panel3
             // 
@@ -431,36 +416,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(172, 187);
             this.panel3.TabIndex = 6;
-            // 
-            // bntPrint
-            // 
-            this.bntPrint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntPrint.Image = ((System.Drawing.Image)(resources.GetObject("bntPrint.Image")));
-            this.bntPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntPrint.Location = new System.Drawing.Point(15, 139);
-            this.bntPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bntPrint.Name = "bntPrint";
-            this.bntPrint.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.bntPrint.Size = new System.Drawing.Size(149, 46);
-            this.bntPrint.TabIndex = 12;
-            this.bntPrint.Text = "Bill";
-            this.bntPrint.UseVisualStyleBackColor = true;
-            this.bntPrint.Click += new System.EventHandler(this.bntPrint_Click);
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
-            this.btnOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrder.Location = new System.Drawing.Point(15, 5);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Padding = new System.Windows.Forms.Padding(20, 5, 0, 5);
-            this.btnOrder.Size = new System.Drawing.Size(149, 51);
-            this.btnOrder.TabIndex = 11;
-            this.btnOrder.Text = "Order";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // panel1
             // 
@@ -506,7 +461,7 @@
             this.cbCategory.Location = new System.Drawing.Point(5, 11);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(307, 29);
+            this.cbCategory.Size = new System.Drawing.Size(307, 36);
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -516,7 +471,7 @@
             this.txtFindName.Location = new System.Drawing.Point(5, 58);
             this.txtFindName.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
             this.txtFindName.Name = "txtFindName";
-            this.txtFindName.Size = new System.Drawing.Size(307, 29);
+            this.txtFindName.Size = new System.Drawing.Size(307, 34);
             this.txtFindName.TabIndex = 3;
             this.txtFindName.TextChanged += new System.EventHandler(this.txtFindName_TextChanged);
             // 
@@ -529,6 +484,51 @@
             this.flpItems.Name = "flpItems";
             this.flpItems.Size = new System.Drawing.Size(332, 613);
             this.flpItems.TabIndex = 7;
+            // 
+            // bntPrint
+            // 
+            this.bntPrint.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntPrint.Image = ((System.Drawing.Image)(resources.GetObject("bntPrint.Image")));
+            this.bntPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bntPrint.Location = new System.Drawing.Point(15, 139);
+            this.bntPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bntPrint.Name = "bntPrint";
+            this.bntPrint.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.bntPrint.Size = new System.Drawing.Size(149, 46);
+            this.bntPrint.TabIndex = 12;
+            this.bntPrint.Text = "Bill";
+            this.bntPrint.UseVisualStyleBackColor = true;
+            this.bntPrint.Click += new System.EventHandler(this.bntPrint_Click);
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrder.Location = new System.Drawing.Point(15, 5);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Padding = new System.Windows.Forms.Padding(20, 5, 0, 5);
+            this.btnOrder.Size = new System.Drawing.Size(149, 51);
+            this.btnOrder.TabIndex = 11;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // btnPay
+            // 
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
+            this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPay.Location = new System.Drawing.Point(15, 59);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPay.Size = new System.Drawing.Size(149, 78);
+            this.btnPay.TabIndex = 0;
+            this.btnPay.Text = "Pay";
+            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // UserHomePage
             // 
