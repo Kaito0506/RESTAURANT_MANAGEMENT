@@ -30,6 +30,11 @@ namespace RESTAURANT_MANAGEMENT.Views
             lbName.Text = admin.u_name.Split(' ').Last();
             mdiProp();
             adminForms = new Form[] { abranch, auser, adashboard, aitem, acategory };
+            adashboard = new AdminDashboard();
+            adashboard.FormClosed += adashboard_FormClosed;
+            adashboard.MdiParent = this;
+            adashboard.Dock = DockStyle.Fill;
+            adashboard.Show();
         }
 
         private void close_Forms(Form form)
