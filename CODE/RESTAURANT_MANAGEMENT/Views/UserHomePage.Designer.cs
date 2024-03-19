@@ -65,6 +65,10 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtFindName = new System.Windows.Forms.TextBox();
             this.flpItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.btnLofout = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bntPrint = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
@@ -79,6 +83,8 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBranch
@@ -448,7 +454,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.cbCategory);
             this.panel2.Controls.Add(this.txtFindName);
-            this.panel2.Location = new System.Drawing.Point(1119, 26);
+            this.panel2.Location = new System.Drawing.Point(1119, 57);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(332, 103);
@@ -467,6 +473,7 @@
             // 
             // txtFindName
             // 
+            this.txtFindName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFindName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFindName.Location = new System.Drawing.Point(5, 58);
             this.txtFindName.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
@@ -480,10 +487,55 @@
             this.flpItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flpItems.AutoScroll = true;
-            this.flpItems.Location = new System.Drawing.Point(1119, 134);
+            this.flpItems.Location = new System.Drawing.Point(1119, 165);
             this.flpItems.Name = "flpItems";
-            this.flpItems.Size = new System.Drawing.Size(332, 613);
+            this.flpItems.Size = new System.Drawing.Size(332, 582);
             this.flpItems.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.btnLofout);
+            this.panel4.Controls.Add(this.lblUserName);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Location = new System.Drawing.Point(1119, 13);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(332, 45);
+            this.panel4.TabIndex = 9;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(73, 12);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(104, 25);
+            this.lblUserName.TabIndex = 1;
+            this.lblUserName.Text = "user name";
+            // 
+            // btnLofout
+            // 
+            this.btnLofout.BackgroundImage = global::RESTAURANT_MANAGEMENT.Properties.Resources.logout;
+            this.btnLofout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLofout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLofout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLofout.Location = new System.Drawing.Point(268, 6);
+            this.btnLofout.Name = "btnLofout";
+            this.btnLofout.Size = new System.Drawing.Size(44, 36);
+            this.btnLofout.TabIndex = 2;
+            this.btnLofout.UseVisualStyleBackColor = true;
+            this.btnLofout.Click += new System.EventHandler(this.btnLofout_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(44, 40);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // bntPrint
             // 
@@ -535,6 +587,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1455, 774);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flpItems);
             this.Controls.Add(this.flpTables);
@@ -563,6 +616,9 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,5 +660,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceCol;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnLofout;
+        private System.Windows.Forms.Label lblUserName;
     }
 }
