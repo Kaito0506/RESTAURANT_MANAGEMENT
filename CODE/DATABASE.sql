@@ -151,6 +151,7 @@ INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) V
 (1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123'),
 (1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123'),
 (0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
+(0, N'0131372170', N'Khang Nguyen', '2002-01-01', N'F', N'Canh 632/23, Phường Long Hòa, Quận Bình Thủy, TP Cần Thơ', N'0766811976', N'khang123');
 
 ------------------------------------------------------------
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
