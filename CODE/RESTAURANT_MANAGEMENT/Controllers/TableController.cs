@@ -13,9 +13,8 @@ namespace RESTAURANT_MANAGEMENT.Controllers
     internal class TableController
     {
         public static int heihgt = 100, width = 100;
-        LoginController lg = new LoginController();
         public UserModel.User user;
-        public static int   current_u_id =  LoginController.GetUser().u_id;
+        public static int current_u_id;
         public static List<TableModel.Table> GetTableList()
         {
             List<TableModel.Table> list = new List<TableModel.Table>();
@@ -24,6 +23,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             {
                 Database.Connect();
                 DataTable listTable = new DataTable();
+                current_u_id  = LoginController.GetUser().u_id;
                 int branch_id = LoginController.GetUserBranchId(current_u_id);
                 listTable = Database.ExecuteQuery("EXEC getTableWithBranch @branch_id", new object[] { branch_id });
 

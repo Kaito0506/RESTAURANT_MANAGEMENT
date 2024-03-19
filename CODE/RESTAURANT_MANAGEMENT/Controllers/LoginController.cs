@@ -63,5 +63,10 @@ class LoginController
         name = ojb.ToString();
         return name;
     }
+
+    public static string GetUserName()
+    {
+        return user.u_name;
+    }
 }
 
