@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RESTAURANT_MANAGEMENT.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,20 @@ namespace RESTAURANT_MANAGEMENT
 
         #region Properties
 
+        private int _id;
         private string _title;
         private string _description;
         private decimal _price;
         private string _category;
         private Image _image;
-        private int _id;
+        private string _filename;
+
+        [Category("Custom Props")]
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         [Category("Custom Props")]
         public string Title
@@ -65,10 +74,10 @@ namespace RESTAURANT_MANAGEMENT
         }
 
         [Category("Custom Props")]
-        public int Id
+        public string Filename
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _filename; }
+            set { _filename = value; }
         }
 
         #endregion
@@ -90,6 +99,20 @@ namespace RESTAURANT_MANAGEMENT
                     MessageBox.Show("Delete item failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            AdminEditItem adminEditItem = new AdminEditItem();
+            adminEditItem.SetTbIdText(_id.ToString());
+            adminEditItem.SetCbbCategIndex(_category);
+            adminEditItem.SetTbNameText(_title);
+            adminEditItem.SetTbDescText(_description);
+            adminEditItem.SetTbPriceText(_price.ToString("0"));
+            adminEditItem.SetBackgroundImage(_image);
+            adminEditItem.SetFilenameText(_filename);
+            adminEditItem.SetMode(1);
+            adminEditItem.ShowDialog();
         }
     }
 }

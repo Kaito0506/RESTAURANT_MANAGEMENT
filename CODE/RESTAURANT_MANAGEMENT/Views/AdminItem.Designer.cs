@@ -28,64 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminItem));
+            this.add = new System.Windows.Forms.Button();
+            this.refresh = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.cbbCateg = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // add
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1125, 657);
-            this.tabControl1.TabIndex = 1;
+            this.add.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.add.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("add.BackgroundImage")));
+            this.add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.add.FlatAppearance.BorderSize = 0;
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.add.Location = new System.Drawing.Point(53, 24);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(36, 33);
+            this.add.TabIndex = 10;
+            this.add.UseVisualStyleBackColor = false;
+            this.add.Click += new System.EventHandler(this.add_Click);
             // 
-            // tabPage1
+            // refresh
             // 
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.tbSearch);
-            this.tabPage1.Controls.Add(this.flowLayoutPanel);
-            this.tabPage1.Controls.Add(this.cbbCateg);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1117, 628);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Menu";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(359, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Search";
+            this.refresh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh.BackgroundImage")));
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refresh.FlatAppearance.BorderSize = 0;
+            this.refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refresh.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.refresh.Location = new System.Drawing.Point(12, 30);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(26, 27);
+            this.refresh.TabIndex = 9;
+            this.refresh.UseVisualStyleBackColor = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // tbSearch
             // 
-            this.tbSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tbSearch.Location = new System.Drawing.Point(421, 31);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(95, 28);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(324, 22);
+            this.tbSearch.Size = new System.Drawing.Size(428, 29);
             this.tbSearch.TabIndex = 7;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
@@ -95,71 +85,48 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(11, 63);
-            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(12, 69);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1093, 553);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(754, 453);
             this.flowLayoutPanel.TabIndex = 6;
             // 
             // cbbCateg
             // 
             this.cbbCateg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbCateg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCateg.FormattingEnabled = true;
-            this.cbbCateg.Location = new System.Drawing.Point(931, 30);
-            this.cbbCateg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbbCateg.Location = new System.Drawing.Point(529, 28);
             this.cbbCateg.Name = "cbbCateg";
-            this.cbbCateg.Size = new System.Drawing.Size(172, 24);
+            this.cbbCateg.Size = new System.Drawing.Size(237, 29);
             this.cbbCateg.TabIndex = 3;
             this.cbbCateg.SelectedIndexChanged += new System.EventHandler(this.cbbCateg_SelectedIndexChanged);
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(851, 34);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Categories";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1117, 628);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Configure";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // AdminItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1125, 657);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(791, 534);
+            this.Controls.Add(this.add);
+            this.Controls.Add(this.flowLayoutPanel);
+            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.refresh);
+            this.Controls.Add(this.cbbCateg);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AdminItem";
             this.Text = "AdminItem";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Load += new System.EventHandler(this.AdminItem_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbbCateg;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button refresh;
         private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.ComboBox cbbCateg;
     }
 }

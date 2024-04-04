@@ -16,7 +16,7 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class AdminItem : Form
     {
-        List<CategoryModel.Category> categories = CategoryController.GetCategories();
+        List<DetailCategoryModel.DetailCategory> detailCategories = DetailCategoryController.GetDetailCategories();
         List<MenuItemModel.MenuItem> menuItems = MenuItemController.GetMenuItems();
         private List<MenuItemModel.MenuItem> filteredItems;
 
@@ -24,19 +24,20 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             InitializeComponent();
             LoadCategoryData();
+            filteredItems = new List<MenuItemModel.MenuItem>();
             LoadItemData();
-            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+            AdminEditItem.ItemUpdated += ItemUpdated;
         }
 
         public void LoadCategoryData()
         {
             cbbCateg.Items.Clear();
             cbbCateg.Items.Add("Tất cả");
-            if (categories != null)
+            if (detailCategories != null)
             {
-                foreach (CategoryModel.Category category in categories)
+                foreach (DetailCategoryModel.DetailCategory dc in detailCategories)
                 {
-                    cbbCateg.Items.Add(category.ca_name);
+                    cbbCateg.Items.Add(dc.dc_name);
                 }
             }
             cbbCateg.SelectedIndex = 0;
@@ -44,6 +45,10 @@ namespace RESTAURANT_MANAGEMENT.Views
 
         public void LoadItemData()
         {
+            flowLayoutPanel.Controls.Clear();
+
+            filteredItems = new List<MenuItemModel.MenuItem>(menuItems);
+
             ListItem[] listItems = new ListItem[menuItems.Count];
             for (int i = 0; i < listItems.Length; i++)
             {
@@ -54,10 +59,13 @@ namespace RESTAURANT_MANAGEMENT.Views
                 listItems[i].Price = menuItems[i].mi_price;
                 listItems[i].Category = menuItems[i].ca_name;
                 listItems[i].Image = GetImage(menuItems[i].mi_image);
+                listItems[i].Filename = menuItems[i].mi_image;
                 listItems[i].ItemDeleted += refreshItem;
                 flowLayoutPanel.Controls.Add(listItems[i]);
             }
         }
+
+
 
         public void refreshItem(object sender, int id)
         {
@@ -128,6 +136,7 @@ namespace RESTAURANT_MANAGEMENT.Views
                 listItem.Price = menuItem.mi_price;
                 listItem.Category = menuItem.ca_name;
                 listItem.Image = GetImage(menuItem.mi_image);
+                listItem.Filename = menuItem.mi_image;
                 flowLayoutPanel.Controls.Add(listItem);
             }
         }
@@ -144,6 +153,41 @@ namespace RESTAURANT_MANAGEMENT.Views
             ApplyFiltersAndSearch();
         }
 
-   
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "";
+            cbbCateg.SelectedIndex = 0;
+            flowLayoutPanel.Controls.Clear();
+            menuItems = MenuItemController.GetMenuItems();
+            LoadItemData();
+        }
+
+        private void ItemUpdated(object sender, EventArgs e)
+        {
+            tbSearch.Text = "";
+            cbbCateg.SelectedIndex = 0;
+            flowLayoutPanel.Controls.Clear();
+            menuItems = MenuItemController.GetMenuItems();
+            LoadItemData();
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            AdminEditItem adminEditItem = new AdminEditItem();
+            int new_id = MenuItemController.GetMaxItemId();
+
+            adminEditItem.SetTbIdText(new_id.ToString());
+            adminEditItem.SetBackgroundImage(GetImage("food.png"));
+            adminEditItem.SetFilenameText("food.png");
+            adminEditItem.SetMode(0);
+            adminEditItem.ShowDialog();
+        }
+
+        private void AdminItem_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.refresh, "Refresh");
+            ToolTip1.SetToolTip(this.add, "Add Item");
+        }
     }
 }
