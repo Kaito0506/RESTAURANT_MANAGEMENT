@@ -33,6 +33,8 @@ CREATE TABLE RESTAURANT_BRANCH (
    address NVARCHAR(255) not null,
    phone NVARCHAR (15) not null
 );
+alter table RESTAURANT_BRANCH 
+add img varchar(50)
 
 -- users table
 CREATE TABLE USERS (
@@ -132,12 +134,14 @@ INSERT INTO CATEGORY (name, describe) VALUES
 (N'Đồ uống', N'Những loại nước giải khát hoặc rượu');
 
 ------------------------------------------------------------
-INSERT INTO RESTAURANT_BRANCH (name, address, phone) VALUES
-(N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789'),
-(N'Nhà hàng B', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321'),
-(N'Nhà hàng C', N'789 Lê Hồng Phong, Q. Cái Răng, TP. Cần Thơ', N'0123456789'),
-(N'Nhà hàng D', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321'),
-(N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789');
+
+
+INSERT INTO RESTAURANT_BRANCH (name, address, phone, img) VALUES
+(N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch1.jpg'),
+(N'Nhà hàng B', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321','branch2.jpg'),
+(N'Nhà hàng C', N'789 Lê Hồng Phong, Q. Cái Răng, TP. Cần Thơ', N'0123456789','branch3.jpg'),
+(N'Nhà hàng D', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321','branch4.jpg'),
+(N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch5.jpg');
 
 ------------------------------------------------------------
 INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES
@@ -150,7 +154,8 @@ INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) V
 (0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456'),
 (1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123'),
 (1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123'),
-(0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
+(0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123'),
+(0, N'0131372170', N'Khang Nguyen', '2002-01-01', N'F', N'Canh 632/23, Phường Long Hòa, Quận Bình Thủy, TP Cần Thơ', N'0766811976', N'khang123');
 
 ------------------------------------------------------------
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
@@ -333,7 +338,7 @@ EXEC getTableWithBranch @branch_id = 1;
 ------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 -- get branch name
-CREATE PROCEDURE getBranchName
+CREATE proc getBranchName
     @user_id INT
 AS
 BEGIN
@@ -476,6 +481,7 @@ EXEC addBillDetail @bill_id=4 , @item_id=5, @quantity=2;
 CalculateBillTotal @b_id=4;
 
 select * from RESTAURANT_BRANCH;
+SELECT * FROM RESTAURANT_BRANCH;
 select address from RESTAURANT_BRANCH where name = 'Nhà hàng A'
 select * from bill where id =3;
 select * from BILL_DETAIL where bill_id=3;

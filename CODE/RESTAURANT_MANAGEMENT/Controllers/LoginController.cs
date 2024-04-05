@@ -17,7 +17,7 @@ class LoginController
             cmd.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 10)).Value = username;
             cmd.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar, 20)).Value = password;
             SqlDataReader reader = cmd.ExecuteReader();
-     
+
             if (reader.Read())
             {
                 user.u_id = reader.GetInt32(reader.GetOrdinal("id"));
@@ -52,7 +52,7 @@ class LoginController
         int bi = 0;
         object obj = Database.ExecuteScalar("EXEC getBranchID @user_id", new object[] { user_id });
         bi = Convert.ToInt32(obj);
-            
+
         return bi;
     }
 
@@ -62,6 +62,11 @@ class LoginController
         object ojb = Database.ExecuteScalar("EXEC getBranchName @user_id", new object[] { user_id });
         name = ojb.ToString();
         return name;
+    } 
+
+    public static string GetUserName()
+    {
+        return user.u_name;
     }
 }
 

@@ -40,6 +40,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             lbBranchName.Text = loadBranchName();
             LoadMenuItems();
             AddBillItem.isChosen += refreshBillItem;
+            lblUserName.Text = LoginController.GetUserName();
             
             //MessageBox.Show(selectedTable.ToString());
 
@@ -595,21 +596,42 @@ namespace RESTAURANT_MANAGEMENT.Views
             if(e.RowIndex >= 0 && e.ColumnIndex == lstItems.Columns["quantityCol"].Index)
             {
 
-                int quantity = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["quantityCol"].Value);
-                int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
-                if(quantity > 0)
+                try
                 {
+                    int quantity = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["quantityCol"].Value);
+                    int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
+                    if (quantity > 0)
+                    {
 
-                    BillController.updateBillDetail(id, quantity);
-                    showBill(selectedTable);
+                        BillController.updateBillDetail(id, quantity);
+                        showBill(selectedTable);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter positive number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        showBill(selectedTable);
+                    }
                 }
-                else
+                catch(Exception err)
                 {
-                    MessageBox.Show("Please enter positive number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter valid number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     showBill(selectedTable);
                 }
 
             }
+        }
+
+        private void btnLofout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do do want to logout", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                this.Hide();
+                login login = new login();
+                login.Closed += (s, args) => this.Close();
+                login.ShowDialog();
+            }
+
         }
     }
 }
