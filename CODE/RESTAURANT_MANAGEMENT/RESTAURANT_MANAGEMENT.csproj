@@ -1405,6 +1405,8 @@
     <Content Include="images\branch\branch3.jpg" />
     <Content Include="images\branch\branch4.jpg" />
     <Content Include="images\branch\branch5.jpg" />
+    <Content Include="images\delete2.png" />
+    <Content Include="images\delete3.png" />
     <Content Include="images\foods\food10.png" />
     <Content Include="images\foods\food11.png" />
     <Content Include="images\foods\food12.png" />
@@ -1426,7 +1428,9 @@
     <Content Include="images\logout.png" />
     <Content Include="images\order.png" />
     <Content Include="images\pay.png" />
+    <Content Include="images\refresh.png" />
     <Content Include="images\upload.png" />
+    <Content Include="images\user_homepage.png" />
     <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Common.resources.dll" />
     <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.DataVisualization.resources.dll" />
     <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Design.resources.dll" />
