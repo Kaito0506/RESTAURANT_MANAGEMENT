@@ -14,6 +14,7 @@ using System.IO;
 using static RESTAURANT_MANAGEMENT.Models.BillModel;
 using static RESTAURANT_MANAGEMENT.Models.TableModel;
 using static RoleModel;
+using static MenuItemModel;
 
 
 
@@ -126,6 +127,50 @@ namespace RESTAURANT_MANAGEMENT.Views
             flowLayoutPanel.Controls.Clear();
         }
 
- 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
+            int new_id = BranchController.GetMaxBranchId();
+
+            adminEditBranchInfo.SetTbIdText(new_id.ToString());
+            adminEditBranchInfo.SetBackgroundImage(GetImage("food.png"));
+            adminEditBranchInfo.SetFilenameText("food.png");
+            adminEditBranchInfo.SetMode(0);
+            adminEditBranchInfo.ShowDialog();
+        }
+
+        public void refreshBranch(object sender, int id)
+        {
+            flowLayoutPanel.Controls.Clear();
+            branches = BranchController.GetBranches();
+        }
+
+        public void LoadBranchData()
+        {
+            flowLayoutPanel.Controls.Clear();
+
+            filteredBranches = new  List<BranchModel.Branch>(branches);
+
+            ListBranch[] listBranch = new ListBranch[branches.Count];
+            for (int i = 0; i < listBranch.Length; i++)
+            {
+                listBranch[i] = new ListBranch();
+                listBranch[i].Id = branches[i].b_id;
+                listBranch[i].Title = branches[i].b_name;
+                listBranch[i].Address = branches[i].b_address;
+                listBranch[i].Phone = branches[i].b_phone;
+                listBranch[i].Image = GetImage(branches[i].b_img);
+                listBranch[i].Filename = branches[i].b_img;
+                listBranch[i].BranchDeleted += refreshBranch;
+                flowLayoutPanel.Controls.Add(listBranch[i]);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel.Controls.Clear();
+            branches = BranchController.GetBranches();
+            LoadBranchData();
+        }
     }
 }

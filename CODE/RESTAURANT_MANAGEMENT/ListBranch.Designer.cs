@@ -38,6 +38,7 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnDeleteBranch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -45,6 +46,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDeleteBranch);
             this.panel1.Controls.Add(this.btnEditBranch);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.lbTitle);
@@ -58,12 +60,13 @@
             // btnEditBranch
             // 
             this.btnEditBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditBranch.Location = new System.Drawing.Point(874, 40);
+            this.btnEditBranch.Location = new System.Drawing.Point(798, 40);
             this.btnEditBranch.Name = "btnEditBranch";
             this.btnEditBranch.Size = new System.Drawing.Size(81, 35);
             this.btnEditBranch.TabIndex = 16;
             this.btnEditBranch.Text = "Edit";
             this.btnEditBranch.UseVisualStyleBackColor = true;
+            this.btnEditBranch.Click += new System.EventHandler(this.btnEditBranch_Click);
             // 
             // panel3
             // 
@@ -146,6 +149,17 @@
             this.label5.Size = new System.Drawing.Size(0, 20);
             this.label5.TabIndex = 13;
             // 
+            // btnDeleteBranch
+            // 
+            this.btnDeleteBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteBranch.Location = new System.Drawing.Point(885, 40);
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(81, 35);
+            this.btnDeleteBranch.TabIndex = 17;
+            this.btnDeleteBranch.Text = "Delete";
+            this.btnDeleteBranch.UseVisualStyleBackColor = true;
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
+            // 
             // ListBranch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -175,5 +189,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEditBranch;
+        private System.Windows.Forms.Button btnDeleteBranch;
     }
 }

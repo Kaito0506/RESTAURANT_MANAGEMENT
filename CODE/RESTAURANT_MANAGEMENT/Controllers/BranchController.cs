@@ -67,6 +67,86 @@ class BranchController {
             return add;
         }
         return add;
-
     }
+
+    public bool DeleteBranch(int id)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("DELETE FROM RESTAURANT_BRANCH WHERE id = @id", Database.Connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
+
+    public bool UpdateBranch(BranchModel.Branch branch)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("UPDATE RESTAURANT_BRANCH SET name = @name, address = @address, phone = @phone, img = @img  WHERE id = @id", Database.Connection);
+            cmd.Parameters.AddWithValue("@id", branch.b_id);
+            cmd.Parameters.AddWithValue("@name", branch.b_name);
+            cmd.Parameters.AddWithValue("@address", branch.b_address);
+            cmd.Parameters.AddWithValue("@phone", branch.b_phone);
+            cmd.Parameters.AddWithValue("@img", branch.b_img);
+            cmd.ExecuteNonQuery();
+            return true;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            MessageBox.Show(e.Message);
+            return false;
+        }
+    }
+
+    public bool AddBranch(BranchModel.Branch branch)
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("INSERT INTO RESTAURANT_BRANCH ( name, address, phone, img) VALUES ( @name, @address, @phone, @img)", Database.Connection);
+            cmd.Parameters.AddWithValue("@name", branch.b_name);
+            cmd.Parameters.AddWithValue("@address", branch.b_address);
+            cmd.Parameters.AddWithValue("@phone", branch.b_phone);
+            cmd.Parameters.AddWithValue("@img", branch.b_img);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            MessageBox.Show(e.Message);
+            return false;
+        }
+    }
+
+
+
+    public static int GetMaxBranchId()
+    {
+        try
+        {
+            Database.Connect();
+            SqlCommand cmd = new SqlCommand("SELECT MAX(id)+1 FROM RESTAURANT_BRANCH", Database.Connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            return reader.GetInt32(0);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return -1;
+        }
+    }
+
 }

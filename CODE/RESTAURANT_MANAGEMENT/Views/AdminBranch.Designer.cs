@@ -31,7 +31,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel
@@ -57,21 +58,33 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "DANH SÁCH NHÀ HÀNG";
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(996, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 39);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add new";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(996, 19);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(110, 39);
+            this.btnAdd.TabIndex = 19;
+            this.btnAdd.Text = "Add new";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(866, 19);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(110, 39);
+            this.btnRefresh.TabIndex = 20;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // AdminBranch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 947);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -89,6 +102,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
