@@ -17,7 +17,9 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             InitializeComponent();
             getCategories();
+            cbbCateg.SelectedIndex = 0;
             getDetailCategoriesByCategory();
+
         }
 
         public void getCategories()
@@ -26,7 +28,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             cbbCateg.DataSource = categories;
             cbbCateg.DisplayMember = "c_name";
             cbbCateg.ValueMember = "c_id";
-            cbbCateg.SelectedIndex = -1;
         }
 
         public void getDetailCategoriesByCategory()
