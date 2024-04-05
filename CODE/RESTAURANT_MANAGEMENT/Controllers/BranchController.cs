@@ -21,6 +21,7 @@ class BranchController {
                 branch.b_name = reader.GetString(1);
                 branch.b_address = reader.GetString(2);
                 branch.b_phone = reader.GetString(3);
+                branch.b_img = reader.GetString(4);
                 res.Add(branch);
             }
             return res;
