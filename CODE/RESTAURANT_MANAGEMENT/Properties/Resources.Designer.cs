@@ -10,8 +10,9 @@
 
 namespace RESTAURANT_MANAGEMENT.Properties {
     using System;
-    
-    
+    using System.Drawing;
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,7 +24,11 @@ namespace RESTAURANT_MANAGEMENT.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
+        internal static Image delete;
+        internal static Image edit1;
+        internal static Image plus;
+        internal static Image minus;
+        internal static Image logout;
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
