@@ -4,7 +4,7 @@
 --DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
-use master
+
 sp_changedbowner admin; 
 
 DROP TABLE BILL_DETAIL;
@@ -33,6 +33,8 @@ CREATE TABLE RESTAURANT_BRANCH (
    address NVARCHAR(255) not null,
    phone NVARCHAR (15) not null
 );
+alter table RESTAURANT_BRANCH 
+add img varchar(50)
 
 -- users table
 CREATE TABLE USERS (
@@ -132,8 +134,7 @@ INSERT INTO CATEGORY (name, describe) VALUES
 (N'Đồ uống', N'Những loại nước giải khát hoặc rượu');
 
 ------------------------------------------------------------
-alter table RESTAURANT_BRANCH 
-add img varchar(50)
+
 
 INSERT INTO RESTAURANT_BRANCH (name, address, phone, img) VALUES
 (N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch1.jpg'),
