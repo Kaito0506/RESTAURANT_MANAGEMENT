@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEditBranch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbPhone = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEditBranch);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Controls.Add(this.pictureBox);
@@ -52,6 +54,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(977, 189);
             this.panel1.TabIndex = 14;
+            // 
+            // btnEditBranch
+            // 
+            this.btnEditBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditBranch.Location = new System.Drawing.Point(874, 40);
+            this.btnEditBranch.Name = "btnEditBranch";
+            this.btnEditBranch.Size = new System.Drawing.Size(81, 35);
+            this.btnEditBranch.TabIndex = 16;
+            this.btnEditBranch.Text = "Edit";
+            this.btnEditBranch.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -108,7 +120,7 @@
             // 
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Noto Sans", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(567, 28);
+            this.lbTitle.Location = new System.Drawing.Point(416, 30);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(235, 45);
@@ -141,7 +153,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Name = "ListBranch";
-            this.Size = new System.Drawing.Size(928, 203);
+            this.Size = new System.Drawing.Size(925, 203);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -162,5 +174,6 @@
         private System.Windows.Forms.Label lbAdress;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEditBranch;
     }
 }
