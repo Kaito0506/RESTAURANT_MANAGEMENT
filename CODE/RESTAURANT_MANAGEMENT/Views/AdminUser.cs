@@ -19,6 +19,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             InitializeComponent();
             LoadRoles();
             LoadBranches();
+            cbbBranch.SelectedIndex = 0;
+            cbbRole.SelectedIndex = 0;
+            LoadUsers();
         }
 
         private void AdminUser_Load(object sender, EventArgs e)
