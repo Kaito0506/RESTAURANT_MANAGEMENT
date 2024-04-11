@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RESTAURANT_MANAGEMENT.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace RESTAURANT_MANAGEMENT
 {
     public partial class ListBranch : UserControl
     {
-        public event EventHandler<int> ItemDeleted;
+        public event EventHandler<int> BranchDeleted;
 
         public ListBranch()
         {
@@ -27,8 +28,7 @@ namespace RESTAURANT_MANAGEMENT
         private Image _image;
         private string _address;
         private string _phone;
-        private decimal _revenue;
-        private int _employeeCount;
+        private string _filename;
 
         [Category("Custom Props")]
         public int Id
@@ -66,19 +66,43 @@ namespace RESTAURANT_MANAGEMENT
             get { return _phone; }
             set { _phone = value; lbPhone.Text = value; }
         }
-
+        public string Filename
+        {
+            get { return _filename; }
+            set { _filename = value; }
+        }
 
         #endregion
+        private void btnEditBranch_Click(object sender, EventArgs e)
+        {
+            AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
+            adminEditBranchInfo.SetTbIdText(_id.ToString());
+            adminEditBranchInfo.SetTbBranchNameText(_title);
+            adminEditBranchInfo.SetTbAddressText(_address);
+            adminEditBranchInfo.SetTbPhoneText(_phone);
+            adminEditBranchInfo.SetBackgroundImage(_image);
+            adminEditBranchInfo.SetFilenameText(_filename);
+            adminEditBranchInfo.SetMode(1);
+            adminEditBranchInfo.ShowDialog();
+        }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDeleteBranch_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show($"Do you want to delete item {_title}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                ItemDeleted?.Invoke(this, _id);
-                Dispose();
+                BranchController branchController = new BranchController();
+                if (branchController.DeleteBranch(_id))
+                {
+                    MessageBox.Show("Delete item successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BranchDeleted?.Invoke(this, _id);
+                    Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Delete item failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
     }
 }

@@ -10,7 +10,5 @@ class BranchModel
         public string b_address { get; set; }
         public string b_phone { get; set;}
         public string b_img { get; set; }
-        public decimal b_revenue { get; set; }
-        public int b_employee { get; set; }
     }
 }

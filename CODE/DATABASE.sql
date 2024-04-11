@@ -5,6 +5,7 @@
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
+
 sp_changedbowner admin; 
 
 DROP TABLE BILL_DETAIL;
@@ -134,8 +135,6 @@ INSERT INTO CATEGORY (name, describe) VALUES
 (N'Đồ uống', N'Những loại nước giải khát hoặc rượu');
 
 ------------------------------------------------------------
-
-
 INSERT INTO RESTAURANT_BRANCH (name, address, phone, img) VALUES
 (N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch1.jpg'),
 (N'Nhà hàng B', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321','branch2.jpg'),
