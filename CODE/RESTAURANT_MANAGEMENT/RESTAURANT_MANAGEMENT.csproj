@@ -61,6 +61,30 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.1.1.1\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
       <Private>True</Private>
@@ -214,24 +238,36 @@
     <Compile Include="BillItem.Designer.cs">
       <DependentUpon>BillItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DetailCategoryController.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="ListBranch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListBranch.Designer.cs">
+      <DependentUpon>ListBranch.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DetailCategoryModel.cs" />
     <Compile Include="Models\BillDetailModel.cs" />
     <Compile Include="Models\BillModel.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="PrintModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\ShowBillModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\TableModel.cs" />
@@ -243,9 +279,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RESTAURANT_MANAGEMENTDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RESTAURANT_MANAGEMENTDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RoundPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Views\AddBillItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +311,12 @@
     </Compile>
     <Compile Include="Views\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminEditBranchInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminEditBranchInfo.Designer.cs">
+      <DependentUpon>AdminEditBranchInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminEditItem.cs">
       <SubType>Form</SubType>
@@ -294,6 +342,12 @@
     <Compile Include="Views\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,11 +361,11 @@
     <Compile Include="Views\OrderPage.Designer.cs">
       <DependentUpon>OrderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\test.cs">
+    <Compile Include="Trash\testReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
+    <Compile Include="Trash\testReport.Designer.cs">
+      <DependentUpon>testReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserHomePage.cs">
       <SubType>Form</SubType>
@@ -321,6 +375,9 @@
     </Compile>
     <EmbeddedResource Include="BillItem.resx">
       <DependentUpon>BillItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListBranch.resx">
+      <DependentUpon>ListBranch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
@@ -342,6 +399,9 @@
     <EmbeddedResource Include="Views\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminEditBranchInfo.resx">
+      <DependentUpon>AdminEditBranchInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminEditItem.resx">
       <DependentUpon>AdminEditItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -354,14 +414,19 @@
     <EmbeddedResource Include="Views\AdminUser.resx">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\OrderPage.resx">
       <DependentUpon>OrderPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Report1.rdlc" />
+    <EmbeddedResource Include="Trash\Report2.rdlc" />
+    <EmbeddedResource Include="Trash\testReport.resx">
+      <DependentUpon>testReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserHomePage.resx">
       <DependentUpon>UserHomePage.cs</DependentUpon>
@@ -386,6 +451,18 @@
     <None Include="packages\Microsoft.NETCore.Platforms.1.1.0\lib\netstandard1.0\_._" />
     <None Include="packages\Microsoft.NETCore.Platforms.1.1.0\Microsoft.NETCore.Platforms.1.1.0.nupkg" />
     <None Include="packages\Microsoft.NETCore.Platforms.1.1.0\runtime.json" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\.signature.p7s" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\content\web.config.install.xdt" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\license\License_ReportViewer.rtf" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0.nupkg" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\tools\install.ps1" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\.signature.p7s" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\license\License_ReportViewer.rtf" />
+    <None Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0.nupkg" />
+    <None Include="packages\Microsoft.ReportViewer.Common.v12.12.0.0.1\.signature.p7s" />
+    <None Include="packages\Microsoft.ReportViewer.Common.v12.12.0.0.1\Microsoft.ReportViewer.Common.v12.12.0.0.1.nupkg" />
+    <None Include="packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\.signature.p7s" />
+    <None Include="packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\Microsoft.ReportViewer.WinForms.v12.12.0.0.1.nupkg" />
     <None Include="packages\Microsoft.Win32.Primitives.4.3.0\.signature.p7s" />
     <None Include="packages\Microsoft.Win32.Primitives.4.3.0\lib\MonoAndroid10\_._" />
     <None Include="packages\Microsoft.Win32.Primitives.4.3.0\lib\MonoTouch10\_._" />
@@ -1273,6 +1350,16 @@
     <None Include="packages\System.Xml.XDocument.4.3.0\ref\xamarintvos10\_._" />
     <None Include="packages\System.Xml.XDocument.4.3.0\ref\xamarinwatchos10\_._" />
     <None Include="packages\System.Xml.XDocument.4.3.0\System.Xml.XDocument.4.3.0.nupkg" />
+    <None Include="Properties\DataSources\MenuItemModel+MenuItem.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.BillDetailModel+BillDetail.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.BillDetailModel.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.BillModel+Bill.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.BillModel.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.PrintModel.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.ShowBillModel+ShowBill.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.ShowBillModel.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.TableModel+Table.datasource" />
+    <None Include="Properties\DataSources\RESTAURANT_MANAGEMENT.Models.TableModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1282,6 +1369,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RESTAURANT_MANAGEMENTDataSet.xsc">
+      <DependentUpon>RESTAURANT_MANAGEMENTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RESTAURANT_MANAGEMENTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RESTAURANT_MANAGEMENTDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RESTAURANT_MANAGEMENTDataSet.xss">
+      <DependentUpon>RESTAURANT_MANAGEMENTDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -1308,6 +1406,180 @@
     <None Include="images\find.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\addBranch.png" />
+    <Content Include="images\additem.png" />
+    <Content Include="images\adduser.png" />
+    <Content Include="images\bill.png" />
+    <Content Include="images\branch\branch1.jpg" />
+    <Content Include="images\branch\branch2.jpg" />
+    <Content Include="images\branch\branch3.jpg" />
+    <Content Include="images\branch\branch4.jpg" />
+    <Content Include="images\branch\branch5.jpg" />
+    <Content Include="images\delete2.png" />
+    <Content Include="images\delete3.png" />
+    <Content Include="images\foods\food10.png" />
+    <Content Include="images\foods\food11.png" />
+    <Content Include="images\foods\food12.png" />
+    <Content Include="images\foods\food13.png" />
+    <Content Include="images\foods\food14.png" />
+    <Content Include="images\foods\food15.png" />
+    <Content Include="images\foods\food16.png" />
+    <Content Include="images\foods\food17.png" />
+    <Content Include="images\foods\food18.png" />
+    <Content Include="images\foods\food19.png" />
+    <Content Include="images\foods\food2.png" />
+    <Content Include="images\foods\food3.png" />
+    <Content Include="images\foods\food4.png" />
+    <Content Include="images\foods\food5.png" />
+    <Content Include="images\foods\food6.png" />
+    <Content Include="images\foods\food7.png" />
+    <Content Include="images\foods\food8.png" />
+    <Content Include="images\foods\food9.png" />
+    <Content Include="images\logout.png" />
+    <Content Include="images\order.png" />
+    <Content Include="images\pay.png" />
+    <Content Include="images\refresh.png" />
+    <Content Include="images\upload.png" />
+    <Content Include="images\user_homepage.png" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\license\ThirdPartyNotices_ReportViewer.txt" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\de\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\es\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\fr\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\it\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ja\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ko\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\pt\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\ru\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.Design.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\license\ThirdPartyNotices_ReportViewer.txt" />
+    <Content Include="packages\Microsoft.ReportViewer.Common.v12.12.0.0.1\lib\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\lib\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="images\addButton.png" />
     <Content Include="bin\Debug\RESTAURANT_MANAGEMENT.exe" />
     <Content Include="bin\Debug\RESTAURANT_MANAGEMENT.pdb" />
@@ -1329,6 +1601,7 @@
     <None Include="images\minus.png" />
     <Content Include="images\pass.png" />
     <None Include="images\plus.png" />
+    <None Include="images\print.png" />
     <Content Include="images\pw.png" />
     <Content Include="images\rb.png" />
     <Content Include="images\res.jpg" />

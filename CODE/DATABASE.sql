@@ -1,11 +1,11 @@
-﻿
-Create login admin with password='admin', CHECK_POLICY = OFF;
+﻿Create login admin with password='admin', CHECK_POLICY = OFF;
 
 
 --DROP DATABASE RESTAURANT_MANAGEMENT;
 CREATE DATABASE RESTAURANT_MANAGEMENT;
-	
+USE RESTAURANT_MANAGEMENT;
 
+use master
 sp_changedbowner admin; 
 
 DROP TABLE BILL_DETAIL;
@@ -34,6 +34,8 @@ CREATE TABLE RESTAURANT_BRANCH (
    address NVARCHAR(255) not null,
    phone NVARCHAR (15) not null
 );
+alter table RESTAURANT_BRANCH 
+add img varchar(50)
 
 -- users table
 CREATE TABLE USERS (
@@ -44,7 +46,7 @@ CREATE TABLE USERS (
     dob DATE,
     gender CHAR(1),
     address NVARCHAR(255),
-    phone NVARCHAR(15) not null,
+    phone NVARCHAR(15) not null unique,
     password nvarchar(20) not null check (len(password) between 6 and 16)
 	FOREIGN KEY (role_id) REFERENCES ROLE(id) ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -122,7 +124,7 @@ INSERT INTO ROLE (role_name, salary) VALUES
 (N'Quản lý', 20000000),
 (N'Nhân viên', 10000000),
 (N'Bếp trưởng', 15000000),
-(N'Phụ bếp', 8000000),
+(N'Bảo vệ', 4000000),
 (N'Phục vụ', 7000000);
 
 ------------------------------------------------------------
@@ -133,16 +135,18 @@ INSERT INTO CATEGORY (name, describe) VALUES
 (N'Đồ uống', N'Những loại nước giải khát hoặc rượu');
 
 ------------------------------------------------------------
-INSERT INTO RESTAURANT_BRANCH (name, address, phone) VALUES
-(N'Nhà hàng A', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789'),
-(N'Nhà hàng B', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321'),
-(N'Nhà hàng C', N'789 Lê Hồng Phong, Q. Cái Răng, TP. Cần Thơ', N'0123456789'),
-(N'Nhà hàng D', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321'),
-(N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789');
+INSERT INTO RESTAURANT_BRANCH (name, address, phone, img) VALUES
+(N'Kaito Dining and Grill', N'123 Đường 30/4, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch1.jpg'),
+(N'Minhify Vegetarian Bistro', N'456 Nguyễn Văn Cừ, Q. Bình Thủy, TP. Cần Thơ', N'0987654321','branch2.jpg'),
+(N'Trong Dinner Cruise', N'789 Lê Hồng Phong, Q. Cái Răng, TP. Cần Thơ', N'0123456789','branch3.jpg'),
+(N'Khang Noir Dinner in the dark', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321','branch4.jpg'),
+(N'Man San Fu Lou.', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch5.jpg');
 
+
+select * from USERS
 ------------------------------------------------------------
 INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES
-(1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0987654321', N'password123'),
+(1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0887654321', N'password123'),
 (2, N'234567890123', N'Trần Thị B', '1991-02-02', N'F', N'456 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh', N'0912345678', N'pass456word'),
 (3, N'345678901234', N'Lê Văn C', '1992-03-03', N'M', N'789 Lê Duẩn, Quận 3, TP. Hồ Chí Minh', N'0965432189', N'securepass'),
 (4, N'456789012345', N'Phạm Thị D', '1993-04-04', N'F', N'147 Phan Đình Phùng, Quận Phú Nhuận, TP. Hồ Chí Minh', N'0934567890', N'admin@123'),
@@ -151,7 +155,8 @@ INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) V
 (0, N'0123456789', N'La Thanh Trọng', '2002-04-09', N'M', N'21, Trần Hưng Đạo, khu vực/ấp 1, Phường An Cư', N'0901248021', N'admin456'),
 (1, N'086202000614', N'Kaito', '2002-06-05', N'M', N'Vinh Long', N'0987654321', N'user123'),
 (1, N'086202000615', N'Kaito2', '2002-06-05', N'M', N'Vinh Long', N'0123456789', N'user123'),
-(0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123');
+(0, N'0333144360', N'Diễm My', '2002-09-11', N'F', N'36/5a Khu vực Thạnh Mỹ, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ', N'0333144360', N'mee123'),
+(0, N'0131372170', N'Khang Nguyen', '2002-01-01', N'F', N'Canh 632/23, Phường Long Hòa, Quận Bình Thủy, TP Cần Thơ', N'0766811976', N'khang123');
 
 ------------------------------------------------------------
 INSERT INTO ASSIGN (u_id, branch_id) VALUES
@@ -221,6 +226,7 @@ INSERT INTO MENU_ITEM (id, price, name, describe, category_id, img) VALUES
 ------------------------------------------------------------------------------------------------------------------------
 -- Insert sample data into BILL_DETAIL table
 select * from tables;
+
 DECLARE @today DATE = GETDATE();
 INSERT INTO BILL (checkin_date, table_id, status, total) VALUES
 ('2024-02-01', 1, 0, 0),
@@ -333,7 +339,7 @@ EXEC getTableWithBranch @branch_id = 1;
 ------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 -- get branch name
-CREATE PROCEDURE getBranchName
+CREATE proc getBranchName
     @user_id INT
 AS
 BEGIN
@@ -349,26 +355,29 @@ EXEC getBranchName @user_id=8;
 
 ---------------------------------------------------------------------------------------------------------------------------
 ----proc PAY
-ALTER PROC PAY
-	@table_id int, @discount float
+CREATE PROCEDURE PAY
+    @table_id INT,
+    @discount FLOAT
 AS
 BEGIN
-	DECLARE @bill_id int;
-	DECLARE @final_total Money;
-	IF (@table_id IS NOT NULL)
-	BEGIN
-		UPDATE TABLES SET status=0 WHERE id=@table_id;
-		SELECT @bill_id=id from	BILL where table_id=@table_id and status=0;
-		UPDATE BILL SET status=1 WHERE id=@bill_id;
-	END
-	ELSE
-	BEGIN
-		SELECT @bill_id=id from	BILL where table_id is null and status=0;
-		UPDATE BILL SET status=1 WHERE id = @bill_id;
-	END
-	SELECT @final_total=total*(1-@discount/100) from BILL where id=@bill_id;
-	UPDATE BILL SET total = @final_total, discount=@discount where id=@bill_id;
-END
+    DECLARE @bill_id INT;
+    DECLARE @final_total MONEY;
+
+    IF (@table_id IS NOT NULL)
+    BEGIN
+        UPDATE TABLES SET status = 0 WHERE id = @table_id;
+        SELECT @bill_id = id FROM BILL WHERE table_id = @table_id AND status = 0;
+        UPDATE BILL SET status = 1 WHERE id = @bill_id;
+    END
+    ELSE
+    BEGIN
+        SELECT @bill_id = id FROM BILL WHERE table_id IS NULL AND status = 0;
+        UPDATE BILL SET status = 1 WHERE id = @bill_id;
+    END
+
+    SELECT @final_total = total * (1 - @discount / 100) FROM BILL WHERE id = @bill_id;
+    UPDATE BILL SET total = @final_total, discount = @discount WHERE id = @bill_id;
+END;
 GO
 
 
@@ -417,6 +426,7 @@ BEGIN
 			END
 		END
 END
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROC getBillId
 	@table_id int
@@ -431,6 +441,8 @@ BEGIN
 		select * from BILL where status=0 and table_id is null;
 	END
 END
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROC changeTable
 	@table1 int, @table2 int
@@ -445,31 +457,36 @@ AS BEGIN
 		UPDATE TABLES SET status=0 WHERE id=@table1;
 	END
 END
+
+
+
 ---------------------------RUN UNTIL THIS LINE BELOW ARE SELECT COMMANDS FOR TESTING------------------------------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------
 --------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------
-
+select item_id, ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=2;
 changeTable @table1=4, @table2=10;
-
+select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=2
 SELECT id from	BILL where table_id is null and status=0;
 EXEC ORDER_BILL @table_id=null;
 select * from BILL
 delete from bill where table_id IS NULL;
 PAY @table_id=null, @discount=5;
-select *from BILL;
+select *from BILL_DETAIL;
+DELETE FROM BILL_DETAIL WHERE id =33;
 delete from BILL;
 getBillId @table_id=null;
 update BILL set status=0 where id=3;
 
-
+select * from BILL
 update TABLES set status =0;
 select * from BILL where status=0 and table_id is null;
 EXEC addBillDetail @bill_id=4 , @item_id=5, @quantity=2;
 CalculateBillTotal @b_id=4;
 
-
-
+select * from RESTAURANT_BRANCH;
+SELECT * FROM RESTAURANT_BRANCH;
+select address from RESTAURANT_BRANCH where name = 'Nhà hàng A'
 select * from bill where id =3;
 select * from BILL_DETAIL where bill_id=3;
 select *from MENU_ITEM;
@@ -492,7 +509,7 @@ select sum(quantity*price) from BILL_DETAIL as b join MENU_ITEM as m on b.item_i
 ----------------------------------------------------------
 select * from BILL where status=0 and table_id=1;
 ------------
-
+select ROW_NUMBER() OVER(ORDER BY m.id) as id, name, quantity, price from BILL_DETAIL as b join MENU_ITEM as m on b.item_id = m.id where bill_id=8;
 select * from BILL where status=1;
 select * from MENU_ITEM;
 -- update BILL set status=0;
@@ -502,6 +519,113 @@ SELECT * FROM MENU_ITEM WHERE id = 1;
 SELECT * FROM CATEGORY c JOIN DETAIL_CATEGORY dc ON c.id = dc.category_id;
 SELECT dc.id, dc.name as dc_name, dc.describe as dc_desc, dc.category_id, c.name as c_name, c.describe as c_desc FROM DETAIL_CATEGORY dc JOIN CATEGORY c on dc.category_id = c.id WHERE dc.category_id = 2;
 SELECT * FROM DETAIL_CATEGORY;
+Select u.name from USERS u JOIN ASSIGN a on a.u_id = u.id where u.role_id=1 AND a.branch_id=1; 
+SELECT id FROM RESTAURANT_BRANCH where name = N'Nhà hàng A';
+SELECT * FROM ROLE;
+SELECT * FROM ROLE WHERE role_name = N'Quản lý';
+UPDATE USERS SET role_id= 1, cccd= '123456789012' , name= N'Nguyễn Văn B', dob= '1990-01-01' , gender= 'M' , address= '123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh' , phone= '0887654321' , password= 'password123' WHERE id=1;
+
+SELECT * FROM USERS;
+SELECT id FROM USERS WHERE phone='0901248021';
+SELECT * FROM ASSIGN;
+SELECT * FROM BILL;
+SELECT * FROM BILL_DETAIL;
+SELECT * FROM TABLES;
+select SUM(total) AS Total_day from BILL where checkin_date = convert (date, GETDATE()) and status = 1;
+select count(b.id) AS Order_Today from BILL b where b.checkin_date = convert (date, GETDATE()) and b.status = 1;
+SELECT SUM(total) AS This_Week FROM BILL WHERE checkin_date >= DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0) AND checkin_date <= DATEADD(DAY, 6, DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0)) AND status = 1;
+
+SELECT 
+    FORMAT(DATEADD(MONTH, number, '1900-01-01'), 'MMMM') AS Month,
+    COALESCE(SUM(b.total), 0) AS Revenue
+FROM 
+    master..spt_values
+LEFT JOIN 
+    BILL b ON MONTH(b.checkin_date) = DATEPART(MONTH, DATEADD(MONTH, number, '1900-01-01')) AND b.status = 1 AND YEAR(b.checkin_date) = YEAR(GETDATE())
+WHERE 
+    type = 'P' AND number BETWEEN 0 AND 11
+GROUP BY 
+    FORMAT(DATEADD(MONTH, number, '1900-01-01'), 'MMMM')
+ORDER BY 
+    MIN(DATEPART(MONTH, DATEADD(MONTH, number, '1900-01-01')));
+
+------------------
+
+SELECT 
+    FORMAT(DATEADD(MONTH, number, '1900-01-01'), 'MMMM') AS Month,
+    COALESCE(SUM(CASE WHEN t.branch_id = 1 THEN b.total ELSE 0 END), 0) AS Revenue
+FROM 
+    master..spt_values
+LEFT JOIN 
+    BILL b ON MONTH(b.checkin_date) = DATEPART(MONTH, DATEADD(MONTH, number, '1900-01-01')) AND b.status = 1 AND YEAR(b.checkin_date) = YEAR(GETDATE())
+LEFT JOIN 
+    TABLES t ON b.table_id = t.id
+WHERE 
+    type = 'P' AND number BETWEEN 0 AND 11
+GROUP BY 
+    FORMAT(DATEADD(MONTH, number, '1900-01-01'), 'MMMM')
+ORDER BY 
+    MIN(DATEPART(MONTH, DATEADD(MONTH, number, '1900-01-01')));
+
+------------------
+
+SELECT 
+    m.name,
+    COUNT(bd.item_id) * 100.0 / (SELECT COUNT(*) FROM BILL_DETAIL) AS percentage
+FROM 
+    MENU_ITEM m
+LEFT JOIN 
+    BILL_DETAIL bd ON m.id = bd.item_id
+GROUP BY 
+    m.name;
+
+---------------------------------
+WITH ItemPercentages AS (
+    SELECT 
+        m.name,
+        COUNT(bd.item_id) * 100.0 / (SELECT COUNT(*) FROM BILL_DETAIL) AS percentage,
+        ROW_NUMBER() OVER (ORDER BY COUNT(bd.item_id) * 100.0 / (SELECT COUNT(*) FROM BILL_DETAIL) DESC) AS rn
+    FROM 
+        MENU_ITEM m
+    LEFT JOIN 
+        BILL_DETAIL bd ON m.id = bd.item_id
+    GROUP BY 
+        m.name
+)
+SELECT 
+    name as Item,
+    percentage
+FROM 
+    ItemPercentages
+WHERE 
+    rn <= CASE WHEN (SELECT COUNT(*) FROM ItemPercentages) * 0.3 > 5 THEN 5 ELSE (SELECT COUNT(*) FROM ItemPercentages) * 0.3 END;
+
+----------------------------------------
+
+WITH ItemPercentages AS (
+    SELECT 
+        m.name,
+        COUNT(bd.item_id) * 100.0 / NULLIF((SELECT COUNT(*) FROM BILL WHERE table_id IN (SELECT id FROM TABLES WHERE branch_id = 1)), 0) AS percentage,
+        ROW_NUMBER() OVER (ORDER BY COUNT(bd.item_id) * 100.0 / NULLIF((SELECT COUNT(*) FROM BILL WHERE table_id IN (SELECT id FROM TABLES WHERE branch_id = 1)), 0) DESC) AS rn
+    FROM 
+        MENU_ITEM m
+    LEFT JOIN 
+        BILL_DETAIL bd ON m.id = bd.item_id
+    LEFT JOIN
+        BILL b ON bd.bill_id = b.id
+    WHERE
+        b.table_id IN (SELECT id FROM TABLES WHERE branch_id = 1)
+    GROUP BY 
+        m.name
+)
+SELECT 
+    name as Item,
+    percentage
+FROM 
+    ItemPercentages
+WHERE 
+    rn <= CASE WHEN (SELECT COUNT(*) FROM ItemPercentages) * 0.3 > 5 THEN 5 ELSE (SELECT COUNT(*) FROM ItemPercentages) * 0.3 END;
+
 
 ----------------------------------------------------------
 UPDATE TABLES

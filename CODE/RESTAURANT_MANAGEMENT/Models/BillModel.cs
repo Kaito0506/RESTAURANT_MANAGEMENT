@@ -15,7 +15,7 @@ namespace RESTAURANT_MANAGEMENT.Models
             public Bill() { 
             }
 
-            public Bill(int bill_id, DateTime date, int status, float total, int customer_id)
+            public Bill(int bill_id, DateTime date, int status, float total)
             {
                 this.bill_id = bill_id;
                 this.date = date;

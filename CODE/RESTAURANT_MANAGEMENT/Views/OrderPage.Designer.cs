@@ -201,7 +201,6 @@
             // 
             this.button14.AutoSize = true;
             this.button14.BackColor = System.Drawing.Color.Transparent;
-            this.button14.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button14.Location = new System.Drawing.Point(1023, 627);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(45, 42);
@@ -210,7 +209,6 @@
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox11.Location = new System.Drawing.Point(644, 513);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(251, 159);
@@ -243,7 +241,6 @@
             // 
             this.button13.AutoSize = true;
             this.button13.BackColor = System.Drawing.Color.Transparent;
-            this.button13.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button13.Location = new System.Drawing.Point(433, 627);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(45, 42);
@@ -252,7 +249,6 @@
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox10.Location = new System.Drawing.Point(54, 513);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(251, 159);
@@ -285,7 +281,6 @@
             // 
             this.button12.AutoSize = true;
             this.button12.BackColor = System.Drawing.Color.Transparent;
-            this.button12.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button12.Location = new System.Drawing.Point(1023, 418);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(45, 42);
@@ -294,7 +289,6 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox9.Location = new System.Drawing.Point(644, 304);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(251, 159);
@@ -327,7 +321,6 @@
             // 
             this.button11.AutoSize = true;
             this.button11.BackColor = System.Drawing.Color.Transparent;
-            this.button11.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button11.Location = new System.Drawing.Point(433, 421);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(45, 42);
@@ -336,7 +329,6 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox8.Location = new System.Drawing.Point(54, 307);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(251, 159);
@@ -369,7 +361,6 @@
             // 
             this.button15.AutoSize = true;
             this.button15.BackColor = System.Drawing.Color.Transparent;
-            this.button15.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button15.Location = new System.Drawing.Point(436, 214);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(45, 42);
@@ -378,7 +369,6 @@
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox12.Location = new System.Drawing.Point(57, 97);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(251, 159);
@@ -469,7 +459,6 @@
             // 
             this.button9.AutoSize = true;
             this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button9.Location = new System.Drawing.Point(1029, 628);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(45, 42);
@@ -478,7 +467,6 @@
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox13.Location = new System.Drawing.Point(650, 514);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(251, 159);
@@ -511,7 +499,6 @@
             // 
             this.button16.AutoSize = true;
             this.button16.BackColor = System.Drawing.Color.Transparent;
-            this.button16.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button16.Location = new System.Drawing.Point(436, 628);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(45, 42);
@@ -520,7 +507,6 @@
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox14.Location = new System.Drawing.Point(57, 514);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(251, 159);
@@ -553,7 +539,6 @@
             // 
             this.button18.AutoSize = true;
             this.button18.BackColor = System.Drawing.Color.Transparent;
-            this.button18.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button18.Location = new System.Drawing.Point(436, 423);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(45, 42);
@@ -562,7 +547,6 @@
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox16.Location = new System.Drawing.Point(57, 309);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(251, 159);
@@ -595,7 +579,6 @@
             // 
             this.button19.AutoSize = true;
             this.button19.BackColor = System.Drawing.Color.Transparent;
-            this.button19.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button19.Location = new System.Drawing.Point(1029, 217);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(45, 42);
@@ -604,7 +587,6 @@
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox17.Location = new System.Drawing.Point(650, 100);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(251, 159);
@@ -637,7 +619,6 @@
             // 
             this.button20.AutoSize = true;
             this.button20.BackColor = System.Drawing.Color.Transparent;
-            this.button20.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button20.Location = new System.Drawing.Point(436, 214);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(45, 42);
@@ -668,7 +649,6 @@
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox18.Location = new System.Drawing.Point(57, 97);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(251, 159);
@@ -750,7 +730,6 @@
             // 
             this.button6.AutoSize = true;
             this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button6.Location = new System.Drawing.Point(436, 628);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(45, 42);
@@ -759,7 +738,6 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox5.Location = new System.Drawing.Point(57, 514);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(251, 159);
@@ -792,7 +770,6 @@
             // 
             this.button4.AutoSize = true;
             this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button4.Location = new System.Drawing.Point(436, 423);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(45, 42);
@@ -801,7 +778,6 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox3.Location = new System.Drawing.Point(57, 309);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(251, 159);
@@ -834,7 +810,6 @@
             // 
             this.button3.AutoSize = true;
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button3.Location = new System.Drawing.Point(1029, 217);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(45, 42);
@@ -843,7 +818,6 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox2.Location = new System.Drawing.Point(650, 100);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(251, 159);
@@ -876,7 +850,6 @@
             // 
             this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button2.Location = new System.Drawing.Point(436, 214);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 42);
@@ -907,7 +880,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox1.Location = new System.Drawing.Point(57, 97);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(251, 159);
@@ -987,7 +959,6 @@
             // 
             this.button7.AutoSize = true;
             this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button7.Location = new System.Drawing.Point(1029, 631);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(45, 42);
@@ -996,7 +967,6 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox6.Location = new System.Drawing.Point(650, 517);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(251, 159);
@@ -1029,7 +999,6 @@
             // 
             this.button5.AutoSize = true;
             this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button5.Location = new System.Drawing.Point(1029, 426);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(45, 42);
@@ -1038,7 +1007,6 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox4.Location = new System.Drawing.Point(650, 312);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(251, 159);
@@ -1071,7 +1039,6 @@
             // 
             this.button17.AutoSize = true;
             this.button17.BackColor = System.Drawing.Color.Transparent;
-            this.button17.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button17.Location = new System.Drawing.Point(1029, 423);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(45, 42);
@@ -1080,7 +1047,6 @@
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.food;
             this.pictureBox15.Location = new System.Drawing.Point(650, 309);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(251, 159);
@@ -1113,7 +1079,6 @@
             // 
             this.button10.AutoSize = true;
             this.button10.BackColor = System.Drawing.Color.Transparent;
-            this.button10.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.btnAdd;
             this.button10.Location = new System.Drawing.Point(1026, 214);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(45, 42);
@@ -1122,7 +1087,6 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::RESTAURANT_MANAGEMENT.Properties.Resources.drink;
             this.pictureBox7.Location = new System.Drawing.Point(647, 97);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(251, 159);

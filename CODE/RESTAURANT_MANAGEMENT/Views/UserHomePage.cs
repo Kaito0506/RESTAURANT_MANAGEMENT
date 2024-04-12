@@ -40,6 +40,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             lbBranchName.Text = loadBranchName();
             LoadMenuItems();
             AddBillItem.isChosen += refreshBillItem;
+            lblUserName.Text = LoginController.GetUserName();
             
             //MessageBox.Show(selectedTable.ToString());
 
@@ -147,7 +148,7 @@ namespace RESTAURANT_MANAGEMENT.Views
         //////////////////////////////////////////////////////////////////////////////////////////////////
         public void showBill(int? table_id)
         {
-            lstItems.Items.Clear();
+            lstItems.Rows.Clear();
             int id;
             if(table_id>0)
             {
@@ -162,18 +163,49 @@ namespace RESTAURANT_MANAGEMENT.Views
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
             
-            List<ShowBillModel.ShowBill> listDetail = BillController.GetBillView(id);
-            int i = 1;
-            foreach (ShowBillModel.ShowBill item in listDetail)
+            DataTable listDetail = BillController.GetBillView(id);
+            Image imgDelete = Image.FromFile("..\\..\\images\\delete.png");
+            DataGridViewImageColumn btnDelete = new DataGridViewImageColumn()
             {
-                ListViewItem lstItem = new ListViewItem(i.ToString());
-                lstItem.SubItems.Add(item.name.ToString());
-                lstItem.SubItems.Add(item.quantity.ToString());
-                lstItem.SubItems.Add(((int)item.price).ToString("C0", culture));
-                i++;
-                lstItems.Items.Add(lstItem);
-               
+                Image = imgDelete,
+                Name = "delete",
+                HeaderText = ""
+            };
+            // Remove the "delete" button column if it exists
+            if (lstItems.Columns.Contains("delete"))
+            {
+                lstItems.Columns.Remove("delete");
             }
+            lstItems.Columns.Add(btnDelete);
+            if (listDetail!=null)
+            {
+                customGridView();
+                lstItems.Rows.Clear();
+                foreach (DataRow item in listDetail.Rows)
+                {
+
+                    int rowIndex = lstItems.Rows.Add(item["detail_id"], item["id"], item["name"], item["quantity"], item["price"]);
+                    
+                }
+
+
+            }
+            //lstItems.CellContentClick += lstItems_CellContentClick;
+
+        }
+
+        private void customGridView()
+        {
+            
+
+            // Set text alignment to center for specific columns
+            lstItems.Columns["idCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["priceCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            lstItems.Columns["quantityCol"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            lstItems.Columns["priceCol"].DefaultCellStyle.Format = "C0";
+            lstItems.Columns["priceCol"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");
+            
         }
 
 
@@ -454,9 +486,9 @@ namespace RESTAURANT_MANAGEMENT.Views
             {
                 LoadTables();
             }
-      
+            txtSelectedTable.Text = "";
             // update and show bill
-            lstItems.Items.Clear();
+            lstItems.DataSource = null;
             showBill(selectedTable);
             txtDiscount.Value = 0;
             btnPay.Enabled=false;
@@ -509,6 +541,97 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             showBill(selectedTable);
             UpdateBill(selectedBillId, (int)txtDiscount.Value);
+        }
+
+        private void bntPrint_Click(object sender, EventArgs e)
+        {
+            if (selectedBillId > 0)
+            {
+
+                frmPrint printPage = new frmPrint();
+                printPage.sum = txtSum.Text;
+                printPage.total = txtTotal.Text;
+                printPage.discount = txtDiscount.Text;
+                printPage.table = txtSelectedTable.Text;
+                printPage.branch = lbBranchName.Text;
+                printPage.address = BranchController.getAddress(lbBranchName.Text);                
+                printPage.listDetail = BillController.GetPrintPage(selectedBillId);         
+                printPage.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a bill to print", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //private void setButtonStatus()
+        //{
+        //    if (selectedBillId > 0)
+        //    {
+        //        btnPay.Enabled = true;
+        //        btnOrder.Enabled = false;
+        //        btnPrint.Enabled = true;
+        //    }
+        //}
+
+        private void lstItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>=0 && e.ColumnIndex== lstItems.Columns["delete"].Index)
+            {
+                int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
+                // Display a confirmation dialog
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(result == DialogResult.Yes)
+                {
+                    BillController.deleteBillDetail(id);
+                    showBill(selectedTable);
+                    //MessageBox.Show(item_id.ToString());
+                }
+                
+            }
+        }
+
+        private void lstItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && e.ColumnIndex == lstItems.Columns["quantityCol"].Index)
+            {
+
+                try
+                {
+                    int quantity = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["quantityCol"].Value);
+                    int id = Convert.ToInt32(lstItems.Rows[e.RowIndex].Cells["itemCol"].Value);
+                    if (quantity > 0)
+                    {
+
+                        BillController.updateBillDetail(id, quantity);
+                        showBill(selectedTable);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter positive number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        showBill(selectedTable);
+                    }
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Please enter valid number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showBill(selectedTable);
+                }
+
+            }
+        }
+
+        private void btnLofout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do do want to logout", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                this.Hide();
+                login login = new login();
+                login.Closed += (s, args) => this.Close();
+                login.ShowDialog();
+            }
+
         }
     }
 }

@@ -17,7 +17,9 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             InitializeComponent();
             getCategories();
+            cbbCateg.SelectedIndex = 0;
             getDetailCategoriesByCategory();
+
         }
 
         public void getCategories()
@@ -26,7 +28,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             cbbCateg.DataSource = categories;
             cbbCateg.DisplayMember = "c_name";
             cbbCateg.ValueMember = "c_id";
-            cbbCateg.SelectedIndex = -1;
         }
 
         public void getDetailCategoriesByCategory()
@@ -116,6 +117,18 @@ namespace RESTAURANT_MANAGEMENT.Views
                 MessageBox.Show("Failed to add detail category");
             }
             
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            getCategories();
+            getDetailCategoriesByCategory();
+        }
+
+        private void AdminCategory_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip t = new System.Windows.Forms.ToolTip();
+            t.SetToolTip(this.refresh, "Refresh");
         }
     }
 }

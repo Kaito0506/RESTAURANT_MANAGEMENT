@@ -182,5 +182,12 @@ namespace RESTAURANT_MANAGEMENT.Views
             adminEditItem.SetMode(0);
             adminEditItem.ShowDialog();
         }
+
+        private void AdminItem_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
+            ToolTip1.SetToolTip(this.refresh, "Refresh");
+            ToolTip1.SetToolTip(this.add, "Add Item");
+        }
     }
 }
