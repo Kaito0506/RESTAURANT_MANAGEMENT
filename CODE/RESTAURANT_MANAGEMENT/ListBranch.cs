@@ -73,7 +73,7 @@ namespace RESTAURANT_MANAGEMENT
         }
 
         #endregion
-        private void btnEditBranch_Click(object sender, EventArgs e)
+        private void btnEditBranch_Click_1(object sender, EventArgs e)
         {
             AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
             adminEditBranchInfo.SetTbIdText(_id.ToString());
@@ -86,7 +86,7 @@ namespace RESTAURANT_MANAGEMENT
             adminEditBranchInfo.ShowDialog();
         }
 
-        private void btnDeleteBranch_Click(object sender, EventArgs e)
+        private void btnDeleteBranch_Click_1(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show($"Do you want to delete item {_title}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)

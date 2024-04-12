@@ -16,13 +16,11 @@ namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class AdminEditBranchInfo : Form
     {
-        //List<BranchController.Branch> branches = BranchController.GetBranches();
         int mode = -1;
         public static event EventHandler BranchUpdated;
         public AdminEditBranchInfo()
         {
             InitializeComponent();
-            //LoadBranchItemData();
         }
 
         public void SetTbIdText(string text)

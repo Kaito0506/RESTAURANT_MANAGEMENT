@@ -11,29 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
-using static RESTAURANT_MANAGEMENT.Models.BillModel;
-using static RESTAURANT_MANAGEMENT.Models.TableModel;
-using static RoleModel;
 using static MenuItemModel;
-
-
-
 
 namespace RESTAURANT_MANAGEMENT.Views
 {
     public partial class AdminBranch : Form
     {
         List<BranchModel.Branch> branches = BranchController.GetBranches();
-        private List<BranchModel.Branch> filteredBranches;
 
         public AdminBranch()
         {
             InitializeComponent();
-            filteredBranches = new List<BranchModel.Branch>();
             LoadBranchItemData();
+            AdminEditBranchInfo.BranchUpdated += BranchUpdated;
         }
-
-
 
         private Image GetImage(string imageName)
         {
@@ -60,7 +51,6 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             flowLayoutPanel.Controls.Clear();
 
-            filteredBranches = new List<BranchModel.Branch>(branches);
 
             ListBranch[] listBranch = new ListBranch[branches.Count];
             for (int i = 0; i < listBranch.Length; i++)
@@ -71,8 +61,6 @@ namespace RESTAURANT_MANAGEMENT.Views
                 listBranch[i].Address = branches[i].b_address;
                 listBranch[i].Image = GetImage(branches[i].b_img);
                 listBranch[i].Phone = branches[i].b_phone;
-                //listBranch[i].Revenue = branches[i].b_revenue;
-                // listBranch[i].EmployeeCount = branches[i].b_employee;
                 flowLayoutPanel.Controls.Add(listBranch[i]);
             }
         }
@@ -81,74 +69,25 @@ namespace RESTAURANT_MANAGEMENT.Views
         {
             flowLayoutPanel.Controls.Clear();
             branches = BranchController.GetBranches();
+            LoadBranchData();
         }
 
-
-        private string RemoveDiacritics(string text)
-        {
-            var normalizedString = text.Normalize(NormalizationForm.FormD);
-            var stringBuilder = new StringBuilder();
-
-            foreach (var c in normalizedString)
-            {
-                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
-                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
-                {
-                    stringBuilder.Append(c);
-                }
-            }
-
-            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
-        }
-
-        private void UpdateUIWithFilteredBranches()
+        private void BranchUpdated(object sender, EventArgs e)
         {
             flowLayoutPanel.Controls.Clear();
-
-            foreach (var branch in filteredBranches)
-            {
-                ListBranch listBranch = new ListBranch();
-                listBranch.Id = branch.b_id;
-                listBranch.Title = branch.b_name;
-                listBranch.Address = branch.b_address;
-                listBranch.Image = GetImage(branch.b_img);
-                listBranch.Phone = branch.b_phone;
-                flowLayoutPanel.Controls.Add(listBranch);
-            }
+            branches = BranchController.GetBranches();
+            LoadBranchData();
         }
 
         private void cbbBranches_SelectedIndexChanged(object sender, EventArgs e)
         {
             flowLayoutPanel.Controls.Clear();
         }
-
-        private void tbSearch_TextChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanel.Controls.Clear();
-        }
-
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-            AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
-            int new_id = BranchController.GetMaxBranchId();
-
-            adminEditBranchInfo.SetTbIdText(new_id.ToString());
-            adminEditBranchInfo.SetBackgroundImage(GetImage("food.png"));
-            adminEditBranchInfo.SetFilenameText("food.png");
-            adminEditBranchInfo.SetMode(0);
-            adminEditBranchInfo.ShowDialog();
-        }
-        public void refreshBranch(object sender, int id)
-        {
-            flowLayoutPanel.Controls.Clear();
-            branches = BranchController.GetBranches();
-        }
-
+        
         public void LoadBranchData()
         {
             flowLayoutPanel.Controls.Clear();
 
-            filteredBranches = new  List<BranchModel.Branch>(branches);
 
             ListBranch[] listBranch = new ListBranch[branches.Count];
             for (int i = 0; i < listBranch.Length; i++)
@@ -160,16 +99,27 @@ namespace RESTAURANT_MANAGEMENT.Views
                 listBranch[i].Phone = branches[i].b_phone;
                 listBranch[i].Image = GetImage(branches[i].b_img);
                 listBranch[i].Filename = branches[i].b_img;
-                listBranch[i].BranchDeleted += refreshBranch;
+                listBranch[i].BranchDeleted += refreshBranchItem;
                 flowLayoutPanel.Controls.Add(listBranch[i]);
             }
         }
-
         private void refresh_Click(object sender, EventArgs e)
         {
             flowLayoutPanel.Controls.Clear();
             branches = BranchController.GetBranches();
             LoadBranchData();
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
+            int new_id = BranchController.GetMaxBranchId();
+
+            adminEditBranchInfo.SetTbIdText(new_id.ToString());
+            adminEditBranchInfo.SetBackgroundImage(GetImage("branch.png"));
+            adminEditBranchInfo.SetFilenameText("branch.png");
+            adminEditBranchInfo.SetMode(0);
+            adminEditBranchInfo.ShowDialog();
         }
     }
 }
