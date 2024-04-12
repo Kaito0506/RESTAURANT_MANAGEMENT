@@ -130,8 +130,6 @@ class BranchController {
         }
     }
 
-
-
     public static int GetMaxBranchId()
     {
         try
