@@ -127,7 +127,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             flowLayoutPanel.Controls.Clear();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             AdminEditBranchInfo adminEditBranchInfo = new AdminEditBranchInfo();
             int new_id = BranchController.GetMaxBranchId();
@@ -138,7 +138,6 @@ namespace RESTAURANT_MANAGEMENT.Views
             adminEditBranchInfo.SetMode(0);
             adminEditBranchInfo.ShowDialog();
         }
-
         public void refreshBranch(object sender, int id)
         {
             flowLayoutPanel.Controls.Clear();
@@ -166,7 +165,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void refresh_Click(object sender, EventArgs e)
         {
             flowLayoutPanel.Controls.Clear();
             branches = BranchController.GetBranches();

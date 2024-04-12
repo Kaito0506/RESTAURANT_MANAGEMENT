@@ -5,7 +5,7 @@
 CREATE DATABASE RESTAURANT_MANAGEMENT;
 USE RESTAURANT_MANAGEMENT;
 
-
+use master
 sp_changedbowner admin; 
 
 DROP TABLE BILL_DETAIL;
@@ -142,6 +142,8 @@ INSERT INTO RESTAURANT_BRANCH (name, address, phone, img) VALUES
 (N'Nhà hàng D', N'147 Phan Đình Phùng, Q. O Môn, TP. Cần Thơ', N'0987654321','branch4.jpg'),
 (N'Nhà hàng E', N'258A Nguyễn Văn Linh, Q. Ninh Kiều, TP. Cần Thơ', N'0123456789','branch5.jpg');
 
+
+select * from USERS
 ------------------------------------------------------------
 INSERT INTO USERS (role_id, cccd, name, dob, gender, address, phone, password) VALUES
 (1, N'123456789012', N'Nguyễn Văn A', '1990-01-01', N'M', N'123 Trần Hưng Đạo, Quận 1, TP. Hồ Chí Minh', N'0887654321', N'password123'),
@@ -424,6 +426,7 @@ BEGIN
 			END
 		END
 END
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROC getBillId
 	@table_id int
@@ -438,6 +441,8 @@ BEGIN
 		select * from BILL where status=0 and table_id is null;
 	END
 END
+
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE PROC changeTable
 	@table1 int, @table2 int

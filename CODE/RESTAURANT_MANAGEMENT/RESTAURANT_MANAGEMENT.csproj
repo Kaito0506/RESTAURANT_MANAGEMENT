@@ -1406,6 +1406,7 @@
     <None Include="images\find.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\addBranch.png" />
     <Content Include="images\additem.png" />
     <Content Include="images\adduser.png" />
     <Content Include="images\bill.png" />
