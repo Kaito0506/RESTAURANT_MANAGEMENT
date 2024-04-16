@@ -312,6 +312,12 @@
     <Compile Include="Views\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminEditBranchInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminEditBranchInfo.Designer.cs">
+      <DependentUpon>AdminEditBranchInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminEditItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminEditBranchInfo.resx">
+      <DependentUpon>AdminEditBranchInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminEditItem.resx">
       <DependentUpon>AdminEditItem.cs</DependentUpon>
@@ -1397,6 +1406,7 @@
     <None Include="images\find.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\addBranch.png" />
     <Content Include="images\additem.png" />
     <Content Include="images\adduser.png" />
     <Content Include="images\bill.png" />

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListBranch));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEditBranch = new System.Windows.Forms.Button();
+            this.btnDeleteBranch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbPhone = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,14 +47,44 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEditBranch);
+            this.panel1.Controls.Add(this.btnDeleteBranch);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Controls.Add(this.pictureBox);
             this.panel1.Location = new System.Drawing.Point(-52, 13);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 189);
+            this.panel1.Size = new System.Drawing.Size(977, 163);
             this.panel1.TabIndex = 14;
+            // 
+            // btnEditBranch
+            // 
+            this.btnEditBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnEditBranch.Image")));
+            this.btnEditBranch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditBranch.Location = new System.Drawing.Point(779, 43);
+            this.btnEditBranch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditBranch.Name = "btnEditBranch";
+            this.btnEditBranch.Size = new System.Drawing.Size(80, 39);
+            this.btnEditBranch.TabIndex = 19;
+            this.btnEditBranch.Text = "Edit";
+            this.btnEditBranch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditBranch.UseVisualStyleBackColor = true;
+            this.btnEditBranch.Click += new System.EventHandler(this.btnEditBranch_Click_1);
+            // 
+            // btnDeleteBranch
+            // 
+            this.btnDeleteBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBranch.Image")));
+            this.btnDeleteBranch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteBranch.Location = new System.Drawing.Point(867, 43);
+            this.btnDeleteBranch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(89, 39);
+            this.btnDeleteBranch.TabIndex = 18;
+            this.btnDeleteBranch.Text = "Delete";
+            this.btnDeleteBranch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteBranch.UseVisualStyleBackColor = true;
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click_1);
             // 
             // panel3
             // 
@@ -59,9 +92,9 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.lbAdress);
-            this.panel3.Location = new System.Drawing.Point(338, 101);
+            this.panel3.Location = new System.Drawing.Point(348, 85);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(640, 87);
+            this.panel3.Size = new System.Drawing.Size(630, 78);
             this.panel3.TabIndex = 15;
             // 
             // lbPhone
@@ -107,11 +140,11 @@
             // lbTitle
             // 
             this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Noto Sans", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(567, 28);
+            this.lbTitle.Font = new System.Drawing.Font("Noto Sans", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(363, 11);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(235, 45);
+            this.lbTitle.Size = new System.Drawing.Size(196, 38);
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "NHÀ HÀNG A";
             // 
@@ -120,7 +153,7 @@
             this.pictureBox.Location = new System.Drawing.Point(52, 0);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(285, 188);
+            this.pictureBox.Size = new System.Drawing.Size(289, 164);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
@@ -141,7 +174,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Name = "ListBranch";
-            this.Size = new System.Drawing.Size(928, 203);
+            this.Size = new System.Drawing.Size(925, 177);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -162,5 +195,7 @@
         private System.Windows.Forms.Label lbAdress;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEditBranch;
+        private System.Windows.Forms.Button btnDeleteBranch;
     }
 }

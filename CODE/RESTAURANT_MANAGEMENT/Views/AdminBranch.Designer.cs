@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminBranch));
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel
@@ -39,28 +42,65 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(188, 63);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(188, 87);
             this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(918, 776);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(918, 752);
             this.flowLayoutPanel.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(554, 18);
+            this.label1.Location = new System.Drawing.Point(183, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 25);
             this.label1.TabIndex = 16;
             this.label1.Text = "DANH SÁCH NHÀ HÀNG";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRefresh.Location = new System.Drawing.Point(1013, 37);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(35, 33);
+            this.btnRefresh.TabIndex = 21;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Location = new System.Drawing.Point(1071, 37);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(35, 33);
+            this.btnAdd.TabIndex = 22;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
+            // 
             // AdminBranch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1294, 947);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -78,5 +118,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
