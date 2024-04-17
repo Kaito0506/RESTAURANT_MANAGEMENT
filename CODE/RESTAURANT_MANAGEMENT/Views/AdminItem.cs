@@ -131,6 +131,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             foreach (var menuItem in filteredItems)
             {
                 ListItem listItem = new ListItem();
+                listItem.Id = menuItem.mi_id;
                 listItem.Title = menuItem.mi_name;
                 listItem.Description = menuItem.mi_desc;
                 listItem.Price = menuItem.mi_price;
