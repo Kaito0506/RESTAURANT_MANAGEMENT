@@ -162,7 +162,7 @@ namespace RESTAURANT_MANAGEMENT.Views
             Console.WriteLine("Show bill " + id.ToString());
             int discount = (int)txtDiscount.Value;
             UpdateBill(id, discount);
-            
+
             DataTable listDetail = BillController.GetBillView(id);
             Image imgDelete = Image.FromFile("..\\..\\images\\delete.png");
             DataGridViewImageColumn btnDelete = new DataGridViewImageColumn()
