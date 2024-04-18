@@ -331,7 +331,7 @@ namespace RESTAURANT_MANAGEMENT.Controllers
             try
             {
                 Database.Connect();
-                SqlCommand cmd = new SqlCommand($"select SUM(total) AS Total_day from BILL b join TABLES t on b.table_id = t.id where b.checkin_date = convert (date, GETDATE()) and b.status = 1 and t.branch_id = {bid};", Database.Connection);
+                SqlCommand cmd = new SqlCommand($"select COUNT(b.id) AS Total_day from BILL b join TABLES t on b.table_id = t.id where b.checkin_date = convert (date, GETDATE()) and b.status = 1 and t.branch_id = {bid};", Database.Connection);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
